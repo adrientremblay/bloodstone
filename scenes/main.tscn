@@ -1,26 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://dc4m2o6rx7t1j"]
+[gd_scene load_steps=4 format=3 uid="uid://dc4m2o6rx7t1j"]
 
 [ext_resource type="PackedScene" uid="uid://dlss5l7s81x7o" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://bal1yqwvaw4pe" path="res://scenes/rat.tscn" id="2_0wfyh"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_sgp6g"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_o5qli"]
-size = Vector3(16.4616, 0.517334, 16.767)
+[ext_resource type="MeshLibrary" uid="uid://d080r1hwfqfl8" path="res://scenes/tileset.tres" id="3_sugp2"]
 
 [node name="Node3D" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
-mesh = SubResource("PlaneMesh_sgp6g")
-
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.112946, -0.241333, -2.01157)
-shape = SubResource("BoxShape3D_o5qli")
 
 [node name="rat" parent="." instance=ExtResource("2_0wfyh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.0440622, -3)
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh_library = ExtResource("3_sugp2")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65535, 65535, 1048576, 0, 65535, 1048576, 0, 0, 1048576, 65535, 0, 1048576, 1, 0, 0, 1, 65535, 0, 1, 65534, 0, 0, 65534, 0, 65535, 65534, 0, 65534, 0, 1441792, 65534, 65535, 1441792, 65534, 65534, 1441792, 65534, 1, 1441792, 65535, 1, 1441792, 0, 1, 1441792, 1, 1, 1441792, 65533, 65534, 1048578, 65533, 65535, 1048578, 65533, 0, 1048578, 65533, 1, 1048578, 65534, 2, 655362, 65535, 2, 655362, 0, 2, 655362, 1, 2, 655362, 2, 1, 1441794, 2, 0, 1441794, 2, 65535, 1441794, 2, 65534, 1441794, 1, 65533, 2, 0, 65533, 2, 65535, 65533, 2, 65534, 65533, 2, 65533, 65533, 1048577, 2, 65533, 1, 2, 2, 1441793, 65533, 2, 655361)
+}
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.17604, 0)
