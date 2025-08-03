@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://byqlpoakon47k"]
+
+[ext_resource type="PackedScene" uid="uid://dk4oiw62vhiav" path="res://assets/models/candle/candle.gltf" id="1_ctofe"]
+
+[node name="candle" instance=ExtResource("1_ctofe")]
+
+[node name="Cylinder" parent="." index="0"]
+transform = Transform3D(0.086, 0, 0, 0, 0.2, 0, 0, 0, 0.086, 0, 0.196011, 0)
