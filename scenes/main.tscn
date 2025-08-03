@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dc4m2o6rx7t1j"]
+[gd_scene load_steps=5 format=3 uid="uid://dc4m2o6rx7t1j"]
 
 [ext_resource type="PackedScene" uid="uid://dlss5l7s81x7o" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://bal1yqwvaw4pe" path="res://scenes/rat.tscn" id="2_0wfyh"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_sgp6g"]
 
@@ -20,3 +21,6 @@ mesh = SubResource("PlaneMesh_sgp6g")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.112946, -0.241333, -2.01157)
 shape = SubResource("BoxShape3D_o5qli")
+
+[node name="rat" parent="." instance=ExtResource("2_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.18464, -3)

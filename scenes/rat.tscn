@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bal1yqwvaw4pe"]
+
+[ext_resource type="PackedScene" uid="uid://bsiq6mcmjfvqf" path="res://assets/models/rat/rat.glb" id="1_1l88y"]
+
+[node name="rat" instance=ExtResource("1_1l88y")]
+
+[node name="Rat_Mirror_not_applied" parent="." index="0"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.0181967, 0)
