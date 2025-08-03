@@ -1,5 +1,22 @@
 extends CharacterBody3D
 
+@onready var camera = $Camera3D
+
+var camera_max_angle = 80
+var camera_min_angle = -80
+
+func _unhandled_input(event: InputEvent):
+	if event is InputEventMouseButton:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	elif event.is_action_pressed("ui_cancel"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		if event is InputEventMouseMotion:
+			self.rotate_y(-event.relative.x * 0.01)
+			camera.rotate_x(-event.relative.y * 0.01)
+			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(camera_min_angle), deg_to_rad(camera_max_angle))
+
 func _physics_process(delta):
 	var input_dir = Vector3.ZERO
 	
@@ -14,7 +31,7 @@ func _physics_process(delta):
 		input_dir.z += 1
 	if not is_on_floor():
 		input_dir.y -= 1
-	var direction : Vector3 = (transform.basis * self.transform.basis * input_dir).normalized()
+	var direction : Vector3 = (self.transform.basis * input_dir).normalized()
 	
 	# movement
 	var move_speed = 5.0
