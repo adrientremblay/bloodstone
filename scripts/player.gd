@@ -3,6 +3,7 @@ extends CharacterBody3D
 @onready var camera = $Camera3D
 @onready var weapon_animation_player = $WeaponAnimationPlayer
 @onready var swipe_sound = $Swipe
+@onready var eat_rat_sound = $EatRat
 
 var camera_max_angle = 80
 var camera_min_angle = -80
@@ -58,4 +59,5 @@ func attack() -> void:
 
 	if result:
 		if result.collider.is_in_group("enemies"):
-			print("rat")
+			result.collider.queue_free()
+			eat_rat_sound.play()

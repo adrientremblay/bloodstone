@@ -50,3 +50,9 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_tefeu")
 stretch_mode = 3
+
+[node name="Rat2" parent="." instance=ExtResource("5_tbgi4")]
+transform = Transform3D(0.373425, 0, -0.92766, 0, 1, 0, 0.92766, 0, 0.373425, -1.25293, 0.274349, -2.67927)
+
+[node name="Rat3" parent="." instance=ExtResource("5_tbgi4")]
+transform = Transform3D(0.791021, 0, 0.611789, 0, 1, 0, -0.611789, 0, 0.791021, -2.25779, 0.274349, 2.07687)

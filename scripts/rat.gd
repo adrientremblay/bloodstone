@@ -6,6 +6,9 @@ var target_radius = 3
 var rng = RandomNumberGenerator.new()
 var speed = 0.5
 
+func _ready() -> void:
+	_on_find_new_target_timer_timeout()
+
 func _physics_process(delta: float) -> void:
 	if navigation_agent.is_target_reached():
 		return
