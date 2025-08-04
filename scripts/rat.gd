@@ -7,12 +7,15 @@ extends CharacterBody3D
 var target_radius = 3
 var rng = RandomNumberGenerator.new()
 var speed = 0.5
+var alive = true
+var blood = 10
 
 func _ready() -> void:
 	_on_find_new_target_timer_timeout()
+	$GPUParticles3D.emitting = false
 
 func _physics_process(delta: float) -> void:
-	if navigation_agent.is_target_reached():
+	if navigation_agent.is_target_reached() || not alive:
 		return
 	
 	var direction = (navigation_agent.get_next_path_position() - self.global_position).normalized()
@@ -20,14 +23,21 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_find_new_target_timer_timeout() -> void:
+	if not alive:
+		return
+	
 	var random_angle = rng.randi_range(0, PI * 2)
 	var target_position = self.global_position + Vector3(target_radius,0,0).rotated(Vector3.UP,random_angle)
 	self.rotation = Vector3(0, random_angle, 0)
 	navigation_agent.target_position = target_position
 
 func die():
+	alive = false
 	death_sound.play()
 	animation_player.play("die")
 
 func _on_death_sound_finished() -> void:
-	queue_free()
+	pass
+
+func bleed():
+	animation_player.play("bleed")

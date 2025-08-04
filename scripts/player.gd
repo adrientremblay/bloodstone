@@ -21,6 +21,7 @@ signal consumed_blood(amount)
 
 # Properties
 @onready var current_weapon: Weapon = hand
+var blood_drain = 10 # how much blood the player is able to drain per each feed
 
 func _ready() -> void:
 	$Camera3D/pistol/MuzzleFlash.visible = false
@@ -94,11 +95,19 @@ func attack() -> void:
 	if result:
 		if result.collider.is_in_group("enemies"):
 			if current_weapon == hand:
+				var blood_available = min(result.collider.blood, blood_drain)
+				if blood_available == 0:
+					return
+				
 				eat_rat_sound.play()
-				consumed_blood.emit(10)
-				result.collider.queue_free()
-			else:
+				consumed_blood.emit(blood_available)
+				result.collider.blood -= blood_available
+				if not result.collider.alive:
+					result.collider.bleed()
+			
+			if result.collider.alive:
 				result.collider.die()
+			
 		elif current_weapon != hand: 
 			# Create the bullet hole
 			var new_bullet_hole = bullet_hole_scene.instantiate()
