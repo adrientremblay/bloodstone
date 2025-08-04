@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6kw821bowny7"]
+
+[ext_resource type="PackedScene" uid="uid://b7papst5skrkc" path="res://assets/models/hand/hand2.glb" id="1_eyfoh"]
+
+[node name="hand2" instance=ExtResource("1_eyfoh")]

@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dc4m2o6rx7t1j"]
+[gd_scene load_steps=6 format=3 uid="uid://dc4m2o6rx7t1j"]
 
 [ext_resource type="PackedScene" uid="uid://dlss5l7s81x7o" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://bal1yqwvaw4pe" path="res://scenes/rat.tscn" id="2_0wfyh"]
 [ext_resource type="MeshLibrary" uid="uid://d080r1hwfqfl8" path="res://scenes/tileset.tres" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://byqlpoakon47k" path="res://scenes/candle.tscn" id="4_jyhfs"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_jyhfs"]
+vertices = PackedVector3Array(-3.75, 0.5, -3.75, -3.75, 0.5, 3.75, 4, 0.5, 3.75, 4, 0.5, -3.75)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="Node3D" type="Node3D"]
 
@@ -13,7 +17,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2.69955)
 [node name="rat" parent="." instance=ExtResource("2_0wfyh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.0440622, -3)
 
-[node name="GridMap" type="GridMap" parent="."]
+[node name="candle" parent="." instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0538205, -0.0336832, -0.00199393)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_jyhfs")
+
+[node name="GridMap" type="GridMap" parent="NavigationRegion3D"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 mesh_library = ExtResource("3_sugp2")
 cell_size = Vector3(1, 1, 1)
@@ -21,18 +31,3 @@ cell_center_y = false
 data = {
 "cells": PackedInt32Array(65535, 65535, 1048576, 0, 65535, 1048576, 0, 0, 1048576, 65535, 0, 1048576, 1, 0, 0, 1, 65535, 0, 1, 65534, 0, 0, 65534, 0, 65535, 65534, 0, 65534, 0, 1441792, 65534, 65535, 1441792, 65534, 65534, 1441792, 65534, 1, 1441792, 65535, 1, 1441792, 0, 1, 1441792, 1, 1, 1441792, 65533, 65534, 1048578, 65533, 65535, 1048578, 65533, 0, 1048578, 65533, 1, 1048578, 65534, 2, 655362, 65535, 2, 655362, 0, 2, 655362, 1, 2, 655362, 2, 1, 1441794, 2, 0, 1441794, 2, 65535, 1441794, 2, 65534, 1441794, 1, 65533, 2, 0, 65533, 2, 65535, 65533, 2, 65534, 65533, 2, 65533, 65533, 1048577, 2, 65533, 1, 2, 2, 1441793, 65533, 2, 655361)
 }
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.17604, 0)
-
-[node name="GridMap2" type="GridMap" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-mesh_library = ExtResource("3_sugp2")
-cell_size = Vector3(1, 1, 1)
-cell_center_y = false
-data = {
-"cells": PackedInt32Array(65535, 65535, 1048576, 0, 65535, 1048576, 0, 0, 1048576, 65535, 0, 1048576, 1, 0, 0, 1, 65535, 0, 1, 65534, 0, 0, 65534, 0, 65535, 65534, 0, 65534, 0, 1441792, 65534, 65535, 1441792, 65534, 65534, 1441792, 65534, 1, 1441792)
-}
-
-[node name="candle" parent="." instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0538205, -0.0336832, -0.00199393)
