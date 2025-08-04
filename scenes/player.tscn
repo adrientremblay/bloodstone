@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dlss5l7s81x7o"]
+[gd_scene load_steps=13 format=3 uid="uid://dlss5l7s81x7o"]
 
 [ext_resource type="Script" uid="uid://d1l785xbyf128" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://c6kw821bowny7" path="res://scenes/hand.tscn" id="2_g2els"]
 [ext_resource type="AudioStream" uid="uid://dixknjqhi7sxi" path="res://assets/audio/swipe.mp3" id="3_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://ce5r6dshe4sgl" path="res://assets/models/pistol/pistol_model.tscn" id="3_tuyoq"]
 [ext_resource type="Script" uid="uid://b11s7luwbpnew" path="res://scripts/weapon_camera.gd" id="4_dqkch"]
 [ext_resource type="AudioStream" uid="uid://cqq2dtmkdxe30" path="res://assets/audio/eat_rat.mp3" id="4_qlg0r"]
 
@@ -92,6 +93,10 @@ cull_mask = 1047553
 
 [node name="hand2" parent="Camera3D" instance=ExtResource("2_g2els")]
 transform = Transform3D(0.2, 0, 0, 0, -7.23998e-07, -0.2, 0, 0.2, -7.23998e-07, 1.02104, -0.403694, -0.95668)
+visible = false
+
+[node name="pistol" parent="Camera3D" instance=ExtResource("3_tuyoq")]
+transform = Transform3D(-0.2, 0, 8.74228e-09, 0, 0.1, 0, -1.74846e-08, 0, -0.1, 0.547602, -0.240093, -0.632971)
 
 [node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
