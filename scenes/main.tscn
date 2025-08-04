@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dc4m2o6rx7t1j"]
+[gd_scene load_steps=8 format=3 uid="uid://dc4m2o6rx7t1j"]
 
 [ext_resource type="PackedScene" uid="uid://dlss5l7s81x7o" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="MeshLibrary" uid="uid://d080r1hwfqfl8" path="res://scenes/tileset.tres" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://byqlpoakon47k" path="res://scenes/candle.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://cggrv860g4o7o" path="res://scenes/rat.tscn" id="5_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://cm36lloods2oq" path="res://assets/images/crosshair.png" id="5_tefeu"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jyhfs"]
 vertices = PackedVector3Array(-3.75, 0.5, -3.75, -3.75, 0.5, 3.75, 4, 0.5, 3.75, 4, 0.5, -3.75)
@@ -40,3 +41,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.492, 0.215, -2.29815)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jyhfs")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_tefeu")
+stretch_mode = 3
