@@ -1,8 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://byqlpoakon47k"]
+[gd_scene load_steps=8 format=3 uid="uid://byqlpoakon47k"]
 
 [ext_resource type="PackedScene" uid="uid://dk4oiw62vhiav" path="res://assets/models/candle/candle.gltf" id="1_ctofe"]
+[ext_resource type="Script" uid="uid://dwm0ddui7qcgh" path="res://scripts/candle.gd" id="2_j6qyb"]
+[ext_resource type="Texture2D" uid="uid://dget06pgpd0ey" path="res://assets/images/fire-Sheet.png" id="2_ybelu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybelu"]
+atlas = ExtResource("2_ybelu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6qyb"]
+atlas = ExtResource("2_ybelu")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ije2b"]
+atlas = ExtResource("2_ybelu")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mepm3"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybelu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6qyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ije2b")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
 
 [node name="candle" instance=ExtResource("1_ctofe")]
+script = ExtResource("2_j6qyb")
 
 [node name="Cylinder" parent="." index="0"]
 transform = Transform3D(0.086, 0, 0, 0, 0.2, 0, 0, 0, 0.086, 0, 0.196011, 0)
@@ -11,3 +48,10 @@ transform = Transform3D(0.086, 0, 0, 0, 0.2, 0, 0, 0, 0.086, 0, 0.196011, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.530469, 0)
 layers = 3
 light_color = Color(1, 1, 0.635294, 1)
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5034e-06, 0.512982, -3.0905e-05)
+billboard = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_mepm3")
+animation = &"new_animation"

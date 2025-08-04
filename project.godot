@@ -62,3 +62,7 @@ previous_weapon={
 
 3d_render/layer_1="World"
 3d_render/layer_2="Weapon"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
