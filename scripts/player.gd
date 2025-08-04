@@ -49,3 +49,13 @@ func _input(event: InputEvent) -> void:
 	if event.is_action("attack"):
 		weapon_animation_player.play("swipe")
 		swipe_sound.play()
+		attack()
+
+func attack() -> void:
+	var space = get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(camera.global_position, camera.global_position + -camera.global_transform.basis.z * 1000)
+	var result = space.intersect_ray(query)
+
+	if result:
+		if result.collider.is_in_group("enemies"):
+			print("rat")
