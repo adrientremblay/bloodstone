@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dc4m2o6rx7t1j"]
+[gd_scene load_steps=7 format=3 uid="uid://dc4m2o6rx7t1j"]
 
 [ext_resource type="PackedScene" uid="uid://dlss5l7s81x7o" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="MeshLibrary" uid="uid://d080r1hwfqfl8" path="res://scenes/tileset.tres" id="3_sugp2"]
@@ -9,6 +9,8 @@
 vertices = PackedVector3Array(-3.75, 0.5, -3.75, -3.75, 0.5, 3.75, 4, 0.5, 3.75, 4, 0.5, -3.75)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 agent_height = 0.5
+
+[sub_resource type="Environment" id="Environment_jyhfs"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -35,3 +37,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.992469, 0.261137, -0.811635
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.492, 0.215, -2.29815)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jyhfs")

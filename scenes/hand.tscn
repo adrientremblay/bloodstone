@@ -3,3 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://b7papst5skrkc" path="res://assets/models/hand/hand2.glb" id="1_eyfoh"]
 
 [node name="hand2" instance=ExtResource("1_eyfoh")]
+
+[node name="Plane" parent="Hand/Skeleton3D" index="0"]
+layers = 2
