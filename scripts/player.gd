@@ -1,14 +1,22 @@
 extends CharacterBody3D
 
+# Children
 @onready var camera = $Camera3D
 @onready var weapon_animation_player = $WeaponAnimationPlayer
 @onready var swipe_sound = $Swipe
 @onready var eat_rat_sound = $EatRat
+@onready var hand = $Camera3D/hand2
+@onready var pistol = $Camera3D/pistol
 
+# Constants
 var camera_max_angle = 80
 var camera_min_angle = -80
 
+# Signals
 signal consumed_blood(amount)
+
+# Properties
+@onready var current_weapon: Weapon = hand
 
 func _unhandled_input(event: InputEvent):
 	if event is InputEventMouseButton:
@@ -50,11 +58,28 @@ func _physics_process(delta):
 
 func _input(event: InputEvent) -> void:
 	if event.is_action("attack"):
-		weapon_animation_player.play("swipe")
-		swipe_sound.play()
 		attack()
+	elif event.is_action_pressed("previous_weapon"):
+		print("Swapping weapon")
+		var other_weapon: Weapon = null
+		if current_weapon == hand:
+			other_weapon = pistol
+		else:
+			other_weapon = hand
+		
+		switch_weapon(other_weapon)
+
+func switch_weapon(weapon: Weapon):
+	current_weapon.visible = false
+	current_weapon = weapon
+	current_weapon.visible = true
 
 func attack() -> void:
+	#animate and play sound
+	weapon_animation_player.play(current_weapon.animation_name)
+	current_weapon.fire()
+	
+	# Shooting Ray
 	var space = get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.create(camera.global_position, camera.global_position + -camera.global_transform.basis.z * 1000)
 	var result = space.intersect_ray(query)

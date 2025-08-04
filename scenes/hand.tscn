@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6kw821bowny7"]
+[gd_scene load_steps=4 format=3 uid="uid://c6kw821bowny7"]
 
 [ext_resource type="PackedScene" uid="uid://b7papst5skrkc" path="res://assets/models/hand/hand2.glb" id="1_eyfoh"]
+[ext_resource type="Script" uid="uid://dj75ngtf28r87" path="res://scenes/weapon.gd" id="2_k7pjy"]
+[ext_resource type="AudioStream" uid="uid://dixknjqhi7sxi" path="res://assets/audio/swipe.mp3" id="3_m1v21"]
 
 [node name="hand2" instance=ExtResource("1_eyfoh")]
+script = ExtResource("2_k7pjy")
+animation_name = "swipe"
 
 [node name="Plane" parent="Hand/Skeleton3D" index="0"]
 layers = 2
+
+[node name="WeaponSound" type="AudioStreamPlayer" parent="." index="1"]
+stream = ExtResource("3_m1v21")
