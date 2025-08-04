@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @onready var camera = $Camera3D
+@onready var weapon_animation_player = $WeaponAnimationPlayer
 
 var camera_max_angle = 80
 var camera_min_angle = -80
@@ -42,3 +43,7 @@ func _physics_process(delta):
 		velocity = Vector3.ZERO
 	
 	move_and_slide()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action("attack"):
+		weapon_animation_player.play("swipe")
