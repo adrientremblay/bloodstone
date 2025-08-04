@@ -1,5 +1,8 @@
 extends CharacterBody3D
 
+# Exports
+@export var bullet_hole_scene: PackedScene
+
 # Children
 @onready var camera = $Camera3D
 @onready var weapon_animation_player = $WeaponAnimationPlayer
@@ -93,3 +96,10 @@ func attack() -> void:
 			result.collider.queue_free()
 			eat_rat_sound.play()
 			consumed_blood.emit(10)
+		else: 
+			# Create the bullet hole
+			var new_bullet_hole = bullet_hole_scene.instantiate()
+			result.collider.add_child(new_bullet_hole)
+			new_bullet_hole.global_transform.origin = result.position
+			new_bullet_hole.look_at(result.position + result.normal, Vector3.UP)
+			print("Added new bullet hole")
