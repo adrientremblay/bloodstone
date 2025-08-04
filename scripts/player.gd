@@ -7,6 +7,7 @@ extends CharacterBody3D
 @onready var eat_rat_sound = $EatRat
 @onready var hand = $Camera3D/hand2
 @onready var pistol = $Camera3D/pistol
+@onready var weapon_swap = $WeaponSwap
 
 # Constants
 var camera_max_angle = 80
@@ -75,6 +76,7 @@ func switch_weapon(weapon: Weapon):
 	current_weapon.visible = false
 	current_weapon = weapon
 	current_weapon.visible = true
+	weapon_swap.play()
 
 func attack() -> void:
 	#animate and play sound
