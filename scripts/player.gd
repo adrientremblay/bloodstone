@@ -8,6 +8,8 @@ extends CharacterBody3D
 var camera_max_angle = 80
 var camera_min_angle = -80
 
+signal consumed_blood(amount)
+
 func _unhandled_input(event: InputEvent):
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -61,3 +63,4 @@ func attack() -> void:
 		if result.collider.is_in_group("enemies"):
 			result.collider.queue_free()
 			eat_rat_sound.play()
+			consumed_blood.emit(10)
