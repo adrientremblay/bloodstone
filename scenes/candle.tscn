@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://byqlpoakon47k"]
+[gd_scene load_steps=9 format=3 uid="uid://byqlpoakon47k"]
 
 [ext_resource type="PackedScene" uid="uid://dk4oiw62vhiav" path="res://assets/models/candle/candle.gltf" id="1_ctofe"]
 [ext_resource type="Script" uid="uid://dwm0ddui7qcgh" path="res://scripts/candle.gd" id="2_j6qyb"]
 [ext_resource type="Texture2D" uid="uid://dget06pgpd0ey" path="res://assets/images/fire-Sheet.png" id="2_ybelu"]
+[ext_resource type="AudioStream" uid="uid://qbw3h5vjn6aj" path="res://assets/audio/candle.mp3" id="4_ije2b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ybelu"]
 atlas = ExtResource("2_ybelu")
@@ -55,3 +56,9 @@ billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_mepm3")
 animation = &"new_animation"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.46381, 0)
+stream = ExtResource("4_ije2b")
+volume_db = -20.0
+autoplay = true
