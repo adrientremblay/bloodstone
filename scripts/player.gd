@@ -18,6 +18,9 @@ signal consumed_blood(amount)
 # Properties
 @onready var current_weapon: Weapon = hand
 
+func _ready() -> void:
+	$Camera3D/pistol/MuzzleFlash.visible = false
+
 func _unhandled_input(event: InputEvent):
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -60,7 +63,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action("attack"):
 		attack()
 	elif event.is_action_pressed("previous_weapon"):
-		print("Swapping weapon")
 		var other_weapon: Weapon = null
 		if current_weapon == hand:
 			other_weapon = pistol
