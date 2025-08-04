@@ -93,13 +93,15 @@ func attack() -> void:
 
 	if result:
 		if result.collider.is_in_group("enemies"):
-			result.collider.queue_free()
-			eat_rat_sound.play()
-			consumed_blood.emit(10)
-		else: 
+			if current_weapon == hand:
+				eat_rat_sound.play()
+				consumed_blood.emit(10)
+				result.collider.queue_free()
+			else:
+				result.collider.die()
+		elif current_weapon != hand: 
 			# Create the bullet hole
 			var new_bullet_hole = bullet_hole_scene.instantiate()
 			result.collider.add_child(new_bullet_hole)
 			new_bullet_hole.global_transform.origin = result.position
 			new_bullet_hole.look_at(result.position + result.normal, Vector3.UP)
-			print("Added new bullet hole")

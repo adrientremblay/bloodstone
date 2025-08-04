@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
+@onready var death_sound: AudioStreamPlayer3D = $DeathSound
 
 var target_radius = 3
 var rng = RandomNumberGenerator.new()
@@ -22,3 +23,9 @@ func _on_find_new_target_timer_timeout() -> void:
 	var target_position = self.global_position + Vector3(target_radius,0,0).rotated(Vector3.UP,random_angle)
 	self.rotation = Vector3(0, random_angle, 0)
 	navigation_agent.target_position = target_position
+
+func die():
+	death_sound.play()
+
+func _on_death_sound_finished() -> void:
+	queue_free()
