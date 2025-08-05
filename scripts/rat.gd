@@ -35,6 +35,7 @@ func die():
 	alive = false
 	death_sound.play()
 	animation_player.play("die")
+	$AudioStreamPlayer3D.stop()
 
 func _on_death_sound_finished() -> void:
 	pass

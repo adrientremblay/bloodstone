@@ -53,7 +53,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("GPUParticles3D:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -132,6 +132,7 @@ libraries = {
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00708187, 0)
+emitting = false
 amount = 70
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_3csnj")
