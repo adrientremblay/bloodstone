@@ -6,12 +6,12 @@ var alive = true
 @export var blood: int = 10
 @export var ai_component: AiComponent
 @export var model_component: ModelComponent
+@export var ambient_sound: AudioStreamPlayer3D
 
 # Children
 @onready var death_sound: AudioStreamPlayer3D = $DeathSound
 @onready var particle_emitter: GPUParticles3D = $GPUParticles3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var ambient_sound: AudioStreamPlayer3D = $AmbientSound
 @onready var eat_rat_sound = $EatRat
 
 func bleed():
