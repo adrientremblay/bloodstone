@@ -1,0 +1,39 @@
+class_name AiComponent extends Node
+
+# Constants
+var rng = RandomNumberGenerator.new()
+
+# Properties
+var enabled = true
+
+# Exports
+@export var speed = 0.5
+@export var target_radius = 3 # the wandering radius when idling
+
+# Children and parents
+@onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
+@onready var body: CharacterBody3D = get_parent()
+
+func _ready() -> void:
+	if enabled:
+		find_new_target()
+
+func _physics_process(delta: float) -> void:
+	if navigation_agent.is_target_reached() || not enabled:
+		return
+	
+	var direction = (navigation_agent.get_next_path_position() - self.global_position).normalized()
+	body.velocity = direction * speed
+	body.move_and_slide()
+
+func find_new_target() -> void:
+	if not enabled:
+		return
+	
+	var random_angle = rng.randi_range(0, PI * 2)
+	var target_position = body.global_position + Vector3(target_radius,0,0).rotated(Vector3.UP,random_angle)
+	self.rotation = Vector3(0, random_angle, 0)
+	navigation_agent.target_position = target_position
+
+func _on_find_new_target_timer_timeout() -> void:
+	find_new_target()

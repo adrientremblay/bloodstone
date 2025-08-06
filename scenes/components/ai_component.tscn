@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1f8o0rqvutue"]
+
+[ext_resource type="Script" uid="uid://dkrdh1bnyymyu" path="res://scripts/ai_component.gd" id="1_fgsog"]
+
+[node name="AiComponent" type="Node3D"]
+script = ExtResource("1_fgsog")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="FindNewTargetTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="FindNewTargetTimer" to="." method="_on_find_new_target_timer_timeout"]
