@@ -2,15 +2,20 @@
 
 [ext_resource type="PackedScene" uid="uid://bal1yqwvaw4pe" path="res://scenes/rat_model.tscn" id="1_77a1s"]
 [ext_resource type="Script" uid="uid://nn1pio4lghvp" path="res://scripts/rat.gd" id="2_acf8p"]
+[ext_resource type="Script" uid="uid://dbcsisply1vra" path="res://scripts/model_component.gd" id="3_6s34g"]
 [ext_resource type="PackedScene" uid="uid://d1f8o0rqvutue" path="res://scenes/components/ai_component.tscn" id="5_6s34g"]
 [ext_resource type="PackedScene" uid="uid://birs07dsnnfxt" path="res://scenes/components/health_component.tscn" id="6_368s2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_acf8p"]
+radius = 0.286245
+height = 1.23997
 
 [sub_resource type="Animation" id="Animation_6s34g"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("rat_model:rotation")
+tracks/0/path = NodePath("ModelComponent:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -20,17 +25,13 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_368s2"]
-resource_name = "bleed"
-length = 0.5
-
 [sub_resource type="Animation" id="Animation_3csnj"]
 resource_name = "die"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("rat_model:rotation")
+tracks/0/path = NodePath("ModelComponent:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -43,31 +44,29 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_368s2"]
 _data = {
 &"RESET": SubResource("Animation_6s34g"),
-&"bleed": SubResource("Animation_368s2"),
 &"die": SubResource("Animation_3csnj")
 }
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_acf8p"]
-radius = 0.286245
-height = 1.23997
 
 [node name="Rat" type="CharacterBody3D" groups=["enemies"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 script = ExtResource("2_acf8p")
 
-[node name="rat_model" parent="." instance=ExtResource("1_77a1s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.235149, 0)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_368s2")
-}
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.0128494, 0)
 shape = SubResource("CapsuleShape3D_acf8p")
 
+[node name="ModelComponent" parent="." instance=ExtResource("1_77a1s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.235149, 0)
+script = ExtResource("3_6s34g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ModelComponent"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_368s2")
+}
+
 [node name="AiComponent" parent="." instance=ExtResource("5_6s34g")]
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("ai_component") instance=ExtResource("6_368s2")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("ai_component", "model_component") instance=ExtResource("6_368s2")]
 ai_component = NodePath("../AiComponent")
+model_component = NodePath("../ModelComponent")

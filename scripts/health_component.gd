@@ -5,6 +5,7 @@ var alive = true
 # Exports
 @export var blood: int = 10
 @export var ai_component: AiComponent
+@export var model_component: ModelComponent
 
 # Children
 @onready var death_sound: AudioStreamPlayer3D = $DeathSound
@@ -25,6 +26,7 @@ func die():
 	#animation_player.play("die")
 	ambient_sound.stop()
 	ai_component.enabled = false
+	model_component.play_animation("die")
 
 func handle_attack(player: Player) -> int: # returns the blood consumed
 	if alive:
