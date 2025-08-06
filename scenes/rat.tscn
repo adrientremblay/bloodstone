@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cggrv860g4o7o"]
 
 [ext_resource type="PackedScene" uid="uid://bal1yqwvaw4pe" path="res://scenes/rat_model.tscn" id="1_77a1s"]
-[ext_resource type="Script" uid="uid://nn1pio4lghvp" path="res://scripts/rat.gd" id="2_acf8p"]
+[ext_resource type="Script" uid="uid://nn1pio4lghvp" path="res://scripts/entity.gd" id="2_acf8p"]
 [ext_resource type="Script" uid="uid://dbcsisply1vra" path="res://scripts/model_component.gd" id="3_6s34g"]
 [ext_resource type="PackedScene" uid="uid://d1f8o0rqvutue" path="res://scenes/components/ai_component.tscn" id="5_6s34g"]
 [ext_resource type="PackedScene" uid="uid://birs07dsnnfxt" path="res://scenes/components/health_component.tscn" id="6_368s2"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgb11q6k60d0"]
+
+[ext_resource type="PackedScene" uid="uid://bpb16lsdhjpf4" path="res://scenes/ghoul_model.tscn" id="1_pn4bt"]
+[ext_resource type="Script" uid="uid://dbcsisply1vra" path="res://scripts/model_component.gd" id="2_v81jn"]
+[ext_resource type="PackedScene" uid="uid://d1f8o0rqvutue" path="res://scenes/components/ai_component.tscn" id="3_ei4jr"]
+[ext_resource type="PackedScene" uid="uid://birs07dsnnfxt" path="res://scenes/components/health_component.tscn" id="4_ei4jr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pn4bt"]
+radius = 0.254099
+height = 1.11283
+
+[node name="Ghoul" type="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.555542, 0)
+shape = SubResource("CapsuleShape3D_pn4bt")
+
+[node name="ModelComponent" parent="." instance=ExtResource("1_pn4bt")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+script = ExtResource("2_v81jn")
+
+[node name="AiComponent" parent="." instance=ExtResource("3_ei4jr")]
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("ai_component", "model_component") instance=ExtResource("4_ei4jr")]
+ai_component = NodePath("../AiComponent")
+model_component = NodePath("../ModelComponent")

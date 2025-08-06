@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://byqlpoakon47k" path="res://scenes/candle.tscn" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://cggrv860g4o7o" path="res://scenes/rat.tscn" id="5_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://cm36lloods2oq" path="res://assets/images/crosshair.png" id="5_tefeu"]
-[ext_resource type="PackedScene" uid="uid://bpb16lsdhjpf4" path="res://scenes/ghoul_model.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://dgb11q6k60d0" path="res://scenes/ghoul.tscn" id="7_o6xl0"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jyhfs"]
 vertices = PackedVector3Array(-3.75, 0.5, -3.75, -3.75, 0.5, 3.75, 4, 0.5, 3.75, 4, 0.5, -3.75)
@@ -69,7 +69,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_tbgi4")
 fill_mode = 3
 show_percentage = false
 
-[node name="GhoulModel" parent="." instance=ExtResource("7_o6xl0")]
-transform = Transform3D(-0.379772, 0, -0.325228, 0, 0.5, 0, 0.325228, 0, -0.379772, -3.42192, 0, -3.3394)
+[node name="Ghoul" parent="." instance=ExtResource("7_o6xl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0536207, 0.235149, -3.13187)
 
 [connection signal="consumed_blood" from="Player" to="." method="_on_player_consumed_blood"]

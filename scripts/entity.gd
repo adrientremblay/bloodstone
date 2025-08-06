@@ -1,4 +1,4 @@
-extends CharacterBody3D
+class_name entity extends CharacterBody3D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var health_component: HealthComponent = $HealthComponent
