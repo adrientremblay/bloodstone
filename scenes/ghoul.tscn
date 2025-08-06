@@ -12,7 +12,6 @@ radius = 0.254099
 height = 2.11061
 
 [node name="Ghoul" type="CharacterBody3D" groups=["enemies"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_0rs5k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
