@@ -1,7 +1,10 @@
 class_name HealthComponent extends Node3D
 
 var alive = true
-var blood = 10
+
+# Exports
+@export var blood: int = 10
+@export var ai_component: AiComponent
 
 # Children
 @onready var death_sound: AudioStreamPlayer3D = $DeathSound
@@ -21,8 +24,12 @@ func die():
 	death_sound.play()
 	#animation_player.play("die")
 	ambient_sound.stop()
+	ai_component.enabled = false
 
 func handle_attack(player: Player) -> int: # returns the blood consumed
+	if alive:
+		die()
+	
 	if player.current_weapon == player.hand:
 		var blood_available = min(blood, player.blood_drain)
 		if blood_available == 0:
@@ -33,8 +40,5 @@ func handle_attack(player: Player) -> int: # returns the blood consumed
 		bleed()
 		
 		return blood_available
-	
-	if alive:
-		die()
 	
 	return 0

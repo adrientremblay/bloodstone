@@ -69,4 +69,5 @@ shape = SubResource("CapsuleShape3D_acf8p")
 
 [node name="AiComponent" parent="." instance=ExtResource("5_6s34g")]
 
-[node name="HealthComponent" parent="." instance=ExtResource("6_368s2")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("ai_component") instance=ExtResource("6_368s2")]
+ai_component = NodePath("../AiComponent")
