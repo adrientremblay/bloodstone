@@ -9,6 +9,7 @@ var enabled = true
 # Exports
 @export var speed = 0.5
 @export var target_radius = 3 # the wandering radius when idling
+@export var model_component: ModelComponent
 
 # Children and parents
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
@@ -34,6 +35,8 @@ func find_new_target() -> void:
 	var target_position = body.global_position + Vector3(target_radius,0,0).rotated(Vector3.UP,random_angle)
 	body.rotation = Vector3(0, random_angle, 0)
 	navigation_agent.target_position = target_position
+	
+	model_component.play_animation("Walking")
 
 func _on_find_new_target_timer_timeout() -> void:
 	find_new_target() 

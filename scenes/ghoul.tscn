@@ -12,6 +12,7 @@ radius = 0.254099
 height = 2.11061
 
 [node name="Ghoul" type="CharacterBody3D" groups=["enemies"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_0rs5k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -19,11 +20,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11228, 0)
 shape = SubResource("CapsuleShape3D_pn4bt")
 
 [node name="ModelComponent" parent="." instance=ExtResource("1_pn4bt")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+transform = Transform3D(0.000816804, 0, -0.399999, 0, 0.4, 0, 0.399999, 0, 0.000816804, 0, 0, 0)
 script = ExtResource("2_v81jn")
 
-[node name="AiComponent" parent="." instance=ExtResource("3_ei4jr")]
+[node name="AiComponent" parent="." node_paths=PackedStringArray("model_component") instance=ExtResource("3_ei4jr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.444848, 0)
+model_component = NodePath("../ModelComponent")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("ai_component", "model_component", "ambient_sound") instance=ExtResource("4_ei4jr")]
 ai_component = NodePath("../AiComponent")

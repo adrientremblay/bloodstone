@@ -66,7 +66,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_368s2")
 }
 
-[node name="AiComponent" parent="." instance=ExtResource("5_6s34g")]
+[node name="AiComponent" parent="." node_paths=PackedStringArray("model_component") instance=ExtResource("5_6s34g")]
+model_component = NodePath("../ModelComponent")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("ai_component", "model_component", "ambient_sound") instance=ExtResource("6_368s2")]
 ai_component = NodePath("../AiComponent")
