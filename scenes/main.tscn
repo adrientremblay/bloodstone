@@ -71,6 +71,6 @@ fill_mode = 3
 show_percentage = false
 
 [node name="Ghoul" parent="." instance=ExtResource("7_o6xl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0536207, 0.235149, -3.13187)
+transform = Transform3D(1.00563, 0, 0, 0, 1.00563, 0, 0, 0, 1.00563, -2.52291, 0.235149, -19.1054)
 
 [connection signal="consumed_blood" from="Player" to="." method="_on_player_consumed_blood"]
