@@ -5,17 +5,3 @@
 
 [node name="GhoulModel" instance=ExtResource("1_mlvwg")]
 script = ExtResource("2_sjtjd")
-
-[node name="Skeleton3D" parent="Armature" index="0"]
-bones/1/rotation = Quaternion(-0.140132, 0.0556142, -0.122094, 0.981001)
-bones/3/rotation = Quaternion(-1.08945e-07, -4.68363e-08, 0.404149, 0.914693)
-bones/5/rotation = Quaternion(-0.0495127, 0.364791, -0.0518753, 0.928324)
-bones/6/rotation = Quaternion(-0.297233, -0.407331, -0.578618, 0.641043)
-bones/7/rotation = Quaternion(0.547122, 0.408808, 0.554483, 0.475481)
-bones/10/rotation = Quaternion(0.0487519, 0.078722, -0.342442, 0.934965)
-bones/12/rotation = Quaternion(-0.538718, -0.258585, -0.72286, 0.346973)
-bones/13/rotation = Quaternion(-0.371299, 6.70552e-08, -0.11075, 0.921885)
-bones/14/rotation = Quaternion(0.021574, 1.54841e-07, 0.00643503, 0.999747)
-bones/15/rotation = Quaternion(0.949284, 4.47035e-08, 0.283149, -0.1367)
-bones/17/rotation = Quaternion(-0.522088, -7.18329e-08, 7.07972e-08, 0.852892)
-bones/18/rotation = Quaternion(-0.0140419, -1.70206e-07, 8.24213e-09, 0.999901)
