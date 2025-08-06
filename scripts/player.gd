@@ -1,4 +1,4 @@
-extends CharacterBody3D
+class_name Player extends CharacterBody3D
 
 # Exports
 @export var bullet_hole_scene: PackedScene
@@ -7,7 +7,6 @@ extends CharacterBody3D
 @onready var camera = $Camera3D
 @onready var weapon_animation_player = $WeaponAnimationPlayer
 @onready var swipe_sound = $Swipe
-@onready var eat_rat_sound = $EatRat
 @onready var hand = $Camera3D/hand2
 @onready var pistol = $Camera3D/pistol
 @onready var weapon_swap = $WeaponSwap
@@ -94,20 +93,9 @@ func attack() -> void:
 
 	if result:
 		if result.collider.is_in_group("enemies"):
-			if current_weapon == hand:
-				var blood_available = min(result.collider.blood, blood_drain)
-				if blood_available == 0:
-					return
-				
-				eat_rat_sound.play()
-				consumed_blood.emit(blood_available)
-				result.collider.blood -= blood_available
-				if not result.collider.alive:
-					result.collider.bleed()
-			
-			if result.collider.alive:
-				result.collider.die()
-			
+			var blood_consumed = result.collider.suffer_attack(self)
+			if blood_consumed != 0:
+				consumed_blood.emit(blood_consumed)
 		elif current_weapon != hand: 
 			# Create the bullet hole
 			var new_bullet_hole = bullet_hole_scene.instantiate()

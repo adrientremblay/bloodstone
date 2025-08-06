@@ -32,8 +32,8 @@ func find_new_target() -> void:
 	
 	var random_angle = rng.randi_range(0, PI * 2)
 	var target_position = body.global_position + Vector3(target_radius,0,0).rotated(Vector3.UP,random_angle)
-	self.rotation = Vector3(0, random_angle, 0)
+	body.rotation = Vector3(0, random_angle, 0)
 	navigation_agent.target_position = target_position
 
 func _on_find_new_target_timer_timeout() -> void:
-	find_new_target()
+	find_new_target() 

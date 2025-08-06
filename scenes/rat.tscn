@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cggrv860g4o7o"]
+[gd_scene load_steps=10 format=3 uid="uid://cggrv860g4o7o"]
 
 [ext_resource type="PackedScene" uid="uid://bal1yqwvaw4pe" path="res://scenes/rat_model.tscn" id="1_77a1s"]
-[ext_resource type="AudioStream" uid="uid://dbetpxxigdf3k" path="res://assets/audio/rat.mp3" id="2_77a1s"]
 [ext_resource type="Script" uid="uid://nn1pio4lghvp" path="res://scripts/rat.gd" id="2_acf8p"]
-[ext_resource type="AudioStream" uid="uid://dai7dqoyetx2q" path="res://assets/audio/rat_death.mp3" id="4_3csnj"]
 [ext_resource type="PackedScene" uid="uid://d1f8o0rqvutue" path="res://scenes/components/ai_component.tscn" id="5_6s34g"]
+[ext_resource type="PackedScene" uid="uid://birs07dsnnfxt" path="res://scenes/components/health_component.tscn" id="6_368s2"]
 
 [sub_resource type="Animation" id="Animation_6s34g"]
 length = 0.001
@@ -20,34 +19,10 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath("GPUParticles3D:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_368s2"]
 resource_name = "bleed"
 length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GPUParticles3D:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
 
 [sub_resource type="Animation" id="Animation_3csnj"]
 resource_name = "die"
@@ -64,18 +39,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(1.5708, 0, 0)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GPUParticles3D:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_368s2"]
 _data = {
@@ -87,19 +50,6 @@ _data = {
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_acf8p"]
 radius = 0.286245
 height = 1.23997
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3csnj"]
-radial_velocity_min = -2.23517e-05
-radial_velocity_max = 1.99998
-gravity = Vector3(0, 9.8, 0)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6s34g"]
-albedo_color = Color(1, 0, 0, 1)
-billboard_mode = 1
-
-[sub_resource type="QuadMesh" id="QuadMesh_368s2"]
-material = SubResource("StandardMaterial3D_6s34g")
-size = Vector2(0.1, 0.1)
 
 [node name="Rat" type="CharacterBody3D" groups=["enemies"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
@@ -117,22 +67,6 @@ libraries = {
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.0128494, 0)
 shape = SubResource("CapsuleShape3D_acf8p")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.235149, 0)
-stream = ExtResource("2_77a1s")
-autoplay = true
-
-[node name="DeathSound" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("4_3csnj")
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00708187, 0)
-emitting = false
-amount = 70
-lifetime = 0.5
-process_material = SubResource("ParticleProcessMaterial_3csnj")
-draw_pass_1 = SubResource("QuadMesh_368s2")
-
 [node name="AiComponent" parent="." instance=ExtResource("5_6s34g")]
 
-[connection signal="finished" from="DeathSound" to="." method="_on_death_sound_finished"]
+[node name="HealthComponent" parent="." instance=ExtResource("6_368s2")]
