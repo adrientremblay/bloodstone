@@ -13,6 +13,7 @@ var player: Player = null
 @export var speed = 0.5
 @export var target_radius = 3 # the wandering radius when idling
 @export var model_component: ModelComponent
+@export var attack_enabled: bool = true
 
 # Children and parents
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
@@ -26,7 +27,7 @@ func _physics_process(delta: float) -> void:
 	if not enabled:
 		return
 	
-	if player != null:
+	if attack_enabled and player != null:
 		navigation_agent.target_position = player.global_position
 		
 		# look at player
@@ -57,7 +58,7 @@ func _on_find_new_target_timer_timeout() -> void:
 	find_new_target() 
 
 func _on_player_detection_area_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player") and mode != AiMode.CHASING_PLAYER:
+	if body.is_in_group("player") and mode != AiMode.CHASING_PLAYER and attack_enabled:
 		switch_mode(AiMode.CHASING_PLAYER)
 		player = body		
 
