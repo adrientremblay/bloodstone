@@ -14,6 +14,8 @@ var player: Player = null
 @export var target_radius = 3 # the wandering radius when idling
 @export var model_component: ModelComponent
 @export var attack_enabled: bool = true
+@export var damage: int
+@export var attack_sound: AudioStreamPlayer3D
 
 # Children and parents
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
@@ -58,10 +60,15 @@ func _on_find_new_target_timer_timeout() -> void:
 	find_new_target() 
 
 func _on_player_detection_area_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player") and mode != AiMode.CHASING_PLAYER and attack_enabled:
+	if enabled and body.is_in_group("player") and mode != AiMode.CHASING_PLAYER and attack_enabled:
 		switch_mode(AiMode.CHASING_PLAYER)
 		player = body		
 
 func switch_mode(new_mode: AiMode):
 	mode = new_mode
 	find_new_target()
+
+func _on_player_attack_area_body_entered(body: Node3D) -> void:
+	if enabled and body.is_in_group("player") and attack_enabled:
+		model_component.play_animation("Attack")
+		attack_sound.play()

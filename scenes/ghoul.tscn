@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgb11q6k60d0"]
+[gd_scene load_steps=10 format=3 uid="uid://dgb11q6k60d0"]
 
 [ext_resource type="Script" uid="uid://nn1pio4lghvp" path="res://scripts/entity.gd" id="1_0rs5k"]
 [ext_resource type="PackedScene" uid="uid://bpb16lsdhjpf4" path="res://scenes/ghoul_model.tscn" id="1_pn4bt"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://birs07dsnnfxt" path="res://scenes/components/health_component.tscn" id="4_ei4jr"]
 [ext_resource type="AudioStream" uid="uid://b7btbhgolnhow" path="res://assets/audio/ghoul1.mp3" id="5_fxkcu"]
 [ext_resource type="AudioStream" uid="uid://de5rc2qa778wp" path="res://assets/audio/ghoul_death.mp3" id="7_bwnnb"]
+[ext_resource type="AudioStream" uid="uid://bx335bye4ewl1" path="res://assets/audio/ghoul_attack.mp3" id="8_waqgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pn4bt"]
 radius = 0.254099
@@ -23,9 +24,10 @@ shape = SubResource("CapsuleShape3D_pn4bt")
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 script = ExtResource("2_v81jn")
 
-[node name="AiComponent" parent="." node_paths=PackedStringArray("model_component") instance=ExtResource("3_ei4jr")]
+[node name="AiComponent" parent="." node_paths=PackedStringArray("model_component", "attack_sound") instance=ExtResource("3_ei4jr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.444848, 0)
 model_component = NodePath("../ModelComponent")
+attack_sound = NodePath("../HealthComponent/AttackSound")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("ai_component", "model_component", "ambient_sound", "collission_shape", "death_sound") instance=ExtResource("4_ei4jr")]
 ai_component = NodePath("../AiComponent")
@@ -42,3 +44,6 @@ autoplay = true
 
 [node name="DeathSound" type="AudioStreamPlayer3D" parent="HealthComponent"]
 stream = ExtResource("7_bwnnb")
+
+[node name="AttackSound" type="AudioStreamPlayer3D" parent="HealthComponent"]
+stream = ExtResource("8_waqgy")

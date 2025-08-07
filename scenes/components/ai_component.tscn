@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1f8o0rqvutue"]
+[gd_scene load_steps=4 format=3 uid="uid://d1f8o0rqvutue"]
 
 [ext_resource type="Script" uid="uid://dkrdh1bnyymyu" path="res://scripts/ai_component.gd" id="1_fgsog"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fgsog"]
 radius = 3.85032
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_uesyt"]
+radius = 1.33561
 
 [node name="AiComponent" type="Node3D"]
 script = ExtResource("1_fgsog")
@@ -19,5 +22,11 @@ autostart = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea"]
 shape = SubResource("SphereShape3D_fgsog")
 
+[node name="PlayerAttackArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerAttackArea"]
+shape = SubResource("SphereShape3D_uesyt")
+
 [connection signal="timeout" from="FindNewTargetTimer" to="." method="_on_find_new_target_timer_timeout"]
 [connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
+[connection signal="body_entered" from="PlayerAttackArea" to="." method="_on_player_attack_area_body_entered"]
