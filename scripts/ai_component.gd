@@ -23,6 +23,9 @@ func _ready() -> void:
 		find_new_target()
 
 func _physics_process(delta: float) -> void:
+	if not enabled:
+		return
+	
 	if player != null:
 		navigation_agent.target_position = player.global_position
 		
@@ -31,7 +34,7 @@ func _physics_process(delta: float) -> void:
 		direction.y = 0  # ignore vertical difference (just rotate on Y-axis)
 		body.look_at(body.global_position + direction)
 	
-	if navigation_agent.is_target_reached() || not enabled:
+	if navigation_agent.is_target_reached():
 		return
 	
 	var direction = (navigation_agent.get_next_path_position() - self.global_position).normalized()
