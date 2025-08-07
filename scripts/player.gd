@@ -2,6 +2,8 @@ class_name Player extends CharacterBody3D
 
 # Exports
 @export var bullet_hole_scene: PackedScene
+@export var movement_speed = 7.0
+@export var jump_velocity = 7.0
 
 # Children
 @onready var camera = $Camera3D
@@ -50,18 +52,17 @@ func _physics_process(delta):
 		input_dir.z -= 1
 	if Input.is_action_pressed("move_back"):
 		input_dir.z += 1
-	if not is_on_floor():
-		input_dir.y -= 1
+	
 	var direction : Vector3 = (self.transform.basis * input_dir).normalized()
 	
 	# movement
-	var move_speed = 5.0
+	velocity.x = direction.x * movement_speed
+	velocity.z = direction.z * movement_speed
 	
-	if direction != Vector3.ZERO:
-		velocity = direction * move_speed
-	else:
-		velocity = Vector3.ZERO
+	if Input.is_action_just_pressed("jump") && is_on_floor():
+		velocity.y = jump_velocity
 	
+	handle_air_physics(delta)
 	move_and_slide()
 
 func _input(event: InputEvent) -> void:
@@ -109,4 +110,7 @@ func take_damage(damage: int):
 	update_health.emit(health)
 	
 	# Todo: implement death
-	
+
+func handle_air_physics(delta):
+	if not is_on_floor():
+		self.velocity.y -= ProjectSettings.get_setting(("physics/3d/default_gravity")) * delta
