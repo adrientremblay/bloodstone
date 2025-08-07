@@ -16,14 +16,17 @@ var player: Player = null
 @export var attack_enabled: bool = true
 @export var damage: int
 @export var attack_sound: AudioStreamPlayer3D
+@export var attack_speed: float = 0.5
 
 # Children and parents
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var body: CharacterBody3D = get_parent()
+@onready var attack_again_timer: Timer = $AttackAgainTimer
 
 func _ready() -> void:
 	if enabled:
 		find_new_target()
+		attack_again_timer.wait_time = attack_speed
 
 func _physics_process(delta: float) -> void:
 	if not enabled:
@@ -70,6 +73,19 @@ func switch_mode(new_mode: AiMode):
 
 func _on_player_attack_area_body_entered(body: Node3D) -> void:
 	if enabled and body.is_in_group("player") and attack_enabled:
-		model_component.play_animation("Attack")
-		attack_sound.play()
-		player.take_damage(damage)
+		attack()
+		attack_again_timer.start()
+
+func attack():
+	model_component.play_animation("Attack")
+	attack_sound.play()
+	player.take_damage(damage)
+
+func _on_attack_again_timer_timeout() -> void:
+	if player != null:
+		attack()
+		attack_again_timer.start()
+
+func _on_player_attack_area_body_exited(body: Node3D) -> void:
+	if enabled and body.is_in_group("player") and attack_enabled:
+		attack_again_timer.stop()

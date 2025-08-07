@@ -27,6 +27,11 @@ shape = SubResource("SphereShape3D_fgsog")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerAttackArea"]
 shape = SubResource("SphereShape3D_uesyt")
 
+[node name="AttackAgainTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="FindNewTargetTimer" to="." method="_on_find_new_target_timer_timeout"]
 [connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
+[connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_exited"]
 [connection signal="body_entered" from="PlayerAttackArea" to="." method="_on_player_attack_area_body_entered"]
+[connection signal="body_exited" from="PlayerAttackArea" to="." method="_on_player_attack_area_body_exited"]
+[connection signal="timeout" from="AttackAgainTimer" to="." method="_on_attack_again_timer_timeout"]
