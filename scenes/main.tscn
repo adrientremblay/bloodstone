@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dc4m2o6rx7t1j"]
+[gd_scene load_steps=13 format=3 uid="uid://dc4m2o6rx7t1j"]
 
 [ext_resource type="PackedScene" uid="uid://dlss5l7s81x7o" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://4qwki5hxkwbg" path="res://scripts/main.gd" id="1_tefeu"]
@@ -15,8 +15,13 @@ agent_height = 0.5
 
 [sub_resource type="Environment" id="Environment_jyhfs"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
-bg_color = Color(0.541013, 0, 0.124068, 1)
+bg_color = Color(0.556863, 0, 0.12549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tipki"]
+bg_color = Color(0, 0.545098, 0.12549, 1)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_tefeu")
@@ -57,14 +62,42 @@ offset_left = 47.0
 offset_top = 746.0
 offset_right = 102.0
 offset_bottom = 969.0
+theme_override_styles/background = SubResource("StyleBoxFlat_o6xl0")
 theme_override_styles/fill = SubResource("StyleBoxFlat_tbgi4")
 fill_mode = 3
 show_percentage = false
+
+[node name="Label" type="Label" parent="BloodBar"]
+layout_mode = 0
+offset_top = 223.0
+offset_right = 55.0
+offset_bottom = 246.0
+text = "blood"
+horizontal_alignment = 1
 
 [node name="Ghoul" parent="." instance=ExtResource("7_o6xl0")]
 transform = Transform3D(1.00563, 0, 0, 0, 1.00563, 0, 0, 0, 1.00563, -2.52291, 0.235149, -19.1054)
 
 [node name="Rat" parent="." instance=ExtResource("5_tbgi4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.22753, 0.274349, -2.88218)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = 127.0
+offset_top = 746.0
+offset_right = 182.0
+offset_bottom = 969.0
+theme_override_styles/background = SubResource("StyleBoxFlat_o6xl0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_tipki")
+value = 100.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Label" type="Label" parent="HealthBar"]
+layout_mode = 0
+offset_top = 223.0
+offset_right = 55.0
+offset_bottom = 246.0
+text = "health"
+horizontal_alignment = 1
 
 [connection signal="consumed_blood" from="Player" to="." method="_on_player_consumed_blood"]
