@@ -19,7 +19,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11228, 0)
 shape = SubResource("CapsuleShape3D_pn4bt")
 
 [node name="ModelComponent" parent="." instance=ExtResource("1_pn4bt")]
-transform = Transform3D(0.000816804, 0, -0.399999, 0, 0.4, 0, 0.399999, 0, 0.000816804, 0, 0, 0)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 script = ExtResource("2_v81jn")
 
 [node name="AiComponent" parent="." node_paths=PackedStringArray("model_component") instance=ExtResource("3_ei4jr")]

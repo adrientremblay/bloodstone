@@ -130,7 +130,7 @@ background_mode = 1
 background_color = Color(1, 1, 1, 1)
 background_energy_multiplier = 0.1
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_3vyb7")
 bullet_hole_scene = ExtResource("2_fjrip")

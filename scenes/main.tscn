@@ -40,9 +40,6 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="Rat" parent="." instance=ExtResource("5_tbgi4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.992469, 0.261137, -0.811635)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jyhfs")
 
@@ -55,12 +52,6 @@ grow_vertical = 2
 texture = ExtResource("5_tefeu")
 stretch_mode = 3
 
-[node name="Rat2" parent="." instance=ExtResource("5_tbgi4")]
-transform = Transform3D(0.373425, 0, -0.92766, 0, 1, 0, 0.92766, 0, 0.373425, -1.25293, 0.274349, -2.67927)
-
-[node name="Rat3" parent="." instance=ExtResource("5_tbgi4")]
-transform = Transform3D(0.791021, 0, 0.611789, 0, 1, 0, -0.611789, 0, 0.791021, -2.25779, 0.274349, 2.07687)
-
 [node name="BloodBar" type="ProgressBar" parent="."]
 offset_left = 47.0
 offset_top = 746.0
@@ -72,5 +63,8 @@ show_percentage = false
 
 [node name="Ghoul" parent="." instance=ExtResource("7_o6xl0")]
 transform = Transform3D(1.00563, 0, 0, 0, 1.00563, 0, 0, 0, 1.00563, -2.52291, 0.235149, -19.1054)
+
+[node name="Rat" parent="." instance=ExtResource("5_tbgi4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.22753, 0.274349, -2.88218)
 
 [connection signal="consumed_blood" from="Player" to="." method="_on_player_consumed_blood"]
