@@ -27,6 +27,7 @@ script = ExtResource("2_v81jn")
 [node name="AiComponent" parent="." node_paths=PackedStringArray("model_component", "attack_sound") instance=ExtResource("3_ei4jr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.444848, 0)
 model_component = NodePath("../ModelComponent")
+damage = 10
 attack_sound = NodePath("../HealthComponent/AttackSound")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("ai_component", "model_component", "ambient_sound", "collission_shape", "death_sound") instance=ExtResource("4_ei4jr")]

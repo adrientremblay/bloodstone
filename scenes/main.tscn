@@ -101,3 +101,4 @@ text = "health"
 horizontal_alignment = 1
 
 [connection signal="consumed_blood" from="Player" to="." method="_on_player_consumed_blood"]
+[connection signal="update_health" from="Player" to="." method="_on_player_update_health"]

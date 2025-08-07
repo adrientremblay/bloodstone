@@ -72,3 +72,4 @@ func _on_player_attack_area_body_entered(body: Node3D) -> void:
 	if enabled and body.is_in_group("player") and attack_enabled:
 		model_component.play_animation("Attack")
 		attack_sound.play()
+		player.take_damage(damage)

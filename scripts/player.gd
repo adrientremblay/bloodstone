@@ -17,10 +17,12 @@ var camera_min_angle = -80
 
 # Signals
 signal consumed_blood(amount)
+signal update_health(health)
 
 # Properties
 @onready var current_weapon: Weapon = hand
 var blood_drain = 10 # how much blood the player is able to drain per each feed
+var health = 100
 
 func _ready() -> void:
 	$Camera3D/pistol/MuzzleFlash.visible = false
@@ -102,3 +104,10 @@ func attack() -> void:
 			result.collider.add_child(new_bullet_hole)
 			new_bullet_hole.global_transform.origin = result.position
 			new_bullet_hole.look_at(result.position + result.normal, Vector3.UP)
+
+func take_damage(damage: int):
+	health -= damage
+	update_health.emit(health)
+	
+	# Todo: implement death
+	
