@@ -11,3 +11,7 @@ func switch_to_animation(animation_name: String):
 	
 	animation_tree["parameters/conditions/" + animation_name] = true
 	print("Switching to :" + animation_name)
+
+func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "Attack":
+		animation_tree["parameters/conditions/attack"] = false
