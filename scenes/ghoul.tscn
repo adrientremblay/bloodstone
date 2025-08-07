@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgb11q6k60d0"]
+[gd_scene load_steps=9 format=3 uid="uid://dgb11q6k60d0"]
 
 [ext_resource type="Script" uid="uid://nn1pio4lghvp" path="res://scripts/entity.gd" id="1_0rs5k"]
 [ext_resource type="PackedScene" uid="uid://bpb16lsdhjpf4" path="res://scenes/ghoul_model.tscn" id="1_pn4bt"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d1f8o0rqvutue" path="res://scenes/components/ai_component.tscn" id="3_ei4jr"]
 [ext_resource type="PackedScene" uid="uid://birs07dsnnfxt" path="res://scenes/components/health_component.tscn" id="4_ei4jr"]
 [ext_resource type="AudioStream" uid="uid://b7btbhgolnhow" path="res://assets/audio/ghoul1.mp3" id="5_fxkcu"]
+[ext_resource type="AudioStream" uid="uid://de5rc2qa778wp" path="res://assets/audio/ghoul_death.mp3" id="7_bwnnb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pn4bt"]
 radius = 0.254099
@@ -26,14 +27,18 @@ script = ExtResource("2_v81jn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.444848, 0)
 model_component = NodePath("../ModelComponent")
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("ai_component", "model_component", "ambient_sound", "collission_shape") instance=ExtResource("4_ei4jr")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("ai_component", "model_component", "ambient_sound", "collission_shape", "death_sound") instance=ExtResource("4_ei4jr")]
 ai_component = NodePath("../AiComponent")
 model_component = NodePath("../ModelComponent")
-ambient_sound = NodePath("../AmbientSound")
+ambient_sound = NodePath("AmbientSound")
 collission_shape = NodePath("../CollisionShape3D")
+death_sound = NodePath("DeathSound")
 
-[node name="AmbientSound" type="AudioStreamPlayer3D" parent="."]
+[node name="AmbientSound" type="AudioStreamPlayer3D" parent="HealthComponent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.235149, 0)
 stream = ExtResource("5_fxkcu")
 volume_db = -7.592
 autoplay = true
+
+[node name="DeathSound" type="AudioStreamPlayer3D" parent="HealthComponent"]
+stream = ExtResource("7_bwnnb")

@@ -8,9 +8,9 @@ var alive = true
 @export var model_component: ModelComponent
 @export var ambient_sound: AudioStreamPlayer3D
 @export var collission_shape: CollisionShape3D
+@export var death_sound: AudioStreamPlayer3D
 
 # Children
-@onready var death_sound: AudioStreamPlayer3D = $DeathSound
 @onready var particle_emitter: GPUParticles3D = $GPUParticles3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var eat_rat_sound = $EatRat
