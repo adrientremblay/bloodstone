@@ -27,7 +27,7 @@ func die():
 	#animation_player.play("die")
 	ambient_sound.stop()
 	ai_component.enabled = false
-	model_component.play_animation("Die")
+	model_component.switch_to_animation("die")
 	collission_shape.queue_free()
 
 func handle_attack(player: Player) -> int: # returns the blood consumed

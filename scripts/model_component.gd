@@ -1,10 +1,13 @@
 class_name ModelComponent extends Node3D
 
-@onready var animation_player = $AnimationPlayer
+@onready var animation_tree: AnimationTree = $AnimationTree
 
 func _ready() -> void:
-	assert(animation_player != null)
+	animation_tree.active = true
 
-func play_animation(name: String):
-	if animation_player.has_animation(name):
-		animation_player.play(name)
+func switch_to_animation(animation_name: String):
+	animation_tree["parameters/conditions/attack"] = false
+	animation_tree["parameters/conditions/die"] = false
+	
+	animation_tree["parameters/conditions/" + animation_name] = true
+	print("Switching to :" + animation_name)

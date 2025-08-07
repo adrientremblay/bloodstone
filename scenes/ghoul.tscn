@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dgb11q6k60d0"]
+[gd_scene load_steps=9 format=3 uid="uid://dgb11q6k60d0"]
 
 [ext_resource type="Script" uid="uid://nn1pio4lghvp" path="res://scripts/entity.gd" id="1_0rs5k"]
 [ext_resource type="PackedScene" uid="uid://bpb16lsdhjpf4" path="res://scenes/ghoul_model.tscn" id="1_pn4bt"]
-[ext_resource type="Script" uid="uid://dbcsisply1vra" path="res://scripts/model_component.gd" id="2_v81jn"]
 [ext_resource type="PackedScene" uid="uid://d1f8o0rqvutue" path="res://scenes/components/ai_component.tscn" id="3_ei4jr"]
 [ext_resource type="PackedScene" uid="uid://birs07dsnnfxt" path="res://scenes/components/health_component.tscn" id="4_ei4jr"]
 [ext_resource type="AudioStream" uid="uid://b7btbhgolnhow" path="res://assets/audio/ghoul1.mp3" id="5_fxkcu"]
@@ -22,7 +21,6 @@ shape = SubResource("CapsuleShape3D_pn4bt")
 
 [node name="ModelComponent" parent="." instance=ExtResource("1_pn4bt")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
-script = ExtResource("2_v81jn")
 
 [node name="AiComponent" parent="." node_paths=PackedStringArray("model_component", "attack_sound") instance=ExtResource("3_ei4jr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.444848, 0)

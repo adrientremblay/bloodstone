@@ -67,6 +67,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_368s2")
 }
 
+[node name="AnimationTree" type="AnimationTree" parent="ModelComponent"]
+root_node = NodePath("../..")
+anim_player = NodePath("../AnimationPlayer")
+
 [node name="AiComponent" parent="." node_paths=PackedStringArray("model_component") instance=ExtResource("5_6s34g")]
 model_component = NodePath("../ModelComponent")
 attack_enabled = false
