@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cggrv860g4o7o"]
+[gd_scene load_steps=20 format=3 uid="uid://cggrv860g4o7o"]
 
 [ext_resource type="PackedScene" uid="uid://bal1yqwvaw4pe" path="res://scenes/rat_model.tscn" id="1_77a1s"]
 [ext_resource type="AudioStream" uid="uid://dbetpxxigdf3k" path="res://assets/audio/rat.mp3" id="2_77a1s"]
@@ -49,6 +49,41 @@ _data = {
 &"RESET": SubResource("Animation_6s34g")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mlvwg"]
+animation = &"Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sjtjd"]
+animation = &"Die"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iyysc"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_od4xi"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4kyc1"]
+advance_mode = 2
+advance_condition = &"die"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sn70i"]
+advance_mode = 2
+advance_condition = &"attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0py3y"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_nnna8"]
+states/Attack/node = SubResource("AnimationNodeAnimation_mlvwg")
+states/Attack/position = Vector2(351, 193)
+states/Die/node = SubResource("AnimationNodeAnimation_sjtjd")
+states/Die/position = Vector2(507, 77)
+states/End/position = Vector2(812, 77)
+states/Start/position = Vector2(161, 57)
+states/Walk/node = SubResource("AnimationNodeAnimation_iyysc")
+states/Walk/position = Vector2(346, 57)
+transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition_od4xi"), "Walk", "Die", SubResource("AnimationNodeStateMachineTransition_4kyc1"), "Walk", "Attack", SubResource("AnimationNodeStateMachineTransition_sn70i"), "Attack", "Walk", SubResource("AnimationNodeStateMachineTransition_0py3y")]
+
 [node name="Rat" type="CharacterBody3D" groups=["enemies"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 script = ExtResource("2_acf8p")
@@ -69,7 +104,10 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="ModelComponent"]
 root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeStateMachine_nnna8")
 anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/attack = false
+parameters/conditions/die = false
 
 [node name="AiComponent" parent="." node_paths=PackedStringArray("model_component") instance=ExtResource("5_6s34g")]
 model_component = NodePath("../ModelComponent")

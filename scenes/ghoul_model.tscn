@@ -41,6 +41,26 @@ transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition
 [node name="GhoulModel" instance=ExtResource("1_mlvwg")]
 script = ExtResource("2_mlvwg")
 
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/rotation = Quaternion(-0.143549, 0.0140782, 0.00300742, 0.989538)
+bones/1/rotation = Quaternion(0.180623, -0.23855, 0.0326073, 0.953628)
+bones/3/rotation = Quaternion(-0.0520592, 0.0384059, -0.187798, 0.980075)
+bones/4/rotation = Quaternion(0.597789, 0.500972, -0.587266, 0.216319)
+bones/5/rotation = Quaternion(-0.361519, 0.27799, -0.17255, 0.873071)
+bones/6/rotation = Quaternion(0.169448, -0.658839, -0.338312, 0.650203)
+bones/7/rotation = Quaternion(0.385952, 0.544693, 0.391145, 0.633527)
+bones/9/rotation = Quaternion(0.0161736, 0.100369, -0.183274, 0.977791)
+bones/10/rotation = Quaternion(-0.189804, -0.0956036, -0.185779, 0.959333)
+bones/11/rotation = Quaternion(0.0172024, 0.012017, 0.294686, 0.955364)
+bones/12/position = Vector3(-0.485946, 2.0555, 0.485946)
+bones/12/rotation = Quaternion(-0.452329, -0.390489, -0.606942, 0.523964)
+bones/13/rotation = Quaternion(-0.496686, -0.0765416, -0.181981, 0.845179)
+bones/14/rotation = Quaternion(-0.144198, -0.0528722, -0.076729, 0.985152)
+bones/15/rotation = Quaternion(0.949284, 5.96046e-08, 0.283149, -0.1367)
+bones/16/rotation = Quaternion(0.594666, -0.357259, -0.66448, -0.277857)
+bones/17/rotation = Quaternion(-0.377609, -0.111582, -0.225474, 0.891135)
+bones/18/rotation = Quaternion(0.021906, 0.0101866, 0.254302, 0.966823)
+
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
 tree_root = SubResource("AnimationNodeStateMachine_1uqnw")
 anim_player = NodePath("../AnimationPlayer")

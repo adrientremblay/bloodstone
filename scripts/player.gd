@@ -6,7 +6,6 @@ class_name Player extends CharacterBody3D
 # Children
 @onready var camera = $Camera3D
 @onready var weapon_animation_player = $WeaponAnimationPlayer
-@onready var swipe_sound = $Swipe
 @onready var hand = $Camera3D/hand2
 @onready var pistol = $Camera3D/pistol
 @onready var weapon_swap = $WeaponSwap
