@@ -80,7 +80,7 @@ func attack():
 	player.take_damage(damage)
 
 func _on_attack_again_timer_timeout() -> void:
-	if player != null:
+	if player != null and enabled:
 		attack()
 		attack_again_timer.start()
 

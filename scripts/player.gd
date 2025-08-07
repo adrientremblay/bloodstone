@@ -19,7 +19,7 @@ var camera_min_angle = -80
 # Signals
 signal consumed_blood(amount)
 signal update_health(health)
-
+ 
 # Properties
 @onready var current_weapon: Weapon = hand
 var blood_drain = 10 # how much blood the player is able to drain per each feed
