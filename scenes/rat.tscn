@@ -69,10 +69,11 @@ libraries = {
 [node name="AiComponent" parent="." node_paths=PackedStringArray("model_component") instance=ExtResource("5_6s34g")]
 model_component = NodePath("../ModelComponent")
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("ai_component", "model_component", "ambient_sound") instance=ExtResource("6_368s2")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("ai_component", "model_component", "ambient_sound", "collission_shape") instance=ExtResource("6_368s2")]
 ai_component = NodePath("../AiComponent")
 model_component = NodePath("../ModelComponent")
 ambient_sound = NodePath("../AmbientSound")
+collission_shape = NodePath("../CollisionShape3D")
 
 [node name="AmbientSound" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.235149, 0)

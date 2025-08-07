@@ -7,6 +7,7 @@ var alive = true
 @export var ai_component: AiComponent
 @export var model_component: ModelComponent
 @export var ambient_sound: AudioStreamPlayer3D
+@export var collission_shape: CollisionShape3D
 
 # Children
 @onready var death_sound: AudioStreamPlayer3D = $DeathSound
@@ -27,6 +28,7 @@ func die():
 	ambient_sound.stop()
 	ai_component.enabled = false
 	model_component.play_animation("Die")
+	collission_shape.queue_free()
 
 func handle_attack(player: Player) -> int: # returns the blood consumed
 	if alive:
