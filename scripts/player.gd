@@ -2,15 +2,15 @@ class_name Player extends CharacterBody3D
 
 # Exports
 @export var bullet_hole_scene: PackedScene
-@export var movement_speed = 7.0
-@export var jump_velocity = 7.0
+@export var movement_speed = 6.0
+@export var jump_velocity = 5.0
 
 # Children
 @onready var camera = $Camera3D
 @onready var weapon_animation_player = $WeaponAnimationPlayer
 @onready var walk_animation_player = $WalkAnimationPlayer
 @onready var hand = $Camera3D/hand2
-@onready var pistol = $Camera3D/pistol
+@onready var pistol = $Camera3D/pistolmodel
 @onready var weapon_swap = $WeaponSwap
 @onready var footstep = $Footstep
 @onready var jump = $Jump
@@ -29,7 +29,8 @@ var blood_drain = 10 # how much blood the player is able to drain per each feed
 var health = 100
 
 func _ready() -> void:
-	$Camera3D/pistol/MuzzleFlash.visible = false
+	pistol.visible = false
+	hand.visible = true
 
 func _unhandled_input(event: InputEvent):
 	if event is InputEventMouseButton:
