@@ -12,6 +12,7 @@ class_name Player extends CharacterBody3D
 @onready var hand = $Camera3D/hand2
 @onready var pistol = $Camera3D/pistol
 @onready var weapon_swap = $WeaponSwap
+@onready var footstep = $Footstep
 
 # Constants
 var camera_max_angle = 80
@@ -121,3 +122,8 @@ func take_damage(damage: int):
 func handle_air_physics(delta):
 	if not is_on_floor():
 		self.velocity.y -= ProjectSettings.get_setting(("physics/3d/default_gravity")) * delta
+
+func play_footstep():
+	footstep.pitch_scale = randf_range(0.8,1.2)
+	footstep.play()
+	
