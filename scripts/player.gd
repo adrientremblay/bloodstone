@@ -70,7 +70,7 @@ func _physics_process(delta):
 	if (direction != Vector3.ZERO && is_on_floor() && !walk_animation_player.is_playing()):
 		walk_animation_player.play("walk")
 	if direction == Vector3.ZERO && walk_animation_player.is_playing():
-		walk_animation_player.stop()
+		walk_animation_player.pause()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action("attack"):
