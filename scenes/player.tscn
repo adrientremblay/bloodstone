@@ -77,6 +77,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector3(0, -0.34671, 0)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera3D/pistolmodel/MuzzleFlash:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_tuyoq"]
 resource_name = "fire_pistol"
@@ -104,6 +116,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, -0.34671, 0), Vector3(0.202458, -0.347321, 0), Vector3(0, -0.34671, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D/pistolmodel/MuzzleFlash:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_g2els"]
@@ -176,8 +200,8 @@ point_count = 2
 curve = SubResource("Curve_y4r1p")
 
 [sub_resource type="Curve" id="Curve_d2wvv"]
-_data = [Vector2(0, 0), 0.0, 2.806, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 0), 0.0, 2.806, 0, 0, Vector2(0.99999, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_3v2ag"]
 curve = SubResource("Curve_d2wvv")
@@ -282,8 +306,10 @@ visible = false
 transform = Transform3D(0.940496, 0, -0.339805, 0, 1, 0, 0.339805, 0, 0.940496, 1.07612, -0.46125, -1.18065)
 
 [node name="MuzzleFlash" type="GPUParticles3D" parent="Camera3D/pistolmodel"]
-transform = Transform3D(-1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, -1, 0.00398874, 0.320577, -0.452385)
+transform = Transform3D(-1, 0, 1.78814e-07, 0, 1, 0, -1.78814e-07, 0, -1, -0.0371467, 0.320577, -0.534197)
+layers = 2
 material_override = SubResource("StandardMaterial3D_y4r1p")
+emitting = false
 amount = 1
 lifetime = 0.1
 randomness = 1.0

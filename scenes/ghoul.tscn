@@ -24,8 +24,7 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 
 [node name="AiComponent" parent="." node_paths=PackedStringArray("model_component", "attack_sound") instance=ExtResource("3_ei4jr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.444848, 0)
-speed = 2.0
-target_radius = 7
+speed = 5.0
 model_component = NodePath("../ModelComponent")
 damage = 10
 attack_sound = NodePath("../HealthComponent/AttackSound")
