@@ -6,9 +6,9 @@
 [ext_resource type="Script" uid="uid://b11s7luwbpnew" path="res://scripts/weapon_camera.gd" id="4_dqkch"]
 [ext_resource type="PackedScene" uid="uid://c73bv4ae7pokb" path="res://scenes/pistolmodel.tscn" id="5_smehm"]
 [ext_resource type="AudioStream" uid="uid://b37d2mddp65ao" path="res://assets/audio/weapon_swap.mp3" id="5_tuyoq"]
-[ext_resource type="ArrayMesh" uid="uid://bgbxlp6x0wjri" path="res://assets/models/muzzle_flash/muzzle_flash.obj" id="6_ur7pv"]
 [ext_resource type="Texture2D" uid="uid://c2oosl3lf16io" path="res://assets/models/muzzle_flash/muzzle_flash_transform2_7.png" id="6_y4r1p"]
 [ext_resource type="AudioStream" uid="uid://bng8410ghnhgg" path="res://assets/audio/footstep1.mp3" id="7_fjrip"]
+[ext_resource type="ArrayMesh" uid="uid://ca1t7dmmtdbht" path="res://assets/models/muzzle_flash/muzzle_flash_2.obj" id="7_y4r1p"]
 [ext_resource type="AudioStream" uid="uid://dw1dnl2ekvsrm" path="res://assets/audio/jump.mp3" id="8_smehm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2els"]
@@ -166,6 +166,7 @@ shading_mode = 0
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
 albedo_texture = ExtResource("6_y4r1p")
+billboard_keep_scale = true
 
 [sub_resource type="Curve" id="Curve_y4r1p"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -281,15 +282,14 @@ visible = false
 transform = Transform3D(0.940496, 0, -0.339805, 0, 1, 0, 0.339805, 0, 0.940496, 1.07612, -0.46125, -1.18065)
 
 [node name="MuzzleFlash" type="GPUParticles3D" parent="Camera3D/pistolmodel"]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -0.00972897, 0.320577, -0.464799)
-visible = false
+transform = Transform3D(-1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, -1, 0.00398874, 0.320577, -0.452385)
 material_override = SubResource("StandardMaterial3D_y4r1p")
 amount = 1
 lifetime = 0.1
 randomness = 1.0
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_jej6c")
-draw_pass_1 = ExtResource("6_ur7pv")
+draw_pass_1 = ExtResource("7_y4r1p")
 
 [node name="WeaponViewport" type="SubViewportContainer" parent="."]
 anchors_preset = 15
