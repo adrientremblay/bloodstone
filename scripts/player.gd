@@ -13,6 +13,7 @@ class_name Player extends CharacterBody3D
 @onready var pistol = $Camera3D/pistol
 @onready var weapon_swap = $WeaponSwap
 @onready var footstep = $Footstep
+@onready var jump = $Jump
 
 # Constants
 var camera_max_angle = 80
@@ -63,6 +64,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("jump") && is_on_floor():
 		velocity.y = jump_velocity
+		jump.play()
 	
 	handle_air_physics(delta)
 	move_and_slide()
@@ -70,7 +72,7 @@ func _physics_process(delta):
 	#make sure walking animation plays while walking
 	if (direction != Vector3.ZERO && is_on_floor() && !walk_animation_player.is_playing()):
 		walk_animation_player.play("walk")
-	if walk_animation_player.is_playing() and !is_on_floor():
+	if walk_animation_player.is_playing() and !is_on_floor() or direction == Vector3.ZERO:
 		walk_animation_player.pause()
 
 func _input(event: InputEvent) -> void:
