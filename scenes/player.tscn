@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dlss5l7s81x7o"]
+[gd_scene load_steps=19 format=3 uid="uid://dlss5l7s81x7o"]
 
 [ext_resource type="Script" uid="uid://d1l785xbyf128" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://nsidatx54cps" path="res://scenes/bullet_hole.tscn" id="2_fjrip"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ce5r6dshe4sgl" path="res://assets/models/pistol/pistol_model.tscn" id="3_tuyoq"]
 [ext_resource type="Script" uid="uid://b11s7luwbpnew" path="res://scripts/weapon_camera.gd" id="4_dqkch"]
 [ext_resource type="AudioStream" uid="uid://b37d2mddp65ao" path="res://assets/audio/weapon_swap.mp3" id="5_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://bng8410ghnhgg" path="res://assets/audio/footstep1.mp3" id="7_fjrip"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2els"]
 
@@ -60,6 +61,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WeaponViewport/SubViewport/Camera3D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.51608, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_tuyoq"]
@@ -118,17 +131,70 @@ tracks/1/keys = {
 "values": [Vector3(1.5708, 0, 0), Vector3(1.39626, 0, 0), Vector3(1.5708, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_smehm"]
+resource_name = "walk"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponViewport/SubViewport/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.51608, 0), Vector3(0, 1.416, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dqkch"]
 _data = {
 &"RESET": SubResource("Animation_qhqgy"),
 &"fire_pistol": SubResource("Animation_tuyoq"),
-&"swipe": SubResource("Animation_g2els")
+&"swipe": SubResource("Animation_g2els"),
+&"walk": SubResource("Animation_smehm")
 }
 
 [sub_resource type="Environment" id="Environment_dqkch"]
 background_mode = 1
 background_color = Color(1, 1, 1, 1)
 background_energy_multiplier = 0.1
+
+[sub_resource type="Animation" id="Animation_fjrip"]
+resource_name = "walk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.511698, 0), Vector3(0, 0.3, 0), Vector3(0, 0.511698, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ur7pv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.511698, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y4r1p"]
+_data = {
+&"RESET": SubResource("Animation_ur7pv"),
+&"walk": SubResource("Animation_fjrip")
+}
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -140,6 +206,14 @@ shape = SubResource("CapsuleShape3D_g2els")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_qhqgy")
+
+[node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dqkch")
+}
+
+[node name="WeaponSwap" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_tuyoq")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.511698, 0)
@@ -157,14 +231,6 @@ transform = Transform3D(-5, 0, -8.74228e-07, 0, 10, 0, 4.37114e-07, 0, -10, 2.38
 light_color = Color(1, 1, 0.619608, 1)
 spot_range = 11.1412
 spot_angle = 9.13748
-
-[node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_dqkch")
-}
-
-[node name="WeaponSwap" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_tuyoq")
 
 [node name="WeaponViewport" type="SubViewportContainer" parent="."]
 anchors_preset = 15
@@ -185,3 +251,11 @@ cull_mask = 1047554
 environment = SubResource("Environment_dqkch")
 script = ExtResource("4_dqkch")
 main_camera = NodePath("../../../Camera3D")
+
+[node name="Footstep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_fjrip")
+
+[node name="WalkAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_y4r1p")
+}

@@ -8,6 +8,7 @@ class_name Player extends CharacterBody3D
 # Children
 @onready var camera = $Camera3D
 @onready var weapon_animation_player = $WeaponAnimationPlayer
+@onready var walk_animation_player = $WalkAnimationPlayer
 @onready var hand = $Camera3D/hand2
 @onready var pistol = $Camera3D/pistol
 @onready var weapon_swap = $WeaponSwap
@@ -64,6 +65,12 @@ func _physics_process(delta):
 	
 	handle_air_physics(delta)
 	move_and_slide()
+	
+	#make sure walking animation plays while walking
+	if (direction != Vector3.ZERO && is_on_floor() && !walk_animation_player.is_playing()):
+		walk_animation_player.play("walk")
+	if direction == Vector3.ZERO && walk_animation_player.is_playing():
+		walk_animation_player.stop()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action("attack"):
