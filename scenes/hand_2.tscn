@@ -1,25 +1,65 @@
-[gd_scene load_steps=3 format=3 uid="uid://cr8tliln3pakk"]
+[gd_scene load_steps=10 format=3 uid="uid://cr8tliln3pakk"]
 
 [ext_resource type="PackedScene" uid="uid://b7papst5skrkc" path="res://assets/models/hand/hand2.glb" id="1_gg22i"]
-[ext_resource type="Script" uid="uid://blmfnd8sw60wh" path="res://scenes/hand_2.gd" id="2_2sqvi"]
+[ext_resource type="Script" uid="uid://dj75ngtf28r87" path="res://scenes/weapon.gd" id="2_2sqvi"]
+[ext_resource type="AudioStream" uid="uid://dixknjqhi7sxi" path="res://assets/audio/swipe.mp3" id="3_547g8"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_547g8"]
+animation = &"Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wmmk0"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0u37h"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a7l0n"]
+advance_mode = 2
+advance_condition = &"attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eu152"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_8heqh"]
+states/Attack/node = SubResource("AnimationNodeAnimation_547g8")
+states/Attack/position = Vector2(655, 100)
+states/Idle/node = SubResource("AnimationNodeAnimation_wmmk0")
+states/Idle/position = Vector2(447, 105)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_0u37h"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_a7l0n"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_eu152")]
 
 [node name="hand2" instance=ExtResource("1_gg22i")]
 script = ExtResource("2_2sqvi")
 
 [node name="Skeleton3D" parent="HandRig" index="0"]
+bones/0/position = Vector3(0.00115311, -3.17542, 0.177538)
+bones/0/rotation = Quaternion(0.218401, 0.296408, 0.334595, 0.867461)
+bones/1/rotation = Quaternion(0.22595, -0.082342, 0.0544367, 0.969125)
 bones/2/rotation = Quaternion(-0.177262, -4.67065e-05, 0.00392226, 0.984156)
 bones/3/rotation = Quaternion(-0.157002, 0.0148574, -0.0924455, 0.98315)
 bones/4/rotation = Quaternion(-0.158663, 0.000258708, -0.00160942, 0.987332)
 bones/5/rotation = Quaternion(-0.254292, 0.0253576, -0.109901, 0.960528)
-bones/6/rotation = Quaternion(-0.238453, 0.0063282, -0.0257324, 0.970793)
+bones/6/rotation = Quaternion(-0.238453, 0.00632821, -0.0257324, 0.970793)
 bones/7/rotation = Quaternion(-0.238266, 0.0088262, -0.0358897, 0.970497)
 bones/8/rotation = Quaternion(-0.288999, 0.046094, -0.169868, 0.94101)
-bones/9/rotation = Quaternion(-0.277396, -0.00362929, 0.0125755, 0.960667)
+bones/9/rotation = Quaternion(-0.277396, -0.00362929, 0.0125754, 0.960667)
 bones/10/rotation = Quaternion(-0.277458, -0.00727108, 0.0251941, 0.96038)
 bones/11/rotation = Quaternion(-0.249254, 0.0617115, -0.264745, 0.929502)
-bones/12/rotation = Quaternion(-0.243395, 0.00343204, -0.0136663, 0.969825)
+bones/12/rotation = Quaternion(-0.243395, 0.00343205, -0.0136664, 0.969825)
 bones/13/rotation = Quaternion(-0.243736, -0.014997, 0.0597191, 0.967885)
+bones/14/rotation = Quaternion(-0.226038, -0.585634, 0.595367, 0.501476)
 bones/15/rotation = Quaternion(-0.17782, -0.0938914, -0.0310195, 0.979082)
+bones/16/rotation = Quaternion(-0.304797, -0.00689857, 0.229455, 0.924339)
 
 [node name="Hand" parent="HandRig/Skeleton3D" index="0"]
 layers = 2
+
+[node name="WeaponSound" type="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource("3_547g8")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="3"]
+tree_root = SubResource("AnimationNodeStateMachine_8heqh")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/attack = false
+
+[connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
