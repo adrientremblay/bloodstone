@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cr8tliln3pakk"]
+
+[ext_resource type="PackedScene" uid="uid://b7papst5skrkc" path="res://assets/models/hand/hand2.glb" id="1_gg22i"]
+[ext_resource type="Script" uid="uid://blmfnd8sw60wh" path="res://scenes/hand_2.gd" id="2_2sqvi"]
+
+[node name="hand2" instance=ExtResource("1_gg22i")]
+script = ExtResource("2_2sqvi")
+
+[node name="Skeleton3D" parent="HandRig" index="0"]
+bones/2/rotation = Quaternion(-0.177262, -4.67065e-05, 0.00392226, 0.984156)
+bones/3/rotation = Quaternion(-0.157002, 0.0148574, -0.0924455, 0.98315)
+bones/4/rotation = Quaternion(-0.158663, 0.000258708, -0.00160942, 0.987332)
+bones/5/rotation = Quaternion(-0.254292, 0.0253576, -0.109901, 0.960528)
+bones/6/rotation = Quaternion(-0.238453, 0.0063282, -0.0257324, 0.970793)
+bones/7/rotation = Quaternion(-0.238266, 0.0088262, -0.0358897, 0.970497)
+bones/8/rotation = Quaternion(-0.288999, 0.046094, -0.169868, 0.94101)
+bones/9/rotation = Quaternion(-0.277396, -0.00362929, 0.0125755, 0.960667)
+bones/10/rotation = Quaternion(-0.277458, -0.00727108, 0.0251941, 0.96038)
+bones/11/rotation = Quaternion(-0.249254, 0.0617115, -0.264745, 0.929502)
+bones/12/rotation = Quaternion(-0.243395, 0.00343204, -0.0136663, 0.969825)
+bones/13/rotation = Quaternion(-0.243736, -0.014997, 0.0597191, 0.967885)
+bones/15/rotation = Quaternion(-0.17782, -0.0938914, -0.0310195, 0.979082)
+
+[node name="Hand" parent="HandRig/Skeleton3D" index="0"]
+layers = 2
