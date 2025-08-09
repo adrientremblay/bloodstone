@@ -2,6 +2,7 @@ class_name Weapon extends Node3D
 
 @onready var weapon_sound: AudioStreamPlayer = $WeaponSound
 @onready var animation_tree: AnimationTree = $AnimationTree
+@onready var reload_sound: AudioStreamPlayer = $ReloadSound
 
 @export var clip_size: int = 9
 
@@ -29,5 +30,10 @@ func switch_to_animation(animation_name: String):
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Attack" || anim_name == "Fire":
 		animation_tree["parameters/conditions/attack"] = false
-	elif anim_name == "Reload":
+	elif anim_name == "Reload_Full":
 		animation_tree["parameters/conditions/reload"] = false
+
+func reload():
+	reload_sound.play()
+	switch_to_animation("reload")
+	

@@ -79,6 +79,8 @@ func _physics_process(delta):
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
 		attack()
+	elif event.is_action_pressed("reload"):
+		reload()
 	elif event.is_action_pressed("previous_weapon"):
 		var other_weapon: Weapon = null
 		if current_weapon == hand:
@@ -114,6 +116,9 @@ func attack() -> void:
 
 	#animate and play sound
 	current_weapon.fire()
+
+func reload():
+	current_weapon.reload()
 
 func take_damage(damage: int):
 	health -= damage
