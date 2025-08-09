@@ -7,7 +7,6 @@ class_name Player extends CharacterBody3D
 
 # Children
 @onready var camera = $Camera3D
-@onready var weapon_animation_player = $WeaponAnimationPlayer
 @onready var walk_animation_player = $WalkAnimationPlayer
 @onready var hand = $Camera3D/hand2
 @onready var pistol = $Camera3D/pistolmodel
@@ -96,10 +95,7 @@ func switch_weapon(weapon: Weapon):
 
 func attack() -> void:
 	#animate and play sound
-	if current_weapon == hand:
-		current_weapon.switch_to_animation("attack")
-	else:
-		weapon_animation_player.play(current_weapon.animation_name) # legacy animation for pistol
+	current_weapon.switch_to_animation("attack")
 	current_weapon.fire()
 	
 	# Shooting Ray

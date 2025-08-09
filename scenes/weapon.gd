@@ -9,10 +9,10 @@ func fire():
 	weapon_sound.play()
 
 func switch_to_animation(animation_name: String):
-	animation_tree["parameters/conditions/attack"] = false
-	
 	animation_tree["parameters/conditions/" + animation_name] = true
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "Attack":
+	if anim_name == "Attack" || anim_name == "Fire":
 		animation_tree["parameters/conditions/attack"] = false
+	elif anim_name == "Reload":
+		animation_tree["parameters/conditions/reload"] = false
