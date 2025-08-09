@@ -21,6 +21,7 @@ var camera_min_angle = -80
 # Signals
 signal consumed_blood(amount)
 signal update_health(health)
+signal update_ammo(ammo_clip, ammo_pool)
  
 # Properties
 @onready var current_weapon: Weapon = hand
@@ -76,7 +77,7 @@ func _physics_process(delta):
 		walk_animation_player.pause()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action("attack"):
+	if event.is_action_pressed("attack"):
 		attack()
 	elif event.is_action_pressed("previous_weapon"):
 		var other_weapon: Weapon = null
@@ -93,11 +94,7 @@ func switch_weapon(weapon: Weapon):
 	current_weapon.visible = true
 	weapon_swap.play()
 
-func attack() -> void:
-	#animate and play sound
-	current_weapon.switch_to_animation("attack")
-	current_weapon.fire()
-	
+func attack() -> void:	
 	# Shooting Ray
 	var space = get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.create(camera.global_position, camera.global_position + -camera.global_transform.basis.z * 1000)
@@ -115,6 +112,9 @@ func attack() -> void:
 			new_bullet_hole.global_transform.origin = result.position
 			new_bullet_hole.look_at(result.position + result.normal, Vector3.UP)
 
+	#animate and play sound
+	current_weapon.fire()
+
 func take_damage(damage: int):
 	health -= damage
 	update_health.emit(health)
@@ -128,4 +128,6 @@ func handle_air_physics(delta):
 func play_footstep():
 	footstep.pitch_scale = randf_range(0.8,1.2)
 	footstep.play()
-	
+
+func _on_weapon_update_ammo_label(ammo_clip: Variant, ammo_pool: Variant) -> void:
+	update_ammo.emit(ammo_clip, ammo_pool)

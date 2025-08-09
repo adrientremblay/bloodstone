@@ -98,6 +98,7 @@ texture = ExtResource("5_tefeu")
 stretch_mode = 3
 
 [node name="BloodBar" type="ProgressBar" parent="HUD"]
+layout_mode = 0
 offset_left = 47.0
 offset_top = 746.0
 offset_right = 102.0
@@ -116,6 +117,7 @@ text = "blood"
 horizontal_alignment = 1
 
 [node name="HealthBar" type="ProgressBar" parent="HUD"]
+layout_mode = 0
 offset_left = 127.0
 offset_top = 746.0
 offset_right = 182.0
@@ -134,15 +136,15 @@ offset_bottom = 246.0
 text = "health"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="HUD"]
+[node name="AmmoLabel" type="Label" parent="HUD"]
 layout_mode = 0
 offset_left = 1624.0
 offset_top = 936.0
 offset_right = 1862.0
 offset_bottom = 1018.0
-text = "9/20"
 label_settings = SubResource("LabelSettings_tipki")
 horizontal_alignment = 2
 
 [connection signal="consumed_blood" from="Player" to="HUD" method="_on_player_consumed_blood"]
+[connection signal="update_ammo" from="Player" to="HUD" method="_on_player_update_ammo"]
 [connection signal="update_health" from="Player" to="HUD" method="_on_player_update_health"]
