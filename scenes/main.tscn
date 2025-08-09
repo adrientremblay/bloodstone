@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dc4m2o6rx7t1j"]
+[gd_scene load_steps=15 format=3 uid="uid://dc4m2o6rx7t1j"]
 
 [ext_resource type="PackedScene" uid="uid://dlss5l7s81x7o" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://4qwki5hxkwbg" path="res://scripts/main.gd" id="1_tefeu"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cggrv860g4o7o" path="res://scenes/rat.tscn" id="5_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://cm36lloods2oq" path="res://assets/images/crosshair.png" id="5_tefeu"]
 [ext_resource type="PackedScene" uid="uid://dgb11q6k60d0" path="res://scenes/ghoul.tscn" id="7_o6xl0"]
+[ext_resource type="Script" uid="uid://c0vp2orewcgg3" path="res://scripts/hud.gd" id="7_tipki"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jyhfs"]
 vertices = PackedVector3Array(12.75, 0.5, -21.75, 11, 0.5, -21.75, 11.25, 0.5, -15.5, 13.25, 0.5, -15.25, 34.5, 0.5, -31.75, 13.25, 0.5, -31.75, 13.25, 0.5, -22.25, 34.5, 0.5, -10.5, 13.25, 0.5, -10.5, 2, 0.5, -12.75, 4.5, 0.5, -13, 4.5, 0.5, -15.25, -4.5, 0.5, -15.5, -4.25, 0.5, -13, -1.75, 0.5, -12.75, -1.75, 0.5, -9, 2, 0.5, -8.75, 6, 0.5, -21.75, -6.75, 0.5, -21.75, -6.75, 0.5, -15.5, 6.25, 0.5, -15.5, -1.75, 0.5, -7.25, 2.25, 0.5, -6.75, 7, 0.5, 6.75, 7, 0.5, -6.75, -2.25, 0.5, -6.75, -6.75, 0.5, 6.75, -6.75, 0.5, -6.75)
@@ -22,6 +23,9 @@ bg_color = Color(0.556863, 0, 0.12549, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tipki"]
 bg_color = Color(0, 0.545098, 0.12549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tipki"]
+font_size = 30
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_tefeu")
@@ -48,7 +52,43 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jyhfs")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="candle2" parent="." instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.4117, 0, -27.6082)
+
+[node name="candle3" parent="." instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2869, 0, -16.3748)
+
+[node name="Ghoul3" parent="." instance=ExtResource("7_o6xl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1556, 0.235149, -29.8316)
+
+[node name="Entities" type="Node3D" parent="."]
+
+[node name="Rat" parent="Entities" instance=ExtResource("5_tbgi4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.22753, 0.274349, -2.88218)
+
+[node name="Ghoul" parent="Entities" instance=ExtResource("7_o6xl0")]
+transform = Transform3D(1.00563, 0, 0, 0, 1.00563, 0, 0, 0, 1.00563, -2.52291, 0.235149, -19.1054)
+
+[node name="Ghoul2" parent="Entities" instance=ExtResource("7_o6xl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.4119, 0.235149, -21.0308)
+
+[node name="Ghoul4" parent="Entities" instance=ExtResource("7_o6xl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.0463, 0.235149, -19.6303)
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("7_tipki")
+
+[node name="Crosshair" type="TextureRect" parent="HUD"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -57,7 +97,7 @@ grow_vertical = 2
 texture = ExtResource("5_tefeu")
 stretch_mode = 3
 
-[node name="BloodBar" type="ProgressBar" parent="."]
+[node name="BloodBar" type="ProgressBar" parent="HUD"]
 offset_left = 47.0
 offset_top = 746.0
 offset_right = 102.0
@@ -67,7 +107,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_tbgi4")
 fill_mode = 3
 show_percentage = false
 
-[node name="Label" type="Label" parent="BloodBar"]
+[node name="Label" type="Label" parent="HUD/BloodBar"]
 layout_mode = 0
 offset_top = 223.0
 offset_right = 55.0
@@ -75,13 +115,7 @@ offset_bottom = 246.0
 text = "blood"
 horizontal_alignment = 1
 
-[node name="Ghoul" parent="." instance=ExtResource("7_o6xl0")]
-transform = Transform3D(1.00563, 0, 0, 0, 1.00563, 0, 0, 0, 1.00563, -2.52291, 0.235149, -19.1054)
-
-[node name="Rat" parent="." instance=ExtResource("5_tbgi4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.22753, 0.274349, -2.88218)
-
-[node name="HealthBar" type="ProgressBar" parent="."]
+[node name="HealthBar" type="ProgressBar" parent="HUD"]
 offset_left = 127.0
 offset_top = 746.0
 offset_right = 182.0
@@ -92,7 +126,7 @@ value = 100.0
 fill_mode = 3
 show_percentage = false
 
-[node name="Label" type="Label" parent="HealthBar"]
+[node name="Label" type="Label" parent="HUD/HealthBar"]
 layout_mode = 0
 offset_top = 223.0
 offset_right = 55.0
@@ -100,20 +134,15 @@ offset_bottom = 246.0
 text = "health"
 horizontal_alignment = 1
 
-[node name="candle2" parent="." instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.4117, 0, -27.6082)
+[node name="Label" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = 1624.0
+offset_top = 936.0
+offset_right = 1862.0
+offset_bottom = 1018.0
+text = "9/20"
+label_settings = SubResource("LabelSettings_tipki")
+horizontal_alignment = 2
 
-[node name="candle3" parent="." instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2869, 0, -16.3748)
-
-[node name="Ghoul2" parent="." instance=ExtResource("7_o6xl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.4119, 0.235149, -21.0308)
-
-[node name="Ghoul3" parent="." instance=ExtResource("7_o6xl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1556, 0.235149, -29.8316)
-
-[node name="Ghoul4" parent="." instance=ExtResource("7_o6xl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.0463, 0.235149, -19.6303)
-
-[connection signal="consumed_blood" from="Player" to="." method="_on_player_consumed_blood"]
-[connection signal="update_health" from="Player" to="." method="_on_player_update_health"]
+[connection signal="consumed_blood" from="Player" to="HUD" method="_on_player_consumed_blood"]
+[connection signal="update_health" from="Player" to="HUD" method="_on_player_update_health"]
