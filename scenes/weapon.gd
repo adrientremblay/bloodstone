@@ -37,3 +37,9 @@ func reload():
 	reload_sound.play()
 	switch_to_animation("reload")
 	
+	if ammo_pool > 0:
+		var ammo_to_take = min(clip_size, ammo_pool)
+		ammo_clip = ammo_to_take
+		ammo_pool -= ammo_to_take
+		update_ammo_label.emit(ammo_clip, ammo_pool)
+	
