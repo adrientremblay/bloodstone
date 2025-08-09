@@ -1,16 +1,56 @@
-[gd_scene load_steps=4 format=3 uid="uid://c73bv4ae7pokb"]
+[gd_scene load_steps=10 format=3 uid="uid://c73bv4ae7pokb"]
 
 [ext_resource type="PackedScene" uid="uid://cbfftiduwqi2g" path="res://assets/models/pistol/pistol.glb" id="1_j0tje"]
 [ext_resource type="Script" uid="uid://dj75ngtf28r87" path="res://scenes/weapon.gd" id="2_uim82"]
 [ext_resource type="AudioStream" uid="uid://v6ce1icwc5c6" path="res://assets/audio/shoot_pistol.mp3" id="3_7lq31"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7lq31"]
+animation = &"Fire"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b6lj8"]
+animation = &"Reload_Full"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bsb4k"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uaf21"]
+advance_mode = 2
+advance_condition = &"Reload"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7lq31"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_7lq31"]
+states/Fire/node = SubResource("AnimationNodeAnimation_7lq31")
+states/Fire/position = Vector2(525, 38)
+states/Reload_Full/node = SubResource("AnimationNodeAnimation_b6lj8")
+states/Reload_Full/position = Vector2(525, 177)
+states/Start/position = Vector2(206, 100)
+transitions = ["Start", "Fire", SubResource("AnimationNodeStateMachineTransition_bsb4k"), "Start", "Reload_Full", SubResource("AnimationNodeStateMachineTransition_uaf21"), "Fire", "Reload_Full", SubResource("AnimationNodeStateMachineTransition_7lq31")]
+
 [node name="pistolmodel" instance=ExtResource("1_j0tje")]
 script = ExtResource("2_uim82")
 animation_name = "fire_pistol"
 
-[node name="Plane" parent="." index="0"]
-transform = Transform3D(-0.2, 0, -1.74846e-08, 0, 0.2, 0, 1.74846e-08, 0, -0.2, 0, 0, 0)
-layers = 2
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/rotation = Quaternion(0.0698559, -6.8146e-17, -6.8146e-17, 0.997557)
+bones/1/position = Vector3(2.62414e-16, 2.95505, -0.119672)
+bones/3/position = Vector3(3.79008e-17, -0.146801, 0.450678)
+
+[node name="Slide_2" parent="Armature/Skeleton3D" index="0"]
+transform = Transform3D(1, 3.04932e-20, 1.03232e-20, -1.35525e-20, 1, 2.06754e-07, -1.02703e-20, -2.06754e-07, 1, 6.41431e-16, 1.3966, 1.392)
+
+[node name="Magazine_2" parent="Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, -3.30872e-24, 1.32349e-23, 9.09899e-24, 1, 0, 2.64698e-23, 0, 1, 6.41434e-16, 4.99969, 1.392)
+
+[node name="Receiver" parent="Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, 1.15805e-23, 1.32349e-23, 9.92617e-24, 1, 1.49012e-08, 1.32349e-23, -1.49012e-08, 1, 6.41434e-16, 1.3966, 1.392)
 
 [node name="WeaponSound" type="AudioStreamPlayer" parent="." index="1"]
 stream = ExtResource("3_7lq31")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="3"]
+tree_root = SubResource("AnimationNodeStateMachine_7lq31")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/Reload = false
