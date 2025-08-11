@@ -7,6 +7,7 @@ class_name Weapon extends Node3D
 @export var clip_size: int = 9
 @export var accuracy_angle: float = 3 # degrees
 @export var range: float = 100
+@export var damage: int = 1
 
 @onready var ammo_pool = clip_size + 20 #TODO: change to clip_size once ammo pickups are invented
 @onready var ammo_clip = clip_size

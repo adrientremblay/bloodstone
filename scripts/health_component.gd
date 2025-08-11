@@ -4,6 +4,7 @@ var alive = true
 
 # Exports
 @export var blood: int = 10
+@export var health: int = 3
 @export var ai_component: AiComponent
 @export var model_component: ModelComponent
 @export var ambient_sound: AudioStreamPlayer3D
@@ -32,7 +33,9 @@ func die():
 
 func handle_attack(player: Player) -> int: # returns the blood consumed
 	if alive:
-		die()
+		health = health - player.current_weapon.damage
+		if health <= 0:
+			die()
 	
 	if player.current_weapon == player.hand:
 		var blood_available = min(blood, player.blood_drain)
