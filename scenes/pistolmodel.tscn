@@ -46,29 +46,6 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [node name="pistolmodel" instance=ExtResource("1_j0tje")]
 script = ExtResource("2_uim82")
 
-[node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/rotation = Quaternion(0.0698559, -6.8146e-17, -6.8146e-17, 0.997557)
-bones/1/position = Vector3(2.62414e-16, 2.95505, -0.119672)
-bones/3/position = Vector3(3.79008e-17, -0.146801, 0.450678)
-
-[node name="Slide_2" parent="Armature/Skeleton3D" index="0"]
-transform = Transform3D(1, 3.04932e-20, 1.03232e-20, -1.35525e-20, 1, 2.06754e-07, -1.02703e-20, -2.06754e-07, 1, 6.41431e-16, 1.3966, 1.392)
-
-[node name="Slide_2" parent="Armature/Skeleton3D/Slide_2" index="0"]
-layers = 2
-
-[node name="Magazine_2" parent="Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, -3.30872e-24, 1.32349e-23, 9.09899e-24, 1, 0, 2.64698e-23, 0, 1, 6.41434e-16, 4.99969, 1.392)
-
-[node name="Magazine_2" parent="Armature/Skeleton3D/Magazine_2" index="0"]
-layers = 2
-
-[node name="Receiver" parent="Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 1.15805e-23, 1.32349e-23, 9.92617e-24, 1, 1.49012e-08, 1.32349e-23, -1.49012e-08, 1, 6.41434e-16, 1.3966, 1.392)
-
-[node name="Receiver" parent="Armature/Skeleton3D/Receiver" index="0"]
-layers = 2
-
 [node name="WeaponSound" type="AudioStreamPlayer" parent="." index="1"]
 stream = ExtResource("3_7lq31")
 volume_db = 10.0
