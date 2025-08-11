@@ -17,6 +17,7 @@ class_name Player extends CharacterBody3D
 # Constants
 var camera_max_angle = 80
 var camera_min_angle = -80
+@onready var rng = RandomNumberGenerator.new()
 
 # Signals
 signal consumed_blood(amount)
@@ -100,7 +101,10 @@ func attack() -> void:
 	if current_weapon.can_fire():
 		# Shooting Ray
 		var space = get_world_3d().direct_space_state
-		var query = PhysicsRayQueryParameters3D.create(camera.global_position, camera.global_position + -camera.global_transform.basis.z * 1000)
+		# Rotate vector around z by UP TO the accuracy angle
+		var raycast_vector = (-camera.global_transform.basis.z).rotated(camera.global_transform.basis.x, rng.randf_range(0, 1.0) * current_weapon.accuracy_angle * PI / 180)
+		raycast_vector = raycast_vector.rotated(-camera.global_transform.basis.z, rng.randf_range(0, 2*PI))
+		var query = PhysicsRayQueryParameters3D.create(camera.global_position, camera.global_position + (raycast_vector*current_weapon.range))
 		var result = space.intersect_ray(query)
 
 		if result:

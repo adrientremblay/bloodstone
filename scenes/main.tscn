@@ -32,6 +32,8 @@ script = ExtResource("1_tefeu")
 
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2.69955)
+movement_speed = 6.0
+jump_velocity = 5.0
 
 [node name="candle" parent="." instance=ExtResource("4_jyhfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0538205, -0.0336832, -0.00199393)
