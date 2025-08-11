@@ -140,5 +140,5 @@ func play_footstep():
 	footstep.pitch_scale = randf_range(0.8,1.2)
 	footstep.play()
 
-func _on_weapon_update_ammo_label(ammo_clip: Variant, ammo_pool: Variant) -> void:
-	update_ammo.emit(ammo_clip, ammo_pool)
+func _on_weapon_update_ammo_label(ammo_clip: Variant, ammo_pool: Variant, melee: bool) -> void:
+	update_ammo.emit(ammo_clip, ammo_pool, melee)

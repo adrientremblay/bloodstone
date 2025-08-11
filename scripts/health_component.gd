@@ -44,8 +44,9 @@ func handle_attack(player: Player) -> int: # returns the blood consumed
 				
 		eat_rat_sound.play()
 		blood -= blood_available
-		bleed()
 		
 		return blood_available
+	
+	bleed()
 	
 	return 0

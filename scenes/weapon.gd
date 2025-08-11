@@ -30,7 +30,7 @@ func fire():
 	
 	if !melee:
 		ammo_clip -= 1
-		update_ammo_label.emit(ammo_clip, ammo_pool)
+		update_ammo_label.emit(ammo_clip, ammo_pool, false)
 
 func switch_to_animation(animation_name: String):
 	animation_tree["parameters/conditions/" + animation_name] = true
@@ -43,7 +43,7 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 		animation_tree["parameters/conditions/reload"] = false
 
 func reload():
-	if melee:
+	if melee or ammo_clip == clip_size or ammo_pool == 0:
 		return
 	
 	reload_sound.play()
@@ -53,7 +53,7 @@ func reload():
 		var ammo_to_take = min(clip_size, ammo_pool)
 		ammo_clip = ammo_to_take
 		ammo_pool -= ammo_to_take
-		update_ammo_label.emit(ammo_clip, ammo_pool)
+		update_ammo_label.emit(ammo_clip, ammo_pool, melee)
 	
 func add_ammo(amount: int):
 	if melee:
