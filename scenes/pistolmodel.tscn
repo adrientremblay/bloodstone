@@ -46,6 +46,73 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [node name="pistolmodel" instance=ExtResource("1_j0tje")]
 script = ExtResource("2_uim82")
 
+[node name="Skeleton3D" parent="HandRig" index="0"]
+bones/0/position = Vector3(0.13457, -0.8009, -4.83216)
+bones/0/rotation = Quaternion(-0.51722, 0.474261, 0.44517, -0.556222)
+bones/1/rotation = Quaternion(0.226024, -0.0820001, 0.0544855, 0.969134)
+bones/2/rotation = Quaternion(-0.343855, -0.000720483, 0.00385579, 0.939015)
+bones/3/rotation = Quaternion(-0.323723, 0.0305329, -0.0885136, 0.941507)
+bones/4/rotation = Quaternion(-0.326079, 0.000531608, -0.00154098, 0.945341)
+bones/5/rotation = Quaternion(-0.615629, 0.0670097, -0.0907246, 0.779923)
+bones/6/rotation = Quaternion(-0.605185, 0.0160484, -0.0210868, 0.795644)
+bones/7/rotation = Quaternion(-0.604895, 0.0223832, -0.0294102, 0.795447)
+bones/8/rotation = Quaternion(-0.530919, 0.0899873, -0.151269, 0.828942)
+bones/9/rotation = Quaternion(-0.525015, -0.00687082, 0.0111403, 0.850992)
+bones/10/rotation = Quaternion(-0.524998, -0.0137652, 0.0223189, 0.850699)
+bones/11/rotation = Quaternion(-0.433709, 0.114444, -0.246578, 0.859069)
+bones/12/rotation = Quaternion(-0.436202, 0.00614899, -0.0126783, 0.899738)
+bones/13/rotation = Quaternion(-0.43614, -0.0268694, 0.0554015, 0.89777)
+bones/14/rotation = Quaternion(-0.356419, -0.334331, 0.757606, 0.432691)
+bones/15/rotation = Quaternion(-0.597524, -0.0839883, -0.419406, 0.678241)
+bones/16/rotation = Quaternion(-0.304797, -0.00689877, 0.229455, 0.924339)
+bones/17/position = Vector3(0.000301643, -1.46276, -1.71361)
+bones/17/rotation = Quaternion(0.0697362, -2.11689e-05, 0.00033178, 0.997565)
+bones/17/scale = Vector3(0.8, 0.8, 0.8)
+bones/18/position = Vector3(2.27177e-16, 2.95287, -0.135172)
+bones/20/position = Vector3(2.93228e-17, -0.146801, 0.450678)
+bones/23/position = Vector3(2.75019, -9.98471, -2.44336)
+bones/23/rotation = Quaternion(-0.105958, 0.783751, 0.453373, 0.411049)
+bones/24/rotation = Quaternion(0.0805107, -0.0826526, -0.362056, 0.924987)
+bones/25/rotation = Quaternion(-0.472974, -0.009874, -0.0101455, 0.880963)
+bones/26/rotation = Quaternion(-0.455334, -0.0427387, 0.0833085, 0.885384)
+bones/27/rotation = Quaternion(-0.45647, -0.000744013, 0.00145037, 0.889738)
+bones/28/rotation = Quaternion(-0.469957, -0.0608116, 0.0948442, 0.875469)
+bones/29/rotation = Quaternion(-0.45399, -0.012028, 0.0236121, 0.890613)
+bones/30/rotation = Quaternion(-0.453938, -0.0167757, 0.0329325, 0.890266)
+bones/31/rotation = Quaternion(-0.446111, -0.0846747, 0.153826, 0.877584)
+bones/32/rotation = Quaternion(-0.432293, 0.00566028, -0.0118014, 0.901638)
+bones/33/rotation = Quaternion(-0.432055, 0.0113401, -0.0236436, 0.901466)
+bones/34/rotation = Quaternion(-0.270635, -0.0770261, 0.260065, 0.923683)
+bones/35/rotation = Quaternion(-0.256671, -0.00361494, 0.0136191, 0.966396)
+bones/36/rotation = Quaternion(-0.255433, 0.0157968, -0.0595126, 0.964864)
+bones/37/rotation = Quaternion(-0.410082, -0.740126, 0.0336215, 0.531899)
+bones/38/rotation = Quaternion(0.0467626, 0.071419, -0.148611, 0.985204)
+bones/39/rotation = Quaternion(0.198745, -0.0948209, -0.149767, 0.963888)
+
+[node name="Slide_2" parent="HandRig/Skeleton3D" index="0"]
+transform = Transform3D(0.8, -0.000527177, -7.09336e-05, 0.000527194, 0.8, 0.000192032, 7.08071e-05, -0.000192082, 0.8, -0.00058998, -0.292164, -0.355423)
+
+[node name="Slide_2" parent="HandRig/Skeleton3D/Slide_2" index="0"]
+layers = 2
+
+[node name="Magazine_2" parent="HandRig/Skeleton3D" index="1"]
+transform = Transform3D(0.8, -0.000527177, -7.09336e-05, 0.000527194, 0.8, 0.000192016, 7.08071e-05, -0.000192061, 0.8, -0.00249055, 2.59031, -0.343594)
+
+[node name="Magazine_2" parent="HandRig/Skeleton3D/Magazine_2" index="0"]
+layers = 2
+
+[node name="Receiver" parent="HandRig/Skeleton3D" index="2"]
+transform = Transform3D(0.8, -0.000527177, -7.09335e-05, 0.000527194, 0.8, 0.000191882, 7.08071e-05, -0.000191927, 0.8, -0.00059109, -0.292161, -0.342901)
+
+[node name="Receiver" parent="HandRig/Skeleton3D/Receiver" index="0"]
+layers = 2
+
+[node name="Hand" parent="HandRig/Skeleton3D" index="3"]
+layers = 2
+
+[node name="HandL" parent="HandRig/Skeleton3D" index="4"]
+layers = 2
+
 [node name="WeaponSound" type="AudioStreamPlayer" parent="." index="1"]
 stream = ExtResource("3_7lq31")
 volume_db = 10.0
