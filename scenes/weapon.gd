@@ -11,13 +11,16 @@ class_name Weapon extends Node3D
 
 signal update_ammo_label(ammo_clip, ammo_pool)
 
+var is_firing = false
+
 func can_fire():
-	return ammo_clip > 0
+	return !is_firing and ammo_clip > 0
 
 func fire():
 	if not can_fire():
 		return
 	
+	is_firing = true
 	weapon_sound.play()
 	switch_to_animation("attack")
 	
@@ -30,6 +33,7 @@ func switch_to_animation(animation_name: String):
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Attack" || anim_name == "Fire":
 		animation_tree["parameters/conditions/attack"] = false
+		is_firing = false
 	elif anim_name == "Reload_Full":
 		animation_tree["parameters/conditions/reload"] = false
 
