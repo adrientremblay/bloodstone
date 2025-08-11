@@ -49,4 +49,9 @@ func handle_attack(player: Player) -> int: # returns the blood consumed
 	
 	bleed()
 	
+	# start chasing player if not already
+	if alive and ai_component.mode != ai_component.AiMode.CHASING_PLAYER and ai_component.attack_enabled:
+		ai_component.switch_mode(ai_component.AiMode.CHASING_PLAYER)
+		ai_component.player = player
+	
 	return 0
