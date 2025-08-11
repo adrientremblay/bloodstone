@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://farjai25lkyq"]
+
+[ext_resource type="PackedScene" uid="uid://cqsmrrk5vd257" path="res://assets/models/ammo_box/ammo_box.glb" id="1_jfiri"]
+
+[node name="ammo_box" instance=ExtResource("1_jfiri")]

@@ -50,3 +50,6 @@ func reload():
 		ammo_pool -= ammo_to_take
 		update_ammo_label.emit(ammo_clip, ammo_pool)
 	
+func add_ammo(amount: int):
+	ammo_pool += amount
+	update_ammo_label.emit(ammo_clip, ammo_pool)

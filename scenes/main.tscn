@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dc4m2o6rx7t1j"]
+[gd_scene load_steps=16 format=3 uid="uid://dc4m2o6rx7t1j"]
 
 [ext_resource type="PackedScene" uid="uid://dlss5l7s81x7o" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://4qwki5hxkwbg" path="res://scripts/main.gd" id="1_tefeu"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cm36lloods2oq" path="res://assets/images/crosshair.png" id="5_tefeu"]
 [ext_resource type="PackedScene" uid="uid://dgb11q6k60d0" path="res://scenes/ghoul.tscn" id="7_o6xl0"]
 [ext_resource type="Script" uid="uid://c0vp2orewcgg3" path="res://scripts/hud.gd" id="7_tipki"]
+[ext_resource type="PackedScene" uid="uid://bogdjqho4swjl" path="res://scenes/ammo_box.tscn" id="9_85g3d"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jyhfs"]
 vertices = PackedVector3Array(12.75, 0.5, -21.75, 11, 0.5, -21.75, 11.25, 0.5, -15.5, 13.25, 0.5, -15.25, 34.5, 0.5, -31.75, 13.25, 0.5, -31.75, 13.25, 0.5, -22.25, 34.5, 0.5, -10.5, 13.25, 0.5, -10.5, 2, 0.5, -12.75, 4.5, 0.5, -13, 4.5, 0.5, -15.25, -4.5, 0.5, -15.5, -4.25, 0.5, -13, -1.75, 0.5, -12.75, -1.75, 0.5, -9, 2, 0.5, -8.75, 6, 0.5, -21.75, -6.75, 0.5, -21.75, -6.75, 0.5, -15.5, 6.25, 0.5, -15.5, -1.75, 0.5, -7.25, 2.25, 0.5, -6.75, 7, 0.5, 6.75, 7, 0.5, -6.75, -2.25, 0.5, -6.75, -6.75, 0.5, 6.75, -6.75, 0.5, -6.75)
@@ -32,8 +33,6 @@ script = ExtResource("1_tefeu")
 
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2.69955)
-movement_speed = 6.0
-jump_velocity = 5.0
 
 [node name="candle" parent="." instance=ExtResource("4_jyhfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0538205, -0.0336832, -0.00199393)
@@ -146,6 +145,9 @@ offset_right = 1862.0
 offset_bottom = 1018.0
 label_settings = SubResource("LabelSettings_tipki")
 horizontal_alignment = 2
+
+[node name="AmmoBox" parent="." instance=ExtResource("9_85g3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375897, 0.00273786, -21.184)
 
 [connection signal="consumed_blood" from="Player" to="HUD" method="_on_player_consumed_blood"]
 [connection signal="update_ammo" from="Player" to="HUD" method="_on_player_update_ammo"]
