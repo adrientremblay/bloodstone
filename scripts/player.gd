@@ -96,6 +96,7 @@ func switch_weapon(weapon: Weapon):
 	current_weapon = weapon
 	current_weapon.visible = true
 	weapon_swap.play()
+	update_ammo.emit(current_weapon.ammo_clip, current_weapon.ammo_pool)
 
 func attack() -> void:	
 	if current_weapon.can_fire():
