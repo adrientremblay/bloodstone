@@ -60,4 +60,4 @@ func add_ammo(amount: int):
 		return
 	
 	ammo_pool += amount
-	update_ammo_label.emit(ammo_clip, ammo_pool)
+	update_ammo_label.emit(ammo_clip, ammo_pool, false)
