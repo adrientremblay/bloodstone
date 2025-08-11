@@ -144,6 +144,7 @@ draw_pass_1 = ExtResource("7_y4r1p")
 [node name="hand2" parent="Camera3D" instance=ExtResource("7_d2wvv")]
 transform = Transform3D(0.112939, 0.0260741, -0.0952096, -0.0337426, 0.146155, 0, 0.0927693, 0.0214175, 0.11591, 0.900253, -0.857792, -0.865083)
 visible = false
+melee = true
 
 [node name="WeaponViewport" type="SubViewportContainer" parent="."]
 anchors_preset = 15

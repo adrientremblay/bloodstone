@@ -22,7 +22,7 @@ var camera_min_angle = -80
 # Signals
 signal consumed_blood(amount)
 signal update_health(health)
-signal update_ammo(ammo_clip, ammo_pool)
+signal update_ammo(ammo_clip, ammo_pool, melee: bool)
  
 # Properties
 @onready var current_weapon: Weapon = hand
@@ -96,7 +96,7 @@ func switch_weapon(weapon: Weapon):
 	current_weapon = weapon
 	current_weapon.visible = true
 	weapon_swap.play()
-	update_ammo.emit(current_weapon.ammo_clip, current_weapon.ammo_pool)
+	update_ammo.emit(current_weapon.ammo_clip, current_weapon.ammo_pool, current_weapon.melee)
 
 func attack() -> void:	
 	if current_weapon.can_fire():

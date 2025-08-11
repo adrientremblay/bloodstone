@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dc4m2o6rx7t1j"]
+[gd_scene load_steps=17 format=3 uid="uid://dc4m2o6rx7t1j"]
 
 [ext_resource type="PackedScene" uid="uid://dlss5l7s81x7o" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://4qwki5hxkwbg" path="res://scripts/main.gd" id="1_tefeu"]
@@ -22,11 +22,15 @@ agent_height = 0.5
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
 bg_color = Color(0.556863, 0, 0.12549, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_85g3d"]
+font_color = Color(1, 0, 0, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tipki"]
 bg_color = Color(0, 0.545098, 0.12549, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_tipki"]
 font_size = 30
+font_color = Color(1, 0, 0, 1)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_tefeu")
@@ -115,6 +119,7 @@ offset_top = 223.0
 offset_right = 55.0
 offset_bottom = 246.0
 text = "blood"
+label_settings = SubResource("LabelSettings_85g3d")
 horizontal_alignment = 1
 
 [node name="HealthBar" type="ProgressBar" parent="HUD"]
@@ -135,6 +140,7 @@ offset_top = 223.0
 offset_right = 55.0
 offset_bottom = 246.0
 text = "health"
+label_settings = SubResource("LabelSettings_85g3d")
 horizontal_alignment = 1
 
 [node name="AmmoLabel" type="Label" parent="HUD"]
