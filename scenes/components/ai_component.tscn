@@ -29,6 +29,7 @@ shape = SubResource("SphereShape3D_uesyt")
 
 [node name="AttackAgainTimer" type="Timer" parent="."]
 
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
 [connection signal="timeout" from="FindNewTargetTimer" to="." method="_on_find_new_target_timer_timeout"]
 [connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
 [connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_exited"]

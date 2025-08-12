@@ -2,14 +2,22 @@ class_name ModelComponent extends Node3D
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 
+@export var walk_enabled: bool = true
+
 func _ready() -> void:
 	animation_tree.active = true
 
-func switch_to_animation(animation_name: String):
-	animation_tree["parameters/conditions/attack"] = false
-	animation_tree["parameters/conditions/die"] = false
+func switch_to_animation(animation_name: String):	
+	if !walk_enabled && (animation_name == "walk" || animation_name == "idle"):
+		return
 	
 	animation_tree["parameters/conditions/" + animation_name] = true
+	
+	if (animation_name == "idle"):
+		animation_tree["parameters/conditions/walk"] = false
+	if (animation_name == "walk"):
+		animation_tree["parameters/conditions/idle"] = false
+	
 	print("Switching to :" + animation_name)
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:

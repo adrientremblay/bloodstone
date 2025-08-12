@@ -56,6 +56,8 @@ func find_new_target() -> void:
 		var target_position = body.global_position + Vector3(target_radius,0,0).rotated(Vector3.UP,random_angle)
 		body.look_at(target_position)
 		navigation_agent.target_position = target_position
+		
+		model_component.switch_to_animation("walk")
 
 func _on_find_new_target_timer_timeout() -> void:
 	find_new_target() 
@@ -87,3 +89,6 @@ func _on_attack_again_timer_timeout() -> void:
 func _on_player_attack_area_body_exited(body: Node3D) -> void:
 	if enabled and body.is_in_group("player") and attack_enabled:
 		attack_again_timer.stop()
+
+func _on_navigation_agent_3d_target_reached() -> void:
+	model_component.switch_to_animation("idle")

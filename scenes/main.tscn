@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://dc4m2o6rx7t1j"]
+[gd_scene load_steps=16 format=3 uid="uid://dc4m2o6rx7t1j"]
 
 [ext_resource type="PackedScene" uid="uid://dlss5l7s81x7o" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://4qwki5hxkwbg" path="res://scripts/main.gd" id="1_tefeu"]
 [ext_resource type="MeshLibrary" uid="uid://d080r1hwfqfl8" path="res://scenes/tileset.tres" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://byqlpoakon47k" path="res://scenes/candle.tscn" id="4_jyhfs"]
-[ext_resource type="PackedScene" uid="uid://cggrv860g4o7o" path="res://scenes/rat.tscn" id="5_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://cm36lloods2oq" path="res://assets/images/crosshair.png" id="5_tefeu"]
 [ext_resource type="PackedScene" uid="uid://dgb11q6k60d0" path="res://scenes/ghoul.tscn" id="7_o6xl0"]
 [ext_resource type="Script" uid="uid://c0vp2orewcgg3" path="res://scripts/hud.gd" id="7_tipki"]
@@ -63,13 +62,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.4117, 0, -27.6082)
 [node name="candle3" parent="." instance=ExtResource("4_jyhfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2869, 0, -16.3748)
 
-[node name="Ghoul3" parent="." instance=ExtResource("7_o6xl0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1556, 0.235149, -29.8316)
-
 [node name="Entities" type="Node3D" parent="."]
-
-[node name="Rat" parent="Entities" instance=ExtResource("5_tbgi4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.22753, 0.274349, -2.88218)
 
 [node name="Ghoul" parent="Entities" instance=ExtResource("7_o6xl0")]
 transform = Transform3D(1.00563, 0, 0, 0, 1.00563, 0, 0, 0, 1.00563, -2.52291, 0.235149, -19.1054)
@@ -79,6 +72,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.4119, 0.235149, -21.0308)
 
 [node name="Ghoul4" parent="Entities" instance=ExtResource("7_o6xl0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.0463, 0.235149, -19.6303)
+
+[node name="Ghoul3" parent="Entities" instance=ExtResource("7_o6xl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1556, 0.235149, -29.8316)
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3

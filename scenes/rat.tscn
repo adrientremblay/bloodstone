@@ -95,6 +95,7 @@ shape = SubResource("CapsuleShape3D_acf8p")
 [node name="ModelComponent" parent="." instance=ExtResource("1_77a1s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.235149, 0)
 script = ExtResource("3_6s34g")
+walk_enabled = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ModelComponent"]
 root_node = NodePath("../..")
