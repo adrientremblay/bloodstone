@@ -152,7 +152,7 @@ horizontal_alignment = 2
 [node name="Candles" type="Node3D" parent="."]
 
 [node name="candle" parent="Candles" instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0538205, -0.0336832, -0.00199393)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.056, -0.0336832, 3.90806)
 
 [node name="candle2" parent="Candles" instance=ExtResource("4_jyhfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.979, 0, -25.1078)
@@ -183,7 +183,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3599, 0.00273803, -10.119
 [node name="Props" type="Node3D" parent="."]
 
 [node name="coffin" parent="." instance=ExtResource("9_choun")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.42168, 0, 1.76035)
+transform = Transform3D(0.835932, 0, -0.548833, 0, 1, 0, 0.548833, 0, 0.835932, 4.40541, 0, 3.76904)
 
 [connection signal="consumed_blood" from="Player" to="HUD" method="_on_player_consumed_blood"]
 [connection signal="update_ammo" from="Player" to="HUD" method="_on_player_update_ammo"]
