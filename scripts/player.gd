@@ -79,6 +79,16 @@ func _physics_process(delta):
 		walk_animation_player.play("walk")
 	if walk_animation_player.is_playing() and !is_on_floor() or direction == Vector3.ZERO:
 		walk_animation_player.pause()
+	
+	# Position of the teleport indicator to be raycasted if RMS is down
+	if Input.is_action_pressed("cast_spell"):
+		var raycast_vector = (-camera.global_transform.basis.z)
+		var query = PhysicsRayQueryParameters3D.create(camera.global_position, camera.global_position -camera.global_transform.basis.z * 1000)
+		var result = get_world_3d().direct_space_state.intersect_ray(query)
+		if result:
+			var tp_position = result.position
+			tp_position.y = 0 #put it on the floor
+			teleport_indicator.global_position = tp_position
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
@@ -93,13 +103,12 @@ func _input(event: InputEvent) -> void:
 			other_weapon = hand
 		
 		switch_weapon(other_weapon)
-	elif event.is_action_pressed("cast_spell"):
-		var raycast_vector = (-camera.global_transform.basis.z)
-		var query = PhysicsRayQueryParameters3D.create(camera.global_position, camera.global_position -camera.global_transform.basis.z * 1000)
-		var result = get_world_3d().direct_space_state.intersect_ray(query)
-
-		if result:
-			teleport_indicator.global_position = result.position
+	elif event.is_action_released("cast_spell"):
+		# do the teleportation
+		#if (teleport_indicator.i)
+		
+		# move the teleport indicator behind the player
+		teleport_indicator.position = Vector3(0,0,2)
 
 func switch_weapon(weapon: Weapon):
 	current_weapon.visible = false
