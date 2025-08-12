@@ -110,6 +110,7 @@ func _input(event: InputEvent) -> void:
 			self.global_position.z = teleport_indicator.global_position.z
 			blood -= 10
 			consumed_blood.emit(blood)
+			$TeleportSound.play()
 		
 		# move the teleport indicator behind the player
 		teleport_indicator.position = Vector3(0,0,2)
