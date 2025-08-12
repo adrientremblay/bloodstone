@@ -23,3 +23,5 @@ func switch_to_animation(animation_name: String):
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Attack":
 		animation_tree["parameters/conditions/attack"] = false
+	if anim_name == "Hurt":
+		animation_tree["parameters/conditions/hurt"] = false

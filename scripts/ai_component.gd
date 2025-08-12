@@ -56,8 +56,7 @@ func find_new_target() -> void:
 		var target_position = body.global_position + Vector3(target_radius,0,0).rotated(Vector3.UP,random_angle)
 		body.look_at(target_position)
 		navigation_agent.target_position = target_position
-		
-		model_component.switch_to_animation("walk")
+	model_component.switch_to_animation("walk")
 
 func _on_find_new_target_timer_timeout() -> void:
 	find_new_target() 

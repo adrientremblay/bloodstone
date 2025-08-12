@@ -36,6 +36,8 @@ func handle_attack(player: Player) -> int: # returns the blood consumed
 		health = health - player.current_weapon.damage
 		if health <= 0:
 			die()
+		else:
+			model_component.switch_to_animation("hurt")
 	
 	if player.current_weapon == player.hand:
 		var blood_available = min(blood, player.blood_drain)
