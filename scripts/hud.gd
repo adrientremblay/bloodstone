@@ -5,7 +5,7 @@ extends Control
 @onready var ammo_label = $AmmoLabel
 
 func _on_player_consumed_blood(amount: Variant) -> void:
-	blood_bar.value += amount
+	blood_bar.value = amount
 
 func _on_player_update_health(health: Variant) -> void:
 	health_bar.value = health

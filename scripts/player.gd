@@ -27,7 +27,9 @@ signal update_ammo(ammo_clip, ammo_pool, melee: bool)
 # Properties
 @onready var current_weapon: Weapon = hand
 var blood_drain = 10 # how much blood the player is able to drain per each feed
+var healing_factor = 5 #how much blood is converted to health per execution of the HealingTimer
 var health = 100
+var blood = 0
 
 func _ready() -> void:
 	pistol.visible = false
@@ -116,7 +118,8 @@ func attack() -> void:
 				if result.collider.is_in_group("enemies"):
 					var blood_consumed = result.collider.suffer_attack(self)
 					if blood_consumed != 0:
-						consumed_blood.emit(blood_consumed)
+						blood += blood_consumed
+						consumed_blood.emit(blood)
 				elif current_weapon != hand: 
 					# Create the bullet hole
 					var new_bullet_hole = bullet_hole_scene.instantiate()
@@ -156,5 +159,16 @@ func _on_melee_detection_area_area_entered(area: Area3D) -> void:
 		
 		var blood_consumed = health_component.give_up_blood(self)
 		if blood_consumed != 0:
-			consumed_blood.emit(blood_consumed)
+			blood += blood_consumed
+			consumed_blood.emit(blood)
 			health_component.bleed()
+
+func _on_healing_timer_timeout() -> void:
+	if health < 100 && blood > 0:
+		var blood_to_convert = min(min(100 - health, healing_factor), blood)
+		if blood_to_convert > 0:
+			blood -= blood_to_convert
+			health += blood_to_convert
+			consumed_blood.emit(blood)
+			update_health.emit(health)
+	$HealingTimer.start()

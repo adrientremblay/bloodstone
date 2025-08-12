@@ -191,6 +191,11 @@ stream = ExtResource("8_smehm")
 [node name="MeleeMonitoringTimer" type="Timer" parent="."]
 wait_time = 0.1
 
+[node name="HealingTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
 [connection signal="area_entered" from="Camera3D/MeleeDetectionArea" to="." method="_on_melee_detection_area_area_entered"]
 [connection signal="update_ammo_label" from="Camera3D/pistolmodel" to="." method="_on_weapon_update_ammo_label"]
 [connection signal="timeout" from="MeleeMonitoringTimer" to="." method="_on_melee_monitoring_timer_timeout"]
+[connection signal="timeout" from="HealingTimer" to="." method="_on_healing_timer_timeout"]
