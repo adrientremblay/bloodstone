@@ -98,30 +98,34 @@ func switch_weapon(weapon: Weapon):
 	weapon_swap.play()
 	update_ammo.emit(current_weapon.ammo_clip, current_weapon.ammo_pool, current_weapon.melee)
 
-func attack() -> void:	
-	if current_weapon.can_fire():
-		# Shooting Ray
-		var space = get_world_3d().direct_space_state
-		# Rotate vector around z by UP TO the accuracy angle
-		var raycast_vector = (-camera.global_transform.basis.z).rotated(camera.global_transform.basis.x, rng.randf_range(0, 1.0) * current_weapon.accuracy_angle * PI / 180)
-		raycast_vector = raycast_vector.rotated(-camera.global_transform.basis.z, rng.randf_range(0, 2*PI))
-		var query = PhysicsRayQueryParameters3D.create(camera.global_position, camera.global_position + (raycast_vector*current_weapon.range))
-		var result = space.intersect_ray(query)
+func attack() -> void:		
+	if current_weapon.melee:
+		$Camera3D/MeleeDetectionArea.monitoring = true
+		$MeleeMonitoringTimer.start()
+	else:
+		if current_weapon.can_fire():
+			# Shooting Ray
+			var space = get_world_3d().direct_space_state
+			# Rotate vector around z by UP TO the accuracy angle
+			var raycast_vector = (-camera.global_transform.basis.z).rotated(camera.global_transform.basis.x, rng.randf_range(0, 1.0) * current_weapon.accuracy_angle * PI / 180)
+			raycast_vector = raycast_vector.rotated(-camera.global_transform.basis.z, rng.randf_range(0, 2*PI))
+			var query = PhysicsRayQueryParameters3D.create(camera.global_position, camera.global_position + (raycast_vector*current_weapon.range))
+			var result = space.intersect_ray(query)
 
-		if result:
-			if result.collider.is_in_group("enemies"):
-				var blood_consumed = result.collider.suffer_attack(self)
-				if blood_consumed != 0:
-					consumed_blood.emit(blood_consumed)
-			elif current_weapon != hand: 
-				# Create the bullet hole
-				var new_bullet_hole = bullet_hole_scene.instantiate()
-				result.collider.add_child(new_bullet_hole)
-				new_bullet_hole.global_transform.origin = result.position
-				new_bullet_hole.look_at(result.position + result.normal, Vector3.UP)
-
-		#animate and play sound
-		current_weapon.fire()
+			if result:
+				if result.collider.is_in_group("enemies"):
+					var blood_consumed = result.collider.suffer_attack(self)
+					if blood_consumed != 0:
+						consumed_blood.emit(blood_consumed)
+				elif current_weapon != hand: 
+					# Create the bullet hole
+					var new_bullet_hole = bullet_hole_scene.instantiate()
+					result.collider.add_child(new_bullet_hole)
+					new_bullet_hole.global_transform.origin = result.position
+					new_bullet_hole.look_at(result.position + result.normal, Vector3.UP)
+	
+	#animate and play sound
+	current_weapon.fire()
 
 func reload():
 	current_weapon.reload()
@@ -142,3 +146,15 @@ func play_footstep():
 
 func _on_weapon_update_ammo_label(ammo_clip: Variant, ammo_pool: Variant, melee: bool) -> void:
 	update_ammo.emit(ammo_clip, ammo_pool, melee)
+
+func _on_melee_monitoring_timer_timeout() -> void:
+	$Camera3D/MeleeDetectionArea.monitoring = false
+
+func _on_melee_detection_area_area_entered(area: Area3D) -> void:
+	if area.is_in_group("feeding_area"):
+		var health_component: HealthComponent = area.health_component
+		
+		var blood_consumed = health_component.give_up_blood(self)
+		if blood_consumed != 0:
+			consumed_blood.emit(blood_consumed)
+			health_component.bleed()

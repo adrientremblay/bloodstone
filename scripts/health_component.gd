@@ -10,6 +10,7 @@ var alive = true
 @export var ambient_sound: AudioStreamPlayer3D
 @export var collission_shape: CollisionShape3D
 @export var death_sound: AudioStreamPlayer3D
+@export var feeding_area: Area3D
 
 # Children
 @onready var particle_emitter: GPUParticles3D = $GPUParticles3D
@@ -30,6 +31,7 @@ func die():
 	ai_component.enabled = false
 	model_component.switch_to_animation("die")
 	collission_shape.queue_free()
+	feeding_area.monitorable = true
 
 func handle_attack(player: Player) -> int: # returns the blood consumed
 	if alive:
@@ -40,14 +42,7 @@ func handle_attack(player: Player) -> int: # returns the blood consumed
 			model_component.switch_to_animation("hurt")
 	
 	if player.current_weapon == player.hand:
-		var blood_available = min(blood, player.blood_drain)
-		if blood_available == 0:
-			return 0
-				
-		eat_rat_sound.play()
-		blood -= blood_available
-		
-		return blood_available
+		return give_up_blood(player)
 	
 	bleed()
 	
@@ -57,3 +52,13 @@ func handle_attack(player: Player) -> int: # returns the blood consumed
 		ai_component.player = player
 	
 	return 0
+
+func give_up_blood(player: Player):
+	var blood_available = min(blood, player.blood_drain)
+	if blood_available == 0:
+		return 0
+			
+	eat_rat_sound.play()
+	blood -= blood_available
+	
+	return blood_available

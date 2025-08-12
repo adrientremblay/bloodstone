@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dlss5l7s81x7o"]
+[gd_scene load_steps=24 format=3 uid="uid://dlss5l7s81x7o"]
 
 [ext_resource type="Script" uid="uid://d1l785xbyf128" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://nsidatx54cps" path="res://scenes/bullet_hole.tscn" id="2_fjrip"]
@@ -14,6 +14,9 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2els"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_qhqgy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y4r1p"]
+radius = 0.197007
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4r1p"]
 transparency = 1
@@ -126,6 +129,14 @@ stream = ExtResource("5_tuyoq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.511698, 0)
 cull_mask = 1047553
 
+[node name="MeleeDetectionArea" type="Area3D" parent="Camera3D"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/MeleeDetectionArea"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1.72814)
+shape = SubResource("CapsuleShape3D_y4r1p")
+
 [node name="pistolmodel" parent="Camera3D" instance=ExtResource("5_smehm")]
 transform = Transform3D(-0.15, 0, -1.31134e-08, 0, 0.15, 0, 1.31134e-08, 0, -0.15, 0.729659, -0.46125, -1.18065)
 
@@ -177,4 +188,9 @@ libraries = {
 [node name="Jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_smehm")
 
+[node name="MeleeMonitoringTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="area_entered" from="Camera3D/MeleeDetectionArea" to="." method="_on_melee_detection_area_area_entered"]
 [connection signal="update_ammo_label" from="Camera3D/pistolmodel" to="." method="_on_weapon_update_ammo_label"]
+[connection signal="timeout" from="MeleeMonitoringTimer" to="." method="_on_melee_monitoring_timer_timeout"]
