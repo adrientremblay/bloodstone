@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bpb16lsdhjpf4"]
+[gd_scene load_steps=12 format=3 uid="uid://bpb16lsdhjpf4"]
 
 [ext_resource type="PackedScene" uid="uid://tktboyirjwb7" path="res://assets/models/ghoul/ghoul.glb" id="1_mlvwg"]
 [ext_resource type="Script" uid="uid://dbcsisply1vra" path="res://scripts/model_component.gd" id="2_mlvwg"]
@@ -6,67 +6,50 @@
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mlvwg"]
 animation = &"Attack"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sjtjd"]
-animation = &"Die"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_od4xi"]
+animation = &"Idle"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iyysc"]
 animation = &"Walk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_od4xi"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hopxy"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4kyc1"]
-advance_mode = 2
-advance_condition = &"die"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sn70i"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1uqnw"]
 advance_mode = 2
 advance_condition = &"attack"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0py3y"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mlvwg"]
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sjtjd"]
+advance_mode = 2
+advance_condition = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iyysc"]
+advance_mode = 2
+advance_condition = &"stop"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1uqnw"]
 states/Attack/node = SubResource("AnimationNodeAnimation_mlvwg")
-states/Attack/position = Vector2(351, 193)
-states/Die/node = SubResource("AnimationNodeAnimation_sjtjd")
-states/Die/position = Vector2(507, 77)
+states/Attack/position = Vector2(297, 214)
 states/End/position = Vector2(812, 77)
+states/Idle/node = SubResource("AnimationNodeAnimation_od4xi")
+states/Idle/position = Vector2(297, 57)
 states/Start/position = Vector2(161, 57)
 states/Walk/node = SubResource("AnimationNodeAnimation_iyysc")
-states/Walk/position = Vector2(346, 57)
-transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition_od4xi"), "Walk", "Die", SubResource("AnimationNodeStateMachineTransition_4kyc1"), "Walk", "Attack", SubResource("AnimationNodeStateMachineTransition_sn70i"), "Attack", "Walk", SubResource("AnimationNodeStateMachineTransition_0py3y")]
+states/Walk/position = Vector2(526, 57)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_hopxy"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_1uqnw"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_mlvwg"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_sjtjd"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_iyysc")]
 
 [node name="GhoulModel" instance=ExtResource("1_mlvwg")]
 script = ExtResource("2_mlvwg")
-
-[node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/rotation = Quaternion(-0.143549, 0.0140782, 0.00300742, 0.989538)
-bones/1/rotation = Quaternion(0.180623, -0.23855, 0.0326073, 0.953628)
-bones/3/rotation = Quaternion(-0.0520592, 0.0384059, -0.187798, 0.980075)
-bones/4/rotation = Quaternion(0.597789, 0.500972, -0.587266, 0.216319)
-bones/5/rotation = Quaternion(-0.361519, 0.27799, -0.17255, 0.873071)
-bones/6/rotation = Quaternion(0.169448, -0.658839, -0.338312, 0.650203)
-bones/7/rotation = Quaternion(0.385952, 0.544693, 0.391145, 0.633527)
-bones/9/rotation = Quaternion(0.0161736, 0.100369, -0.183274, 0.977791)
-bones/10/rotation = Quaternion(-0.189804, -0.0956036, -0.185779, 0.959333)
-bones/11/rotation = Quaternion(0.0172024, 0.012017, 0.294686, 0.955364)
-bones/12/position = Vector3(-0.485946, 2.0555, 0.485946)
-bones/12/rotation = Quaternion(-0.452329, -0.390489, -0.606942, 0.523964)
-bones/13/rotation = Quaternion(-0.496686, -0.0765416, -0.181981, 0.845179)
-bones/14/rotation = Quaternion(-0.144198, -0.0528722, -0.076729, 0.985152)
-bones/15/rotation = Quaternion(0.949284, 5.96046e-08, 0.283149, -0.1367)
-bones/16/rotation = Quaternion(0.594666, -0.357259, -0.66448, -0.277857)
-bones/17/rotation = Quaternion(-0.377609, -0.111582, -0.225474, 0.891135)
-bones/18/rotation = Quaternion(0.021906, 0.0101866, 0.254302, 0.966823)
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
 tree_root = SubResource("AnimationNodeStateMachine_1uqnw")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/attack = false
-parameters/conditions/die = false
+parameters/conditions/stop = false
+parameters/conditions/walk = false
 
-[connection signal="animation_changed" from="AnimationPlayer" to="." method="_on_animation_player_animation_changed"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
