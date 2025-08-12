@@ -13,6 +13,7 @@ class_name Player extends CharacterBody3D
 @onready var weapon_swap = $WeaponSwap
 @onready var footstep = $Footstep
 @onready var jump = $Jump
+@onready var teleport_indicator = $TeleportIndicator
 
 # Constants
 var camera_max_angle = 80
@@ -92,6 +93,13 @@ func _input(event: InputEvent) -> void:
 			other_weapon = hand
 		
 		switch_weapon(other_weapon)
+	elif event.is_action_pressed("cast_spell"):
+		var raycast_vector = (-camera.global_transform.basis.z)
+		var query = PhysicsRayQueryParameters3D.create(camera.global_position, camera.global_position -camera.global_transform.basis.z * 1000)
+		var result = get_world_3d().direct_space_state.intersect_ray(query)
+
+		if result:
+			teleport_indicator.global_position = result.position
 
 func switch_weapon(weapon: Weapon):
 	current_weapon.visible = false
