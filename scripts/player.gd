@@ -105,9 +105,11 @@ func _input(event: InputEvent) -> void:
 		switch_weapon(other_weapon)
 	elif event.is_action_released("cast_spell"):
 		# do the teleportation
-		if (teleport_indicator.position != Vector3(0,0,2)):
+		if (teleport_indicator.position != Vector3(0,0,2) and blood >= 10):
 			self.global_position.x = teleport_indicator.global_position.x
 			self.global_position.z = teleport_indicator.global_position.z
+			blood -= 10
+			consumed_blood.emit(blood)
 		
 		# move the teleport indicator behind the player
 		teleport_indicator.position = Vector3(0,0,2)
