@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dc4m2o6rx7t1j"]
+[gd_scene load_steps=27 format=3 uid="uid://dc4m2o6rx7t1j"]
 
 [ext_resource type="PackedScene" uid="uid://dlss5l7s81x7o" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://4qwki5hxkwbg" path="res://scripts/main.gd" id="1_tefeu"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://beey7tqrleyh6" path="res://assets/images/arrow.png" id="9_trceg"]
 [ext_resource type="PackedScene" uid="uid://bk4ks0dnqy4f7" path="res://scenes/book.tscn" id="10_choun"]
 [ext_resource type="AudioStream" uid="uid://dpjwd55b7cqeu" path="res://assets/audio/page_flip.mp3" id="11_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://cuk8hbu0l73pd" path="res://scenes/skull.tscn" id="16_jbj1t"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jyhfs"]
 vertices = PackedVector3Array(10.25, 0.5, -17.25, 8.5, 0.5, -17.25, 8.75, 0.5, -12.5, 10.75, 0.5, -12.25, 27.5, 0.5, -25.25, 10.75, 0.5, -25.25, 10.75, 0.5, -17.75, 27.5, 0.5, -8.5, 10.75, 0.5, -8.5, -12.5, 0.5, -20.25, -9, 0.5, -20.5, -8.75, 0.5, -23.25, -15.25, 0.5, -23.25, -15.25, 0.5, -15.5, -12.5, 0.5, -15.25, -5.5, 0.5, -14.5, -5.25, 0.5, -14, -4, 0.5, -17.25, -4.5, 0.5, -17.5, -4.5, 0.5, -23.25, -7.25, 0.5, -20.25, -7.25, 0.5, -14.5, -5.25, 0.5, -12.5, -3.25, 0.5, -12.25, 3.75, 0.5, -12.5, -3.25, 0.5, -10.5, -1.25, 0.5, -10.25, 1.5, 0.5, -10.25, 3.5, 0.5, -10.5, -1.25, 0.5, -7.5, 1.5, 0.5, -7.25, -15.75, 0.5, -13.25, -17.25, 0.5, -13.25, -17.25, 0.5, -11.75, -15.25, 0.5, -13.75, -12.5, 0.5, -13.5, -17.5, 0.5, -8.5, -17.75, 0.5, -11.25, -19.25, 0.5, -11.25, -19.25, 0.5, -8.5, -10.25, 0.5, -11.25, -10.5, 0.5, -13.25, -10.5, 0.5, -8.25, -8.5, 0.5, -8.5, -8.5, 0.5, -11.25, -17.25, 0.5, -6.5, -10.5, 0.5, -6.5, -1.25, 0.5, -5.75, 1.75, 0.5, -5.25, 5.5, 0.5, 5.25, 5.5, 0.5, -5.25, -1.75, 0.5, -5.25, -5.25, 0.5, 5.25, -5.25, 0.5, -5.25)
@@ -325,6 +326,9 @@ KILLING A VAMPIRE
 
 The Vampire is strong, fast, and resistant to physical damage. But they are not immune. Vampires can be slayn by the sword. However, they possess many weaknesses. The foremost being sunlight and fire. They are also weak so silver."
 description = "On the Nature of Vampires"
+
+[node name="skull" parent="." instance=ExtResource("16_jbj1t")]
+transform = Transform3D(0.011444, 0.339066, 0.940693, -0.00412461, 0.940762, -0.339041, -0.999926, 0, 0.0121646, 3.41582, 0.0311372, -0.0329552)
 
 [connection signal="can_inspect" from="Player" to="HUD" method="_on_player_can_inspect"]
 [connection signal="cannot_inspect" from="Player" to="HUD" method="_on_player_cannot_inspect"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuk8hbu0l73pd"]
+
+[ext_resource type="PackedScene" uid="uid://cqyh7ke7tkr3b" path="res://assets/models/skull/skull.glb" id="1_1bx6h"]
+[ext_resource type="Script" uid="uid://b3q4cit336i5x" path="res://scenes/skull.gd" id="2_sco77"]
+
+[node name="skull" instance=ExtResource("1_1bx6h")]
+script = ExtResource("2_sco77")
+
+[node name="Armature" parent="." index="0"]
+transform = Transform3D(-1.09278e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.09278e-08, 0, 0.212287, 0)
+
+[node name="Skull2" parent="Armature" index="0"]
+transform = Transform3D(0.99995, -0.00987738, -0.0016092, 0.00989093, 0.999914, 0.00864519, 0.00152366, -0.00866068, 0.999961, -0.000484426, -0.00029726, -0.000471192)
+
+[node name="Jaw2" parent="Armature/Skull2" index="0"]
+transform = Transform3D(1.38935e-07, 0.673842, -0.738875, 2.87729e-07, -0.738875, -0.673842, -1, -1.18975e-07, -2.9654e-07, 0.0597336, -0.098091, 0.00047134)
