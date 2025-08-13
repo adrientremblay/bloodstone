@@ -2,7 +2,7 @@ class_name Book extends Inspectable
 
 @export_multiline var contents: String
 
-var CHARACTERS_PER_PAGE = 200
+var CHARACTERS_PER_PAGE = 500
 
 func get_pages() -> Array:
 	var pages = []
