@@ -52,6 +52,9 @@ func _unhandled_input(event: InputEvent):
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(camera_min_angle), deg_to_rad(camera_max_angle))
 
 func _physics_process(delta):
+	if book != null:
+		return
+	
 	var input_dir = Vector3.ZERO
 	
 	# direction
@@ -94,6 +97,9 @@ func _physics_process(delta):
 			teleport_indicator.global_position = tp_position
 
 func _input(event: InputEvent) -> void:
+	if book != null:
+		return
+	
 	if event.is_action_pressed("attack"):
 		attack()
 	elif event.is_action_pressed("reload"):
