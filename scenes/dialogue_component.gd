@@ -1,0 +1,1 @@
+class_name DialogueComponent extends Inspectable
