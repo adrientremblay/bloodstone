@@ -290,8 +290,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3599, 0.00273803, -10.119
 [node name="coffin" parent="Props" instance=ExtResource("9_choun")]
 transform = Transform3D(0.835932, 0, -0.548833, 0, 1, 0, 0.548833, 0, 0.835932, 4.40541, 0, 3.76904)
 
-[node name="Book" parent="." instance=ExtResource("10_choun")]
+[node name="TheFallOfTheBloodKings" parent="." instance=ExtResource("10_choun")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2412, 2.38419e-07, 3.93146)
+contents = "In the dark days of the age of kings, King Garvald ruled the land. Before him was King Titue. And before him, King Polvae. Before him, many more names I do not care to list. This dynasty we call now the \"blood kings\". 
+
+These kings were evil. They were tyrants, hated by all those who worked the fields and those who worked the hammer. The people lived on modest scraps, whilst those of Royal Blood feasted. 
+
+Furthermore, these so called \"Kings\" were in league with the dark forces of this world. They were mere slaves to Vampires. Long ago, a distant ancestor of the Blood Kings made a deal with the Vampires. During the day, he and his men would guard the Vampires in his castles. Then, when night falls the Vampires would descent on the land and elimenate those who dare challenge or question the rule of the Blood Kings.
+
+This went on for hunderds of years. Until the formation of a holy order of Knights: The Order of the Blue Flame. These brave knights stormed the fortress of King Garvald, fought all day, and slew the vile vampires in their crypts while they slept defenseless.
+
+Many years have passed since that day. And now we have no kings.  We have no masters. We have only protectors: those who protect us from the evil of this realm. The vampires have been hunted to the ends of this earth. All the vampire lords and their clans are extinct. The only remenants are those of weak vampiric ancestry. We call them 'Thinbloods'. 
+
+They are of little threat, but are not to be trusted. Perhaps the world is not yet safe. Until then, the Knights of the Blue Flame protect us."
+description = "The Fall Of The Blood Kings"
 
 [connection signal="can_inspect" from="Player" to="HUD" method="_on_player_can_inspect"]
 [connection signal="cannot_inspect" from="Player" to="HUD" method="_on_player_cannot_inspect"]
