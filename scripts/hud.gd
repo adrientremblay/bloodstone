@@ -11,6 +11,7 @@ extends Control
 @onready var book_page_right = $BookBackground/PageRight
 @onready var page_right_button = $BookBackground/PageRightButton
 @onready var page_left_button = $BookBackground/PageLeftButton
+@onready var page_flip_sound: AudioStreamPlayer = $BookBackground/PageFlip
 
 var pages = []
 var current_page = 0 # 0-indexed and the left page
@@ -67,6 +68,7 @@ func toggle_book(title: String, pages: Array):
 		display_book(title, pages)
 	else:
 		hide_book()
+		page_flip_sound.play()
 
 func _on_page_right_button_pressed() -> void:
 	current_page += 2
@@ -89,6 +91,8 @@ func update_pages() -> void:
 		page_left_button.visible = true
 	else:
 		page_left_button.visible = false
+	
+	page_flip_sound.play()
 
 func _on_page_left_button_pressed() -> void:
 	current_page -= 2
