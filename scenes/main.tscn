@@ -10,7 +10,7 @@
 [ext_resource type="FontFile" uid="uid://uxw2xkghxi8f" path="res://assets/fonts/Times Regular.ttf" id="7_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://bogdjqho4swjl" path="res://scenes/ammo_box.tscn" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://coey4c11c061r" path="res://scenes/coffin.tscn" id="9_choun"]
-[ext_resource type="PackedScene" uid="uid://tjp31qdv30ff" path="res://scenes/book.tscn" id="10_choun"]
+[ext_resource type="PackedScene" uid="uid://bk4ks0dnqy4f7" path="res://scenes/book.tscn" id="10_choun"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jyhfs"]
 vertices = PackedVector3Array(10.25, 0.5, -17.25, 8.5, 0.5, -17.25, 8.75, 0.5, -12.5, 10.75, 0.5, -12.25, 27.5, 0.5, -25.25, 10.75, 0.5, -25.25, 10.75, 0.5, -17.75, 27.5, 0.5, -8.5, 10.75, 0.5, -8.5, -12.5, 0.5, -20.25, -9, 0.5, -20.5, -8.75, 0.5, -23.25, -15.25, 0.5, -23.25, -15.25, 0.5, -15.5, -12.5, 0.5, -15.25, -5.5, 0.5, -14.5, -5.25, 0.5, -14, -4, 0.5, -17.25, -4.5, 0.5, -17.5, -4.5, 0.5, -23.25, -7.25, 0.5, -20.25, -7.25, 0.5, -14.5, -5.25, 0.5, -12.5, -3.25, 0.5, -12.25, 3.75, 0.5, -12.5, -3.25, 0.5, -10.5, -1.25, 0.5, -10.25, 1.5, 0.5, -10.25, 3.5, 0.5, -10.5, -1.25, 0.5, -7.5, 1.5, 0.5, -7.25, -15.75, 0.5, -13.25, -17.25, 0.5, -13.25, -17.25, 0.5, -11.75, -15.25, 0.5, -13.75, -12.5, 0.5, -13.5, -17.5, 0.5, -8.5, -17.75, 0.5, -11.25, -19.25, 0.5, -11.25, -19.25, 0.5, -8.5, -10.25, 0.5, -11.25, -10.5, 0.5, -13.25, -10.5, 0.5, -8.25, -8.5, 0.5, -8.5, -8.5, 0.5, -11.25, -17.25, 0.5, -6.5, -10.5, 0.5, -6.5, -1.25, 0.5, -5.75, 1.75, 0.5, -5.25, 5.5, 0.5, 5.25, 5.5, 0.5, -5.25, -1.75, 0.5, -5.25, -5.25, 0.5, 5.25, -5.25, 0.5, -5.25)
@@ -203,8 +203,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3599, 0.00273803, -10.119
 [node name="coffin" parent="Props" instance=ExtResource("9_choun")]
 transform = Transform3D(0.835932, 0, -0.548833, 0, 1, 0, 0.548833, 0, 0.835932, 4.40541, 0, 3.76904)
 
-[node name="book" parent="." instance=ExtResource("10_choun")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.79458, 0, 4.12282)
+[node name="Book" parent="." instance=ExtResource("10_choun")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2412, 2.38419e-07, 3.93146)
 
 [connection signal="can_inspect" from="Player" to="HUD" method="_on_player_can_inspect"]
 [connection signal="cannot_inspect" from="Player" to="HUD" method="_on_player_cannot_inspect"]
