@@ -191,7 +191,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.321569)
 
 [node name="BookPixelart" type="TextureRect" parent="HUD/BookBackground"]
-modulate = Color(1, 1, 1, 0.333333)
+modulate = Color(1, 1, 1, 0.356863)
 layout_mode = 0
 offset_left = 266.0
 offset_top = 117.0
@@ -230,10 +230,10 @@ vertical_alignment = 1
 
 [node name="PageRightButton" type="Button" parent="HUD/BookBackground"]
 layout_mode = 0
-offset_left = 1643.0
-offset_top = 402.0
-offset_right = 1846.0
-offset_bottom = 693.0
+offset_left = 1645.0
+offset_top = 356.0
+offset_right = 1848.0
+offset_bottom = 647.0
 icon = ExtResource("9_trceg")
 flat = true
 icon_alignment = 1
@@ -241,10 +241,10 @@ expand_icon = true
 
 [node name="PageLeftButton" type="Button" parent="HUD/BookBackground"]
 layout_mode = 0
-offset_left = 292.0
-offset_top = 664.0
-offset_right = 495.0
-offset_bottom = 955.0
+offset_left = 313.0
+offset_top = 662.0
+offset_right = 516.0
+offset_bottom = 953.0
 rotation = 3.14159
 icon = ExtResource("9_trceg")
 flat = true
