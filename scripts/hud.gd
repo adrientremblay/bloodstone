@@ -53,4 +53,10 @@ func hide_book():
 	# Show the stuff that would get in the way
 	crosshair.visible = true
 	inspect_label.visible = true
+
+func toggle_book(title: String, contents: String):
+	if not book_background.visible:
+		display_book(title, contents)
+	else:
+		hide_book()
 	
