@@ -34,6 +34,7 @@ var healing_factor = 5 #how much blood is converted to health per execution of t
 var health = 100
 var blood = 0
 var book: Book = null
+var frozen = false
 
 func _ready() -> void:
 	pistol.visible = false
@@ -52,7 +53,7 @@ func _unhandled_input(event: InputEvent):
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(camera_min_angle), deg_to_rad(camera_max_angle))
 
 func _physics_process(delta):
-	if book != null:
+	if frozen:
 		return
 	
 	var input_dir = Vector3.ZERO
@@ -97,7 +98,7 @@ func _physics_process(delta):
 			teleport_indicator.global_position = tp_position
 
 func _input(event: InputEvent) -> void:
-	if book != null:
+	if frozen:
 		return
 	
 	if event.is_action_pressed("attack"):

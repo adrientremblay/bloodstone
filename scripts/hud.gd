@@ -34,7 +34,7 @@ func _on_player_can_inspect(description: String) -> void:
 func _on_player_cannot_inspect() -> void:
 	inspect_label.visible = false
 
-func display_book(title: String, contents: String) -> void:
+func display_book(title: String, pages: Array) -> void:
 	# Show the book stuff
 	book_background.visible = true
 	
@@ -44,7 +44,9 @@ func display_book(title: String, contents: String) -> void:
 	
 	# Update the contents of the book
 	book_title.text = title
-	book_page_left.text = contents
+	book_page_left.text = pages[0]
+	if pages.size() > 1:
+		book_page_right.text = pages[1]
 
 func hide_book():
 	# Hide the book stuff
@@ -54,9 +56,9 @@ func hide_book():
 	crosshair.visible = true
 	inspect_label.visible = true
 
-func toggle_book(title: String, contents: String):
+func toggle_book(title: String, pages: Array):
 	if not book_background.visible:
-		display_book(title, contents)
+		display_book(title, pages)
 	else:
 		hide_book()
 	
