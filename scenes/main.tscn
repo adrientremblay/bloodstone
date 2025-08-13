@@ -305,6 +305,27 @@ Many years have passed since that day. And now we have no kings.  We have no mas
 They are of little threat, but are not to be trusted. Perhaps the world is not yet safe. Until then, the Knights of the Blue Flame protect us."
 description = "The Fall Of The Blood Kings"
 
+[node name="Book" parent="." instance=ExtResource("10_choun")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.31027, 1.19209e-07, 3.89862)
+contents = "Though I have not ever seen or dissected a true Vampire in my lifetime as they are all dead, I have studied the historical accounts thoroughly. Here is a thorough analysis of the nature of Vampires: their appearance, their diet, weaknesses and behaviour.
+
+APPEARANCE
+
+The Vampire is easily distinguishable from those who yet breath air, eat food, and fuck the living. They have pale gray skin, piercing red eyes, and long claws. Their breath and skin emit no heat. They do not age.
+
+THE HUNGER
+
+The vampiric curse is that of hunger. An insatiable hunger for blood. It is known that Vampires can survive off the blood of animals and creatures. Captured vampires have attested to the horrible taste and the lack of sustinence. A vampire is only ever truly satisifed and fully powerfull when full of human blood.
+
+ABILITIES
+
+The vampire has many known abilities. Some theorize that the partciular powers thaat any signle vampire posess various depending on the vampire clan or bloodlines. Whilst other scholars assert the age or training of the vampire is the deciding factor. Vampires have been recorded performing the following abilities: Teleportation, Transmutation, Necromancy, Metamorphosing...
+
+KILLING A VAMPIRE
+
+The Vampire is strong, fast, and resistant to physical damage. But they are not immune. Vampires can be slayn by the sword. However, they possess many weaknesses. The foremost being sunlight and fire. They are also weak so silver."
+description = "On the Nature of Vampires"
+
 [connection signal="can_inspect" from="Player" to="HUD" method="_on_player_can_inspect"]
 [connection signal="cannot_inspect" from="Player" to="HUD" method="_on_player_cannot_inspect"]
 [connection signal="consumed_blood" from="Player" to="HUD" method="_on_player_consumed_blood"]
