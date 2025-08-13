@@ -26,6 +26,7 @@ window/size/mode=2
 enemies=""
 player=""
 feeding_area=""
+inspectable=""
 
 [input]
 

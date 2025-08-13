@@ -24,6 +24,8 @@ var camera_min_angle = -80
 signal consumed_blood(amount)
 signal update_health(health)
 signal update_ammo(ammo_clip, ammo_pool, melee: bool)
+signal can_inspect(description: String)
+signal cannot_inspect
  
 # Properties
 @onready var current_weapon: Weapon = hand
@@ -194,3 +196,12 @@ func _on_healing_timer_timeout() -> void:
 			consumed_blood.emit(blood)
 			update_health.emit(health)
 	$HealingTimer.start()
+
+func _on_inspectable_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("inspectable"):
+		var inspectable: Inspectable = body
+		can_inspect.emit(inspectable.description)
+
+func _on_inspectable_area_body_exited(body: Node3D) -> void:
+	if body.is_in_group("inspectable"):
+		cannot_inspect.emit()

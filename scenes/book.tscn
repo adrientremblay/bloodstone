@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://tjp31qdv30ff"]
+[gd_scene load_steps=4 format=3 uid="uid://tjp31qdv30ff"]
 
 [ext_resource type="PackedScene" uid="uid://1yuovgieux1x" path="res://assets/models/book/book.glb" id="1_ble1a"]
+[ext_resource type="Script" uid="uid://khhfuiqyum66" path="res://scenes/inspectable.gd" id="2_3wpgy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ble1a"]
 size = Vector3(20.8905, 12.151, 47.161)
@@ -10,8 +11,10 @@ size = Vector3(20.8905, 12.151, 47.161)
 [node name="Plane" parent="." index="0"]
 transform = Transform3D(-0.127, 0, -8.74228e-09, 0, 0.1, 0, 1.11027e-08, 0, -0.1, 0, 0, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" groups=["inspectable"]]
 transform = Transform3D(-0.127, 0, -8.74228e-09, 0, 0.1, 0, 1.11027e-08, 0, -0.1, 0, 0, 0)
+script = ExtResource("2_3wpgy")
+description = "Book"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 transform = Transform3D(-0.127, 0, -8.74228e-09, 0, 0.1, 0, 1.11027e-08, 0, -0.1, 0.0365872, 0.583245, -0.0240971)

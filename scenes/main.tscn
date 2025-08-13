@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dc4m2o6rx7t1j"]
+[gd_scene load_steps=20 format=3 uid="uid://dc4m2o6rx7t1j"]
 
 [ext_resource type="PackedScene" uid="uid://dlss5l7s81x7o" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://4qwki5hxkwbg" path="res://scripts/main.gd" id="1_tefeu"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cm36lloods2oq" path="res://assets/images/crosshair.png" id="5_tefeu"]
 [ext_resource type="PackedScene" uid="uid://dgb11q6k60d0" path="res://scenes/ghoul.tscn" id="7_o6xl0"]
 [ext_resource type="Script" uid="uid://c0vp2orewcgg3" path="res://scripts/hud.gd" id="7_tipki"]
+[ext_resource type="FontFile" uid="uid://uxw2xkghxi8f" path="res://assets/fonts/Times Regular.ttf" id="7_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://bogdjqho4swjl" path="res://scenes/ammo_box.tscn" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://coey4c11c061r" path="res://scenes/coffin.tscn" id="9_choun"]
 [ext_resource type="PackedScene" uid="uid://tjp31qdv30ff" path="res://scenes/book.tscn" id="10_choun"]
@@ -30,6 +31,11 @@ font_color = Color(1, 0, 0, 1)
 bg_color = Color(0, 0.545098, 0.12549, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_tipki"]
+font_size = 30
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_eb6dy"]
+font = ExtResource("7_ya4ey")
 font_size = 30
 font_color = Color(1, 0, 0, 1)
 
@@ -150,6 +156,17 @@ offset_bottom = 1018.0
 label_settings = SubResource("LabelSettings_tipki")
 horizontal_alignment = 2
 
+[node name="InspectLabel" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 939.0
+offset_right = 1917.0
+offset_bottom = 988.0
+text = "Book
+"
+label_settings = SubResource("LabelSettings_eb6dy")
+horizontal_alignment = 1
+
 [node name="Candles" type="Node3D" parent="."]
 
 [node name="candle" parent="Candles" instance=ExtResource("4_jyhfs")]
@@ -189,6 +206,8 @@ transform = Transform3D(0.835932, 0, -0.548833, 0, 1, 0, 0.548833, 0, 0.835932, 
 [node name="book" parent="." instance=ExtResource("10_choun")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.79458, 0, 4.12282)
 
+[connection signal="can_inspect" from="Player" to="HUD" method="_on_player_can_inspect"]
+[connection signal="cannot_inspect" from="Player" to="HUD" method="_on_player_cannot_inspect"]
 [connection signal="consumed_blood" from="Player" to="HUD" method="_on_player_consumed_blood"]
 [connection signal="update_ammo" from="Player" to="HUD" method="_on_player_update_ammo"]
 [connection signal="update_health" from="Player" to="HUD" method="_on_player_update_health"]

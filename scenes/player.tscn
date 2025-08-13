@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dlss5l7s81x7o"]
+[gd_scene load_steps=27 format=3 uid="uid://dlss5l7s81x7o"]
 
 [ext_resource type="Script" uid="uid://d1l785xbyf128" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://nsidatx54cps" path="res://scenes/bullet_hole.tscn" id="2_fjrip"]
@@ -19,6 +19,9 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y4r1p"]
 radius = 0.197007
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3v2ag"]
+radius = 0.241284
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4r1p"]
 transparency = 1
@@ -140,6 +143,12 @@ monitorable = false
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1.72814)
 shape = SubResource("CapsuleShape3D_y4r1p")
 
+[node name="InspectableArea" type="Area3D" parent="Camera3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/InspectableArea"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1.72153)
+shape = SubResource("CapsuleShape3D_3v2ag")
+
 [node name="pistolmodel" parent="Camera3D" instance=ExtResource("5_smehm")]
 transform = Transform3D(-0.15, 0, -1.31134e-08, 0, 0.15, 0, 1.31134e-08, 0, -0.15, 0.729659, -0.46125, -1.18065)
 
@@ -205,6 +214,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.993477)
 stream = ExtResource("12_3v2ag")
 
 [connection signal="area_entered" from="Camera3D/MeleeDetectionArea" to="." method="_on_melee_detection_area_area_entered"]
+[connection signal="body_entered" from="Camera3D/InspectableArea" to="." method="_on_inspectable_area_body_entered"]
+[connection signal="body_exited" from="Camera3D/InspectableArea" to="." method="_on_inspectable_area_body_exited"]
 [connection signal="update_ammo_label" from="Camera3D/pistolmodel" to="." method="_on_weapon_update_ammo_label"]
 [connection signal="timeout" from="MeleeMonitoringTimer" to="." method="_on_melee_monitoring_timer_timeout"]
 [connection signal="timeout" from="HealingTimer" to="." method="_on_healing_timer_timeout"]
