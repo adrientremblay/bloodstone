@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dc4m2o6rx7t1j"]
+[gd_scene load_steps=24 format=3 uid="uid://dc4m2o6rx7t1j"]
 
 [ext_resource type="PackedScene" uid="uid://dlss5l7s81x7o" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://4qwki5hxkwbg" path="res://scripts/main.gd" id="1_tefeu"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ri4rq7u2kwd1" path="res://assets/images/book_background_pixelart.png" id="8_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://bogdjqho4swjl" path="res://scenes/ammo_box.tscn" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://coey4c11c061r" path="res://scenes/coffin.tscn" id="9_choun"]
+[ext_resource type="Texture2D" uid="uid://beey7tqrleyh6" path="res://assets/images/arrow.png" id="9_trceg"]
 [ext_resource type="PackedScene" uid="uid://bk4ks0dnqy4f7" path="res://scenes/book.tscn" id="10_choun"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jyhfs"]
@@ -225,6 +226,17 @@ label_settings = SubResource("LabelSettings_a8y0u")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="PageRightButton" type="Button" parent="HUD/BookBackground"]
+layout_mode = 0
+offset_left = 1643.0
+offset_top = 402.0
+offset_right = 1846.0
+offset_bottom = 693.0
+icon = ExtResource("9_trceg")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
 [node name="Candles" type="Node3D" parent="."]
 
 [node name="candle" parent="Candles" instance=ExtResource("4_jyhfs")]
@@ -269,3 +281,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2412, 2.38419e-07, 3.93146)
 [connection signal="consumed_blood" from="Player" to="HUD" method="_on_player_consumed_blood"]
 [connection signal="update_ammo" from="Player" to="HUD" method="_on_player_update_ammo"]
 [connection signal="update_health" from="Player" to="HUD" method="_on_player_update_health"]
+[connection signal="pressed" from="HUD/BookBackground/PageRightButton" to="HUD" method="_on_page_right_button_pressed"]
