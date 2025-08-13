@@ -33,6 +33,7 @@ var blood_drain = 10 # how much blood the player is able to drain per each feed
 var healing_factor = 5 #how much blood is converted to health per execution of the HealingTimer
 var health = 100
 var blood = 0
+var book: Book = null
 
 func _ready() -> void:
 	pistol.visible = false
@@ -201,7 +202,12 @@ func _on_inspectable_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("inspectable"):
 		var inspectable: Inspectable = body
 		can_inspect.emit(inspectable.description)
+		if body.is_in_group("book"):
+			book = inspectable
 
 func _on_inspectable_area_body_exited(body: Node3D) -> void:
 	if body.is_in_group("inspectable"):
+		var inspectable: Inspectable = body
 		cannot_inspect.emit()
+		if body.is_in_group("book"):
+			book = null

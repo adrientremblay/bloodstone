@@ -1,13 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://bk4ks0dnqy4f7"]
 
 [ext_resource type="PackedScene" uid="uid://tjp31qdv30ff" path="res://scenes/book_model.tscn" id="1_3wpgy"]
-[ext_resource type="Script" uid="uid://khhfuiqyum66" path="res://scenes/inspectable.gd" id="2_3wpgy"]
+[ext_resource type="Script" uid="uid://d1swc1x62mkw5" path="res://book.gd" id="1_8uccb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8uccb"]
 size = Vector3(20.8905, 12.151, 47.161)
 
-[node name="Book" type="StaticBody3D" groups=["inspectable"]]
-script = ExtResource("2_3wpgy")
+[node name="Book" type="StaticBody3D" groups=["book", "inspectable"]]
+script = ExtResource("1_8uccb")
+contents = "Blah blah blah. Blah blah blah. Blah blah blah. Blah blah blah. Blah blah blah. Blah blah blah. Blah blah blah. Blah blah blah. "
 description = "Book"
 
 [node name="book_model" parent="." instance=ExtResource("1_3wpgy")]

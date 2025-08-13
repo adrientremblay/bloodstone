@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dc4m2o6rx7t1j"]
+[gd_scene load_steps=23 format=3 uid="uid://dc4m2o6rx7t1j"]
 
 [ext_resource type="PackedScene" uid="uid://dlss5l7s81x7o" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://4qwki5hxkwbg" path="res://scripts/main.gd" id="1_tefeu"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dgb11q6k60d0" path="res://scenes/ghoul.tscn" id="7_o6xl0"]
 [ext_resource type="Script" uid="uid://c0vp2orewcgg3" path="res://scripts/hud.gd" id="7_tipki"]
 [ext_resource type="FontFile" uid="uid://uxw2xkghxi8f" path="res://assets/fonts/Times Regular.ttf" id="7_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://ri4rq7u2kwd1" path="res://assets/images/book_background_pixelart.png" id="8_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://bogdjqho4swjl" path="res://scenes/ammo_box.tscn" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://coey4c11c061r" path="res://scenes/coffin.tscn" id="9_choun"]
 [ext_resource type="PackedScene" uid="uid://bk4ks0dnqy4f7" path="res://scenes/book.tscn" id="10_choun"]
@@ -39,11 +40,22 @@ font = ExtResource("7_ya4ey")
 font_size = 30
 font_color = Color(1, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_trceg"]
+font = ExtResource("7_ya4ey")
+font_size = 25
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a8y0u"]
+font = ExtResource("7_ya4ey")
+font_size = 60
+font_color = Color(1, 0, 0, 1)
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_tefeu")
 
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2.69955)
+jump_velocity = 5.0
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_jyhfs")
@@ -166,6 +178,55 @@ text = "Book
 "
 label_settings = SubResource("LabelSettings_eb6dy")
 horizontal_alignment = 1
+
+[node name="BookBackground" type="ColorRect" parent="HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.321569)
+
+[node name="BookPixelart" type="TextureRect" parent="HUD/BookBackground"]
+modulate = Color(1, 1, 1, 0.333333)
+layout_mode = 0
+offset_left = 266.0
+offset_top = 117.0
+offset_right = 1716.0
+offset_bottom = 914.0
+texture = ExtResource("8_eb6dy")
+
+[node name="PageLeft" type="Label" parent="HUD/BookBackground"]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 221.0
+offset_right = 919.0
+offset_bottom = 810.0
+text = "Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah vvvvv"
+label_settings = SubResource("LabelSettings_trceg")
+autowrap_mode = 2
+
+[node name="PageRight" type="Label" parent="HUD/BookBackground"]
+layout_mode = 0
+offset_left = 997.0
+offset_top = 221.0
+offset_right = 1526.0
+offset_bottom = 810.0
+text = "Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah vvvvv"
+label_settings = SubResource("LabelSettings_trceg")
+autowrap_mode = 2
+
+[node name="Title" type="Label" parent="HUD/BookBackground"]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 62.0
+offset_right = 1644.0
+offset_bottom = 194.0
+text = "Book Title"
+label_settings = SubResource("LabelSettings_a8y0u")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Candles" type="Node3D" parent="."]
 
