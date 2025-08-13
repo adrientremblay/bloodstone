@@ -237,6 +237,18 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
+[node name="PageLeftButton" type="Button" parent="HUD/BookBackground"]
+layout_mode = 0
+offset_left = 292.0
+offset_top = 664.0
+offset_right = 495.0
+offset_bottom = 955.0
+rotation = 3.14159
+icon = ExtResource("9_trceg")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
 [node name="Candles" type="Node3D" parent="."]
 
 [node name="candle" parent="Candles" instance=ExtResource("4_jyhfs")]
@@ -282,3 +294,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2412, 2.38419e-07, 3.93146)
 [connection signal="update_ammo" from="Player" to="HUD" method="_on_player_update_ammo"]
 [connection signal="update_health" from="Player" to="HUD" method="_on_player_update_health"]
 [connection signal="pressed" from="HUD/BookBackground/PageRightButton" to="HUD" method="_on_page_right_button_pressed"]
+[connection signal="pressed" from="HUD/BookBackground/PageLeftButton" to="HUD" method="_on_page_left_button_pressed"]

@@ -10,6 +10,7 @@ extends Control
 @onready var book_page_left = $BookBackground/PageLeft
 @onready var book_page_right = $BookBackground/PageRight
 @onready var page_right_button = $BookBackground/PageRightButton
+@onready var page_left_button = $BookBackground/PageLeftButton
 
 var pages = []
 var current_page = 0 # 0-indexed and the left page
@@ -83,3 +84,12 @@ func update_pages() -> void:
 		page_right_button.visible = true
 	else:
 		page_right_button.visible = false
+	
+	if current_page != 0:
+		page_left_button.visible = true
+	else:
+		page_left_button.visible = false
+
+func _on_page_left_button_pressed() -> void:
+	current_page -= 2
+	update_pages()
