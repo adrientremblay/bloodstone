@@ -5,7 +5,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_pa1hf"]
 size = Vector3(0.430122, 0.526428, 0.44342)
 
-[node name="DialogueComponent" type="StaticBody3D" groups=["inspectable"]]
+[node name="DialogueComponent" type="StaticBody3D" groups=["inspectable", "talkable"]]
 script = ExtResource("1_u4hkn")
 description = "Father"
 

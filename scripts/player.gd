@@ -14,6 +14,7 @@ class_name Player extends CharacterBody3D
 @onready var footstep = $Footstep
 @onready var jump = $Jump
 @onready var teleport_indicator = $TeleportIndicator
+@onready var inspectable_Area: Area3D = $Camera3D/InspectableArea
 
 # Constants
 var camera_max_angle = 80
@@ -218,3 +219,13 @@ func _on_inspectable_area_body_exited(body: Node3D) -> void:
 		cannot_inspect.emit()
 		if body.is_in_group("book"):
 			book = null
+
+func return_inspectable():
+	for body in inspectable_Area.get_overlapping_bodies():
+		if body.is_in_group("inspectable"):
+			return body
+			
+func return_talkable():
+	for body in inspectable_Area.get_overlapping_bodies():
+		if body.is_in_group("talkable"):
+			return body
