@@ -1,18 +1,19 @@
-Son! You have finally awakened!
+join father center
+father: Son! You have finally awakened!
 label Choices
 - Who are you? | [if {c1} == false]
-	I am your father! Lord Xyval! HALLOWED be my name.
+	father: I am your father! Lord Xyval! HALLOWED be my name.
 	set {c1} = true
 - Where am I? | [if {c2} == false]
-	We have been sequestered in this cave in the countryside for 267 years by my count.
-	Here we have remained undisturbed for so long. However, the humans have expanded their settlements. A new village has planted it's roots nearby.
-	The humans use this place as a dumping ground for bodies. Many of which have been ressurected by your own dark magic.
+	father: We have been sequestered in this cave in the countryside for 267 years by my count.
+	father: Here we have remained undisturbed for so long. However, the humans have expanded their settlements. A new village has planted it's roots nearby.
+	father: The humans use this place as a dumping ground for bodies. Many of which have been ressurected by your own dark magic.
 	set {c2} = true
 - Who am I? | [if {c3} == false]
-	You are my son. Your memories may have been affected by your long hibernation.
+	father: You are my son. Your memories may have been affected by your long hibernation.
 	set {c3} = true
 - [Say Nothing] | [if {c4} == false]
-	Does your voice work son?!
+	father: Does your voice work son?!
 	set {c4} = true
 if {c1}  ==  false||{c2}==false ||{c3}==false||{c4}==false:
 	jump Choices
