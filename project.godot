@@ -27,6 +27,12 @@ directories/dtl_directory={
 }
 layout/style_list=["res://scenes/dialogic_style.tres"]
 layout/default_style="res://scenes/dialogic_style.tres"
+variables={
+"c1": false,
+"c2": false,
+"c3": false,
+"c4": false
+}
 
 [display]
 
