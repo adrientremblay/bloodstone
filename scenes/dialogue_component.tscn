@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cielhsm6ls127"]
+
+[ext_resource type="Script" uid="uid://byshjk5dwfuws" path="res://scenes/dialogue_component.gd" id="1_u4hkn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pa1hf"]
+size = Vector3(0.430122, 0.526428, 0.44342)
+
+[node name="DialogueComponent" type="StaticBody3D" groups=["inspectable"]]
+script = ExtResource("1_u4hkn")
+description = "Father"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00172806, 0.236786, 0.00888062)
+shape = SubResource("BoxShape3D_pa1hf")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
