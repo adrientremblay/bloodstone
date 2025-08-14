@@ -21,11 +21,14 @@ func _input(event: InputEvent) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			if talkable:
 				Dialogic.start("father")
+				player.return_talkable().start_speaking()
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			if talkable:
-				Dialogic.end_timeline
+				Dialogic.end_timeline()
+				player.return_talkable().stop_speaking()
 
 func on_timeline_finished():
 	player.frozen = false
+	player.return_talkable().stop_speaking()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

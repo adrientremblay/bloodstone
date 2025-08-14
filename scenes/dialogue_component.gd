@@ -9,6 +9,9 @@ var letter_streams = {}
 
 @onready var audio_stream_player = $AudioStreamPlayer3D
 
+signal started_speaking
+signal stopped_speaking
+
 func _ready():
 	var dir = DirAccess.open(LETTER_STREAMS_DIR)
 	if not dir:
@@ -32,3 +35,9 @@ func play_random_vowel():
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
 		play_random_vowel()
+
+func start_speaking() -> void:
+	started_speaking.emit()
+
+func stop_speaking() -> void:
+	stopped_speaking.emit()
