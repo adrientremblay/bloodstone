@@ -42,6 +42,10 @@ func _ready() -> void:
 	hand.visible = true
 
 func _unhandled_input(event: InputEvent):
+	# Don't fuck with Dialogic
+	if Dialogic.current_timeline != null:
+		return
+	
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	elif event.is_action_pressed("ui_cancel"):
