@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dc4m2o6rx7t1j"]
+[gd_scene load_steps=28 format=3 uid="uid://dc4m2o6rx7t1j"]
 
 [ext_resource type="PackedScene" uid="uid://dlss5l7s81x7o" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://4qwki5hxkwbg" path="res://scripts/main.gd" id="1_tefeu"]
@@ -13,13 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://beey7tqrleyh6" path="res://assets/images/arrow.png" id="9_trceg"]
 [ext_resource type="PackedScene" uid="uid://bk4ks0dnqy4f7" path="res://scenes/book.tscn" id="10_choun"]
 [ext_resource type="AudioStream" uid="uid://dpjwd55b7cqeu" path="res://assets/audio/page_flip.mp3" id="11_jkv2x"]
-[ext_resource type="PackedScene" uid="uid://cggrv860g4o7o" path="res://scenes/rat.tscn" id="15_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://cuk8hbu0l73pd" path="res://scenes/skull.tscn" id="16_jbj1t"]
 [ext_resource type="AudioStream" uid="uid://c6t172r2waf82" path="res://assets/audio/music/8 bit Tavern.mp3" id="16_muem4"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jyhfs"]
-vertices = PackedVector3Array(-1.25, 0.5, -15.5, -1.25, 0.5, -14.5, 1.5, 0.5, -14.5, 1.5, 0.5, -15.5, -1.25, -5.5, -13.25, -1.25, -5.5, -8.5, 1.5, -5.5, -8.5, 1.5, -5.5, -13.25, 1.5, 0.5, -7.5, -1.25, 0.5, -7.5, -1.25, 0.5, -5.75, 1.75, 0.5, -5.25, 5.5, 0.5, 5.25, 5.5, 0.5, -5.25, -1.75, 0.5, -5.25, -5.25, 0.5, 5.25, -5.25, 0.5, -5.25)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(11, 13, 12), PackedInt32Array(10, 11, 14), PackedInt32Array(14, 11, 15), PackedInt32Array(15, 11, 12), PackedInt32Array(15, 16, 14)]
 agent_height = 0.5
 
 [sub_resource type="Environment" id="Environment_jyhfs"]
@@ -65,7 +62,7 @@ size = Vector3(4.05231, 1, 6.16577)
 script = ExtResource("1_tefeu")
 
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2.69955)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 2.31946, 1, 2.87953)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_jyhfs")
@@ -76,9 +73,9 @@ mesh_library = ExtResource("3_sugp2")
 cell_size = Vector3(1, 0.5, 1)
 cell_center_y = false
 data = {
-"cells": PackedInt32Array(65535, 65535, 1048576, 0, 65535, 1048576, 0, 0, 1048576, 65535, 0, 1048576, 1, 0, 0, 1, 65535, 0, 1, 65534, 0, 0, 65534, 0, 65535, 65534, 0, 65534, 0, 1441792, 65534, 65535, 1441792, 65534, 65534, 1441792, 65534, 1, 1441792, 65535, 1, 1441792, 0, 1, 1441792, 1, 1, 1441792, 65533, 65534, 1048578, 65533, 65535, 1048578, 65533, 0, 1048578, 65533, 1, 1048578, 65534, 2, 655362, 65535, 2, 655362, 0, 2, 655362, 1, 2, 655362, 2, 1, 1441794, 2, 0, 1441794, 2, 65535, 1441794, 2, 65534, 1441794, 1, 65533, 2, 65534, 65533, 2, 65533, 65533, 1048577, 2, 65533, 1, 2, 2, 1441793, 65533, 2, 655361, 0, 65533, 3, 65535, 65533, 1048579, 65535, 65532, 1048578, 0, 65532, 1441794, 65535, 65528, 1048578, 0, 65528, 1441794, 65535, 65531, 1048591, 65535, 65530, 1048591, 65535, 65529, 1048591, 0, 65531, 1441807, 0, 65530, 1441807, 0, 65529, 1441807, -393216, 65531, 1441808, -393216, 65530, 1441808, -393216, 65529, 1441808, -327681, 65529, 1048592, -327681, 65530, 1048592, -327681, 65531, 1048592, -393216, 65532, 17, -327681, 65532, 17, -327681, 65528, 655377, -393216, 65528, 655377)
+"cells": PackedInt32Array(0, 65535, 1048576, 0, 0, 1048576, 1, 0, 1441794, 1, 65535, 1441794, 1, 65534, 1441794, 0, 65534, 0, 1, 65533, 1, 0, 65533, 3, 65535, 65532, 1048578, 0, 65532, 1441794, 65535, 65531, 1048578, 65535, 65530, 1048577, 0, 65530, 2, 1, 65531, 655362, 0, 65531, 1441795, 1, 65530, 2, 0, 1, 655362, 1, 1, 1441793, 65534, 65533, 1048577, 65535, 65533, 1048579, 65534, 65534, 1048578, 65534, 65535, 1048578, 65534, 0, 1048578, 65534, 1, 655361, 65535, 1, 655362, 65535, 0, 1441792, 65535, 65534, 1441792, 65535, 65535, 1441792)
 }
-metadata/_editor_floor_ = Vector3(0, -6, 0)
+metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jyhfs")
@@ -244,29 +241,23 @@ stream = ExtResource("11_jkv2x")
 [node name="Candles" type="Node3D" parent="."]
 
 [node name="candle" parent="Candles" instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.056, -0.0336832, 3.90806)
-
-[node name="candle2" parent="Candles" instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3314, -0.0336832, -7.2688)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.10173, -0.0336832, 2.29519)
 
 [node name="candle3" parent="Candles" instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6944, -0.0336832, -7.2688)
-
-[node name="candle4" parent="Candles" instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3314, -0.0336832, -14.8103)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6944, -0.0336832, 2.39409)
 
 [node name="candle5" parent="Candles" instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6944, -0.0336832, -14.8103)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17799, -0.0336832, -10.7781)
 
 [node name="Pickups" type="Node3D" parent="."]
 
 [node name="Props" type="Node3D" parent="."]
 
 [node name="coffin" parent="Props" instance=ExtResource("9_choun")]
-transform = Transform3D(0.835932, 0, -0.548833, 0, 1, 0, 0.548833, 0, 0.835932, 4.40541, 0, 3.76904)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.21696e-08, 0, 2.08391)
 
 [node name="TheFallOfTheBloodKings" parent="." instance=ExtResource("10_choun")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2412, 2.38419e-07, 3.93146)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.37698, 2.38419e-07, -4.4942)
 contents = "In the dark days of the age of kings, King Garvald ruled the land. Before him was King Titue. And before him, King Polvae. Before him, many more names I do not care to list. This dynasty we call now the \"blood kings\". 
 
 These kings were evil. They were tyrants, hated by all those who worked the fields and those who worked the hammer. The people lived on modest scraps, whilst those of Royal Blood feasted. 
@@ -281,7 +272,7 @@ They are of little threat, but are not to be trusted. Perhaps the world is not y
 description = "The Fall Of The Blood Kings"
 
 [node name="Book" parent="." instance=ExtResource("10_choun")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.31027, 1.19209e-07, 3.89862)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.1537, 1.19209e-07, -2.93796)
 contents = "Though I have not ever seen or dissected a true Vampire in my lifetime as they are all dead, I have studied the historical accounts thoroughly. Here is a thorough analysis of the nature of Vampires: their appearance, their diet, weaknesses and behaviour.
 
 APPEARANCE
@@ -302,17 +293,8 @@ The Vampire is strong, fast, and resistant to physical damage. But they are not 
 description = "On the Nature of Vampires"
 
 [node name="skull" parent="." instance=ExtResource("16_jbj1t")]
-transform = Transform3D(0.011444, 0.339066, 0.940693, -0.00412461, 0.940762, -0.339041, -0.999926, 0, 0.0121646, 3.41582, 0.0311372, -0.0329552)
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 0.999999, 0, 0.707107, 0, -0.707107, 0.733628, 0.0311372, 1.11544)
 timeline_name = "father"
-
-[node name="Rat" parent="." instance=ExtResource("15_jkv2x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70509, 0.274349, -1.6015)
-
-[node name="Rat2" parent="." instance=ExtResource("15_jkv2x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9444, 0.274349, 2.8215)
-
-[node name="Rat3" parent="." instance=ExtResource("15_jkv2x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0715, 0.274349, -2.66515)
 
 [node name="GameMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_muem4")
