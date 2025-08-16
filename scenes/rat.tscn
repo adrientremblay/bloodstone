@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cggrv860g4o7o"]
+[gd_scene load_steps=22 format=3 uid="uid://cggrv860g4o7o"]
 
 [ext_resource type="PackedScene" uid="uid://bal1yqwvaw4pe" path="res://scenes/rat_model.tscn" id="1_77a1s"]
 [ext_resource type="AudioStream" uid="uid://dbetpxxigdf3k" path="res://assets/audio/rat.mp3" id="2_77a1s"]
@@ -7,10 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://d1f8o0rqvutue" path="res://scenes/components/ai_component.tscn" id="5_6s34g"]
 [ext_resource type="PackedScene" uid="uid://birs07dsnnfxt" path="res://scenes/components/health_component.tscn" id="6_368s2"]
 [ext_resource type="AudioStream" uid="uid://dai7dqoyetx2q" path="res://assets/audio/rat_death.mp3" id="6_nnna8"]
+[ext_resource type="Script" uid="uid://iiv5rbuh4psx" path="res://scenes/feeding_area.gd" id="8_po2hf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_acf8p"]
-radius = 0.286245
-height = 1.23997
+radius = 0.123044
+height = 1.0759
 
 [sub_resource type="Animation" id="Animation_3csnj"]
 resource_name = "Die"
@@ -84,16 +85,20 @@ states/Walk/node = SubResource("AnimationNodeAnimation_iyysc")
 states/Walk/position = Vector2(346, 57)
 transitions = ["Start", "Walk", SubResource("AnimationNodeStateMachineTransition_od4xi"), "Walk", "Die", SubResource("AnimationNodeStateMachineTransition_4kyc1"), "Walk", "Attack", SubResource("AnimationNodeStateMachineTransition_sn70i"), "Attack", "Walk", SubResource("AnimationNodeStateMachineTransition_0py3y")]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0g0h3"]
+radius = 0.205513
+height = 1.2143
+
 [node name="Rat" type="CharacterBody3D" groups=["enemies"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 script = ExtResource("2_acf8p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0.0128494, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0128494, 0)
 shape = SubResource("CapsuleShape3D_acf8p")
 
 [node name="ModelComponent" parent="." instance=ExtResource("1_77a1s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.235149, 0)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.235149, 0)
 script = ExtResource("3_6s34g")
 walk_enabled = false
 
@@ -114,13 +119,14 @@ parameters/conditions/die = false
 model_component = NodePath("../ModelComponent")
 attack_enabled = false
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("ai_component", "model_component", "ambient_sound", "collission_shape", "death_sound") instance=ExtResource("6_368s2")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("ai_component", "model_component", "ambient_sound", "collission_shape", "death_sound", "feeding_area") instance=ExtResource("6_368s2")]
 health = 1
 ai_component = NodePath("../AiComponent")
 model_component = NodePath("../ModelComponent")
 ambient_sound = NodePath("AmbientSound")
 collission_shape = NodePath("../CollisionShape3D")
 death_sound = NodePath("DeathSound")
+feeding_area = NodePath("../FeedingArea")
 
 [node name="DeathSound" type="AudioStreamPlayer3D" parent="HealthComponent"]
 stream = ExtResource("6_nnna8")
@@ -130,3 +136,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.235149, 0)
 stream = ExtResource("2_77a1s")
 volume_db = -20.0
 autoplay = true
+
+[node name="FeedingArea" type="Area3D" parent="." node_paths=PackedStringArray("health_component") groups=["feeding_area"]]
+monitoring = false
+monitorable = false
+script = ExtResource("8_po2hf")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FeedingArea"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_0g0h3")

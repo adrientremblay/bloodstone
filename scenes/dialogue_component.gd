@@ -32,10 +32,6 @@ func play_random_vowel():
 	audio_stream_player.stream = letter_streams[random_vowel_name + ".mp3"]
 	audio_stream_player.play()
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("jump"):
-		play_random_vowel()
-
 func start_speaking() -> void:
 	started_speaking.emit()
 
