@@ -4,6 +4,7 @@ class_name Player extends CharacterBody3D
 @export var bullet_hole_scene: PackedScene
 @export var movement_speed = 6.0
 @export var jump_velocity = 5.0
+@export var look_target: Node3D # if this is populated then look at it when the player spawns in
 
 # Children
 @onready var camera = $Camera3D
@@ -41,6 +42,9 @@ var frozen = false
 func _ready() -> void:
 	pistol.visible = false
 	hand.visible = true
+	
+	if look_target:
+		camera.look_at(look_target.global_position)
 
 func _unhandled_input(event: InputEvent):
 	# Don't fuck with Dialogic

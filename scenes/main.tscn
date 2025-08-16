@@ -61,8 +61,9 @@ size = Vector3(4.05231, 1, 6.16577)
 [node name="Main" type="Node3D"]
 script = ExtResource("1_tefeu")
 
-[node name="Player" parent="." instance=ExtResource("1_o5qli")]
+[node name="Player" parent="." node_paths=PackedStringArray("look_target") instance=ExtResource("1_o5qli")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 2.31946, 1, 2.87953)
+look_target = NodePath("../skull")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_jyhfs")
