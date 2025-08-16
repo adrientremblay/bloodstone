@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dc4m2o6rx7t1j"]
+[gd_scene load_steps=27 format=3 uid="uid://dc4m2o6rx7t1j"]
 
 [ext_resource type="PackedScene" uid="uid://dlss5l7s81x7o" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://4qwki5hxkwbg" path="res://scripts/main.gd" id="1_tefeu"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://dpjwd55b7cqeu" path="res://assets/audio/page_flip.mp3" id="11_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://cggrv860g4o7o" path="res://scenes/rat.tscn" id="15_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://cuk8hbu0l73pd" path="res://scenes/skull.tscn" id="16_jbj1t"]
+[ext_resource type="AudioStream" uid="uid://c6t172r2waf82" path="res://assets/audio/music/8 bit Tavern.mp3" id="16_muem4"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jyhfs"]
 vertices = PackedVector3Array(-1.25, 0.5, -15.5, -1.25, 0.5, -14.5, 1.5, 0.5, -14.5, 1.5, 0.5, -15.5, -1.25, -5.5, -13.25, -1.25, -5.5, -8.5, 1.5, -5.5, -8.5, 1.5, -5.5, -13.25, 1.5, 0.5, -7.5, -1.25, 0.5, -7.5, -1.25, 0.5, -5.75, 1.75, 0.5, -5.25, 5.5, 0.5, 5.25, 5.5, 0.5, -5.25, -1.75, 0.5, -5.25, -5.25, 0.5, 5.25, -5.25, 0.5, -5.25)
@@ -245,6 +246,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3314, -0.0336832, -7.2688)
 [node name="candle3" parent="Candles" instance=ExtResource("4_jyhfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6944, -0.0336832, -7.2688)
 
+[node name="candle4" parent="Candles" instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3314, -0.0336832, -14.8103)
+
+[node name="candle5" parent="Candles" instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6944, -0.0336832, -14.8103)
+
 [node name="Pickups" type="Node3D" parent="."]
 
 [node name="Props" type="Node3D" parent="."]
@@ -299,6 +306,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9444, 0.274349, 2.8215)
 
 [node name="Rat3" parent="." instance=ExtResource("15_jkv2x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0715, 0.274349, -2.66515)
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_muem4")
+volume_db = -20.0
 
 [connection signal="can_inspect" from="Player" to="HUD" method="_on_player_can_inspect"]
 [connection signal="cannot_inspect" from="Player" to="HUD" method="_on_player_cannot_inspect"]

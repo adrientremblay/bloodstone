@@ -1,5 +1,5 @@
 join father center
-father: Son! You have finally awakened!
+father: My child! You have finally awakened!
 label Choices
 - Who are you? | [if {c1} == false]
 	father: I am your father! Lord Xyval! HALLOWED be my name.
@@ -10,10 +10,11 @@ label Choices
 	father: The humans use this place as a dumping ground for bodies. Many of which have been ressurected by your own dark magic.
 	set {c2} = true
 - Who am I? | [if {c3} == false]
-	father: You are my son. Your memories may have been affected by your long hibernation.
+	father: You are my child. Your memories may have been affected by your long hibernation.
 	set {c3} = true
-- [Say Nothing] | [if {c4} == false]
-	father: Does your voice work son?!
+- Are you dead? | [if {c4} == false]
+	father: Why yes! But this is not my skull. I have simply possessed this skull among others in this cavern. I will be watching you.
 	set {c4} = true
 if {c1}  ==  false||{c2}==false ||{c3}==false||{c4}==false:
 	jump Choices
+father: <Empty Text Event>

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c6t172r2waf82"
+path="res://.godot/imported/8 bit Tavern.mp3-fc736d4b2a873b7408654e0c9a5bfc1b.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/8 bit Tavern.mp3"
+dest_files=["res://.godot/imported/8 bit Tavern.mp3-fc736d4b2a873b7408654e0c9a5bfc1b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
