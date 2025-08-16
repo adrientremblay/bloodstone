@@ -303,6 +303,7 @@ description = "On the Nature of Vampires"
 
 [node name="skull" parent="." instance=ExtResource("16_jbj1t")]
 transform = Transform3D(0.011444, 0.339066, 0.940693, -0.00412461, 0.940762, -0.339041, -0.999926, 0, 0.0121646, 3.41582, 0.0311372, -0.0329552)
+timeline_name = "father"
 
 [node name="Rat" parent="." instance=ExtResource("15_jkv2x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70509, 0.274349, -1.6015)
@@ -329,6 +330,10 @@ shape = SubResource("BoxShape3D_jbj1t")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0159607, -5.55782, -10.9447)
 shape = SubResource("BoxShape3D_muem4")
+
+[node name="skull2" parent="." instance=ExtResource("16_jbj1t")]
+transform = Transform3D(-0.702498, 0.238565, 0.670509, -0.00412461, 0.940762, -0.339041, -0.711673, -0.240941, -0.6599, 1.4651, 0.0311372, -4.82626)
+timeline_name = "father2"
 
 [connection signal="can_inspect" from="Player" to="HUD" method="_on_player_can_inspect"]
 [connection signal="cannot_inspect" from="Player" to="HUD" method="_on_player_cannot_inspect"]

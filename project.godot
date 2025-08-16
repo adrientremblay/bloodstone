@@ -25,7 +25,8 @@ directories/dch_directory={
 "father": "res://scenes/characters/father.dch"
 }
 directories/dtl_directory={
-"father": "res://timelines/father.dtl"
+"father": "res://timelines/father.dtl",
+"father2": "res://timelines/father2.dtl"
 }
 layout/style_list=["res://scenes/dialogic_style.tres"]
 layout/default_style="res://scenes/dialogic_style.tres"
