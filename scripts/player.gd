@@ -33,6 +33,7 @@ signal cannot_inspect
 var blood_drain = 10 # how much blood the player is able to drain per each feed
 var healing_factor = 5 #how much blood is converted to health per execution of the HealingTimer
 var health = 100
+var melee_damage = 1
 var blood = 0
 var book: Book = null
 var frozen = false
@@ -199,6 +200,14 @@ func _on_melee_detection_area_area_entered(area: Area3D) -> void:
 			blood += blood_consumed
 			consumed_blood.emit(blood)
 			health_component.bleed()
+
+func _on_melee_detection_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("enemies"):
+		var blood_consumed = body.suffer_attack(self)
+		if blood_consumed != 0:
+			blood += blood_consumed
+			consumed_blood.emit(blood)
+		
 
 func _on_healing_timer_timeout() -> void:
 	if health < 100 && blood > 0:

@@ -214,6 +214,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.993477)
 stream = ExtResource("12_3v2ag")
 
 [connection signal="area_entered" from="Camera3D/MeleeDetectionArea" to="." method="_on_melee_detection_area_area_entered"]
+[connection signal="body_entered" from="Camera3D/MeleeDetectionArea" to="." method="_on_melee_detection_area_body_entered"]
 [connection signal="body_entered" from="Camera3D/InspectableArea" to="." method="_on_inspectable_area_body_entered"]
 [connection signal="body_exited" from="Camera3D/InspectableArea" to="." method="_on_inspectable_area_body_exited"]
 [connection signal="update_ammo_label" from="Camera3D/pistolmodel" to="." method="_on_weapon_update_ammo_label"]

@@ -17,4 +17,4 @@ label Choices
 	set {c4} = true
 if {c1}  ==  false||{c2}==false ||{c3}==false||{c4}==false:
 	jump Choices
-father: <Empty Text Event>
+father: Go now and feed on these rats. You are weak.

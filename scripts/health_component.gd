@@ -41,10 +41,10 @@ func handle_attack(player: Player) -> int: # returns the blood consumed
 		else:
 			model_component.switch_to_animation("hurt")
 	
+	bleed()
+	
 	if player.current_weapon == player.hand:
 		return give_up_blood(player)
-	
-	bleed()
 	
 	# start chasing player if not already
 	if alive and ai_component.mode != ai_component.AiMode.CHASING_PLAYER and ai_component.attack_enabled:
