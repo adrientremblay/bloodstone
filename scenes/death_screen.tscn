@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu685yjaqakfx"]
+
+[ext_resource type="FontFile" uid="uid://okkkco4bro2x" path="res://assets/fonts/OldLondon.ttf" id="1_uyutr"]
+[ext_resource type="AudioStream" uid="uid://n34bjho6wi8p" path="res://assets/audio/music/Forsaken Sanctum.mp3" id="2_dwo6e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dwo6e"]
+font = ExtResource("1_uyutr")
+font_size = 300
+font_color = Color(1, 0, 0, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "YOU DIED"
+label_settings = SubResource("LabelSettings_dwo6e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_dwo6e")
+volume_db = -10.0
+autoplay = true

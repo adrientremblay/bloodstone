@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dc4m2o6rx7t1j"]
+[gd_scene load_steps=29 format=3 uid="uid://dc4m2o6rx7t1j"]
 
 [ext_resource type="PackedScene" uid="uid://dlss5l7s81x7o" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://4qwki5hxkwbg" path="res://scripts/main.gd" id="1_tefeu"]
@@ -57,6 +57,9 @@ font_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jbj1t"]
 size = Vector3(4.34155, 6.0957, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_muem4"]
+size = Vector3(4.05231, 1, 6.16577)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_tefeu")
@@ -313,12 +316,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0715, 0.274349, -2.66515)
 [node name="GameMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_muem4")
 volume_db = -20.0
+autoplay = true
 
-[node name="WallLol" type="StaticBody3D" parent="."]
+[node name="SafetyWall" type="StaticBody3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WallLol"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SafetyWall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0570068, -3.22456, -14.3921)
 shape = SubResource("BoxShape3D_jbj1t")
+
+[node name="DeathArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0159607, -5.55782, -10.9447)
+shape = SubResource("BoxShape3D_muem4")
 
 [connection signal="can_inspect" from="Player" to="HUD" method="_on_player_can_inspect"]
 [connection signal="cannot_inspect" from="Player" to="HUD" method="_on_player_cannot_inspect"]
@@ -327,3 +337,4 @@ shape = SubResource("BoxShape3D_jbj1t")
 [connection signal="update_health" from="Player" to="HUD" method="_on_player_update_health"]
 [connection signal="pressed" from="HUD/BookBackground/PageRightButton" to="HUD" method="_on_page_right_button_pressed"]
 [connection signal="pressed" from="HUD/BookBackground/PageLeftButton" to="HUD" method="_on_page_left_button_pressed"]
+[connection signal="body_entered" from="DeathArea" to="." method="_on_death_area_body_entered"]

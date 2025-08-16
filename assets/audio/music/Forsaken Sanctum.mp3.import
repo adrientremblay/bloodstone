@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://n34bjho6wi8p"
+path="res://.godot/imported/Forsaken Sanctum.mp3-ba60c21a502d29394a855c98c9c921d1.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/Forsaken Sanctum.mp3"
+dest_files=["res://.godot/imported/Forsaken Sanctum.mp3-ba60c21a502d29394a855c98c9c921d1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

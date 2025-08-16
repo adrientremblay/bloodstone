@@ -3,6 +3,8 @@ extends Node3D
 @onready var player: Player = $Player
 @onready var hud = $HUD
 
+@export var game_over_scene: PackedScene
+
 func _ready() -> void:
 	Dialogic.timeline_ended.connect(on_timeline_finished)
 
@@ -32,3 +34,11 @@ func on_timeline_finished():
 	player.frozen = false
 	player.return_talkable().stop_speaking()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+func game_over():
+	get_tree().change_scene_to_file("res://scenes/death_screen.tscn")
+
+func _on_death_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		game_over()
