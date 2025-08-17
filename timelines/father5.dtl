@@ -1,0 +1,14 @@
+join father center
+father: This is a gun. It was left here by one of the soldiers of the Order of the Blue Flame.
+father: Gunpowder technology has advanced a lot since you were last roaming the land.
+father: I'ts simple to use. [LEFT MOUSE BUTTON] to fire and [R] to reload.
+father: Try and shoot those ghouls over there.
+- What are ghouls?
+	father: I was killed by the Order of the Blue Flame over 200 years ago. But I have been watching them from the afterlife.
+	father: They claim that a certain group of people that they call the "Thinbloods" are of Vampire ancestry.
+	father: They have been marginalized, enslaved, and murdered since. This cave has become a dumping ground for their bodies.
+	father: By chance, this is the very cave that you fled to so long ago. Weak, from the attacks of the Vampire hunters, you entered a state of hibernation. Meanwhile the rest of our kin were hunted down and massacred.
+	father: You are the last of our kind...
+	father: You are the last vampire...
+	father: I am unsure why you have suddenly awaked, but I believe it has something to do with the re-animation of the corpses of the thin bloods.
+- I'll be careful

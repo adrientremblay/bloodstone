@@ -28,7 +28,8 @@ directories/dtl_directory={
 "father": "res://timelines/father.dtl",
 "father2": "res://timelines/father2.dtl",
 "father3": "res://timelines/father3.dtl",
-"father4": "res://timelines/father4.dtl"
+"father4": "res://timelines/father4.dtl",
+"father5": "res://timelines/father5.dtl"
 }
 layout/style_list=["res://scenes/dialogic_style.tres"]
 layout/default_style="res://scenes/dialogic_style.tres"

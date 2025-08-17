@@ -391,6 +391,10 @@ timeline_name = "father2"
 [node name="PistolPickup" parent="." instance=ExtResource("17_muem4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.00104, -0.9706, 10.2432)
 
+[node name="skull5" parent="." instance=ExtResource("16_jbj1t")]
+transform = Transform3D(0.494913, -0.379078, -0.781896, 0, 0.899824, -0.436252, 0.868943, 0.215907, 0.445335, 3.57781, -0.868998, 11.018)
+timeline_name = "father5"
+
 [connection signal="can_inspect" from="Player" to="HUD" method="_on_player_can_inspect"]
 [connection signal="cannot_inspect" from="Player" to="HUD" method="_on_player_cannot_inspect"]
 [connection signal="consumed_blood" from="Player" to="HUD" method="_on_player_consumed_blood"]
