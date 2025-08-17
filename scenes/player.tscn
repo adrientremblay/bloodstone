@@ -132,7 +132,7 @@ mesh = SubResource("CapsuleMesh_qhqgy")
 stream = ExtResource("5_tuyoq")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.511698, 0)
+transform = Transform3D(1, 0, 0, 0, 0.891829, 0.452372, 0, -0.452372, 0.891829, 0, 0.511698, 0)
 cull_mask = 1047553
 
 [node name="MeleeDetectionArea" type="Area3D" parent="Camera3D"]
