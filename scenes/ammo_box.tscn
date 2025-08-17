@@ -18,8 +18,8 @@ transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0.072262, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0270081, 0.156124, -0.0657959)
 shape = SubResource("CylinderShape3D_ye4hu")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="PickupSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_1r4qa")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+[connection signal="finished" from="PickupSound" to="." method="_on_audio_stream_player_finished"]

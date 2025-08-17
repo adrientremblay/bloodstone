@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dc4m2o6rx7t1j"]
+[gd_scene load_steps=30 format=3 uid="uid://dc4m2o6rx7t1j"]
 
 [ext_resource type="PackedScene" uid="uid://dlss5l7s81x7o" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://4qwki5hxkwbg" path="res://scripts/main.gd" id="1_tefeu"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cggrv860g4o7o" path="res://scenes/rat.tscn" id="15_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://cuk8hbu0l73pd" path="res://scenes/skull.tscn" id="16_jbj1t"]
 [ext_resource type="AudioStream" uid="uid://c6t172r2waf82" path="res://assets/audio/music/8 bit Tavern.mp3" id="16_muem4"]
+[ext_resource type="PackedScene" uid="uid://v7bkwymaaf5d" path="res://scenes/pistol_pickup.tscn" id="17_muem4"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jyhfs"]
 vertices = PackedVector3Array(17.25, 0.5, -8.5, 17.25, 0.5, -11.25, 15.5, 0.5, -11.5, 15.5, 0.5, -8.25, 8.75, 0.5, -6.5, 15.5, 0.5, -6.5, 8.75, 0.5, -13.25, 8.5, 0.5, -11.75, 15.5, 0.5, -13.25, 1.5, 0.5, -8.25, 3.75, 0.5, -8.5, 3.75, 0.5, -11.25, -1.25, 0.5, -11.25, -1.25, 0.5, -5.75, -1.75, 0.5, -5.25, -3.25, 0.5, -5.25, -3.25, 0.5, 3.5, 1.5, 0.5, -5.5, 3.5, 0.5, 3.5, 3.5, 0.5, -5.25, 4.75, -4.5, -11.25, 4.75, -4.5, -8.5, 7.5, -4.5, -8.5, 7.5, -4.5, -11.25, 18.75, 0.5, -8.25, 21.5, 0.5, -11.25, 18.75, 0.5, -2.5, 21.5, 0.5, -2.5, 18.75, -5.5, -1.25, 18.75, -5.5, 7.5, 21.5, -5.5, 7.5, 21.5, -5.5, -1.25, 21.5, 4.5, 5.75, 20.75, 5.25, 4.5, 20.25, 4.5, 6.5, 21.5, 4.5, 7.5, 18.5, 4.5, 7.5, 18.5, 4.5, 6.5, 17.75, -0.5, 4.75, 16.75, -0.5, 4.75, 16.75, -0.5, 6.25, 18, -0.5, 8.5, 23.5, -0.5, 6.5, 23.5, -0.5, 4.75, 22.5, -0.5, 4.75, 22.25, -0.5, 8.5, 14.75, -0.5, 11.25, 25.5, -0.5, 11.25, 16.25, -0.5, 6.75, 14.75, -0.5, 6.75, 25.5, -0.5, 6.75)
@@ -281,10 +282,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.1355, -1, 6.633)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.287, -1, 11.3423)
 
 [node name="candle15" parent="Candles" instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25777, -1, 7.02235)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25777, -1, 9.58254)
 
 [node name="candle16" parent="Candles" instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.95071, -1, 13.0132)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.95071, -1, 10.9212)
 
 [node name="Pickups" type="Node3D" parent="."]
 
@@ -386,6 +387,12 @@ timeline_name = "father4"
 [node name="skull4" parent="." instance=ExtResource("16_jbj1t")]
 transform = Transform3D(1, 0, 0, 0, 0.821756, -0.569839, 0, 0.569839, 0.821756, 21.4589, -0.0725799, -2.64067)
 timeline_name = "father2"
+
+[node name="PistolPickup" parent="." instance=ExtResource("17_muem4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.00104, -0.9706, 10.2432)
+
+[node name="PistolPickup2" parent="." instance=ExtResource("17_muem4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.432383, 0.0293994, -3.46787)
 
 [connection signal="can_inspect" from="Player" to="HUD" method="_on_player_can_inspect"]
 [connection signal="cannot_inspect" from="Player" to="HUD" method="_on_player_cannot_inspect"]

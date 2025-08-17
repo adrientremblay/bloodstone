@@ -38,6 +38,7 @@ var melee_damage = 1
 var blood = 0
 var book: Book = null
 var frozen = false
+var pistol_unlocked = false
 
 func _ready() -> void:
 	pistol.visible = false
@@ -139,6 +140,9 @@ func _input(event: InputEvent) -> void:
 		teleport_indicator.position = Vector3(0,0,2)
 
 func switch_weapon(weapon: Weapon):
+	if weapon == pistol and not pistol_unlocked:
+		return
+	
 	current_weapon.visible = false
 	current_weapon = weapon
 	current_weapon.visible = true
@@ -249,3 +253,7 @@ func return_talkable():
 	for body in inspectable_Area.get_overlapping_bodies():
 		if body.is_in_group("talkable"):
 			return body
+
+func pick_up_gun():
+	pistol_unlocked = true
+	switch_weapon(pistol)
