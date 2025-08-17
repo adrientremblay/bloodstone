@@ -33,7 +33,7 @@ signal cannot_inspect
 @onready var current_weapon: Weapon = hand
 var blood_drain = 10 # how much blood the player is able to drain per each feed
 var healing_factor = 5 #how much blood is converted to health per execution of the HealingTimer
-var health = 100
+var health = 75
 var melee_damage = 1
 var blood = 0
 var book: Book = null
@@ -45,6 +45,8 @@ func _ready() -> void:
 	
 	if look_target:
 		camera.look_at(look_target.global_position)
+	
+	update_health.emit(health)
 
 func _unhandled_input(event: InputEvent):
 	# Don't fuck with Dialogic

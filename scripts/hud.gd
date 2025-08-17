@@ -24,7 +24,7 @@ func _on_player_consumed_blood(amount: Variant) -> void:
 	blood_bar.value = amount
 
 func _on_player_update_health(health: Variant) -> void:
-	health_bar.value = health
+	$HealthBar.value = health
 
 func _on_player_update_ammo(ammo_clip: Variant, ammo_pool: Variant, melee: bool) -> void:
 	if melee:

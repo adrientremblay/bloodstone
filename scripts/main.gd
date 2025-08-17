@@ -7,6 +7,12 @@ extends Node3D
 
 func _ready() -> void:
 	Dialogic.timeline_ended.connect(on_timeline_finished)
+	
+	#Immediately start the father dialogue
+	player.frozen = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Dialogic.start_timeline("father")
+	$skull._on_dialogue_component_started_speaking()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inspect"):
