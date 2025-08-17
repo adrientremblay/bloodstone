@@ -106,7 +106,7 @@ func _physics_process(delta):
 		var result = get_world_3d().direct_space_state.intersect_ray(query)
 		if result:
 			var tp_position = result.position
-			tp_position.y = 0 #put it on the floor
+			#tp_position.y = 0 #put it on the floor
 			teleport_indicator.global_position = tp_position
 
 func _input(event: InputEvent) -> void:
@@ -129,6 +129,7 @@ func _input(event: InputEvent) -> void:
 		# do the teleportation
 		if (teleport_indicator.position != Vector3(0,0,2) and blood >= 10):
 			self.global_position.x = teleport_indicator.global_position.x
+			self.global_position.y = teleport_indicator.global_position.y + 0.6
 			self.global_position.z = teleport_indicator.global_position.z
 			blood -= 10
 			consumed_blood.emit(blood)
