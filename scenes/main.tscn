@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dc4m2o6rx7t1j"]
+[gd_scene load_steps=35 format=3 uid="uid://dc4m2o6rx7t1j"]
 
 [ext_resource type="PackedScene" uid="uid://dlss5l7s81x7o" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://4qwki5hxkwbg" path="res://scripts/main.gd" id="1_tefeu"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bogdjqho4swjl" path="res://scenes/ammo_box.tscn" id="19_0ld40"]
 [ext_resource type="AudioStream" uid="uid://bjmb0hbiq56w0" path="res://assets/audio/cave_white_noise.mp3" id="20_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://dgcvg2neh05gk" path="res://scenes/stalagmite.tscn" id="21_yc10j"]
+[ext_resource type="PackedScene" uid="uid://cjna4k8766ssf" path="res://scenes/barrel.tscn" id="22_jscy8"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jyhfs"]
 vertices = PackedVector3Array(17.25, 0.5, -8.5, 17.25, 0.5, -11.25, 15.5, 0.5, -11.5, 15.5, 0.5, -8.25, 8.75, 0.5, -6.5, 15.5, 0.5, -6.5, 8.75, 0.5, -13.25, 8.5, 0.5, -11.75, 15.5, 0.5, -13.25, 1.5, 0.5, -8.25, 3.75, 0.5, -8.5, 3.75, 0.5, -11.25, -1.25, 0.5, -11.25, -1.25, 0.5, -5.75, -1.75, 0.5, -5.25, -3.25, 0.5, -5.25, -3.25, 0.5, 3.5, 1.5, 0.5, -5.5, 3.5, 0.5, 3.5, 3.5, 0.5, -5.25, 4.75, -4.5, -11.25, 4.75, -4.5, -8.5, 7.5, -4.5, -8.5, 7.5, -4.5, -11.25, 18.75, 0.5, -8.25, 21.5, 0.5, -11.25, 18.75, 0.5, -2.5, 21.5, 0.5, -2.5, -25.25, -0.5, 2.75, -22.5, -0.5, 3, -22.25, -0.5, 1.5, -25.25, -0.5, -1.25, -17.5, -0.5, 1.5, -17.25, -0.5, 3, -14.5, -0.5, 3, -14.5, -0.5, -1.25, 18.75, -5.5, -1.25, 18.75, -5.5, 7.5, 21.5, -5.5, 7.5, 21.5, -5.5, -1.25, -28.75, -0.5, 3, -28.5, -0.5, 0.75, -29.25, -0.5, 0.75, -29.25, -0.5, 4.25, -28.5, -0.5, 7.5, -25.75, -0.5, 4.75, -28.25, -0.5, 4.75, -29.75, -0.5, 4.75, -29.5, -0.5, 7.5, -25.25, -0.5, 4.25, -29.25, -0.5, 11.5, -28.5, -0.5, 11.5, -35.5, -0.5, 4.75, -35.5, -0.5, 7.5, -22.5, -0.5, 7.5, -17.25, -0.5, 4.25, -14.25, -0.5, 4.75, -8.5, -0.5, 6.5, -8.5, -0.5, 4.75, -8.5, -0.5, 13.75, -6.5, -0.5, 13.5, -6.25, -0.5, 11.5, -6.25, -0.5, 8.75, -6.5, -0.5, 6.75, -14.25, -0.5, 15.5, -8.5, -0.5, 15.5, -4.5, -0.5, 11.5, -4.5, -0.5, 8.75, -17.75, -0.5, 4.75, -19.25, -0.5, 4.75, -19.25, -0.5, 15.5, -17.5, -0.5, 15.5, -17.25, -0.5, 17.5, -14.5, -0.5, 17.5, 21.5, 4.5, 5.75, 20.75, 5.25, 4.5, 20.25, 4.5, 6.5, 21.5, 4.5, 7.5, 18.5, 4.5, 7.5, 18.5, 4.5, 6.5, 17.75, -0.5, 4.75, 16.75, -0.5, 4.75, 16.75, -0.5, 6.25, 18, -0.5, 8.5, 16.25, -0.5, 6.75, 14.75, -0.5, 6.75, 14.75, -0.5, 8.25, 23.75, -0.5, 6.75, 23.5, -0.5, 4.75, 22.5, -0.5, 4.75, 22.25, -0.5, 8.5, 25.5, -0.5, 11.5, 13, -0.5, 11.5, 25.5, -0.5, 6.75, 14.25, -0.5, 8.75, 12.75, -0.5, 8.75, 9.5, -0.5, 6.75, 6.75, -0.5, 6.75, 6.75, -0.5, 8.25, 9.75, -0.5, 8.75, 9.75, -0.5, 11.5, 6.25, -0.5, 8.75, 6.5, -0.5, 11.5, 6.75, -0.5, 13.5, 9.5, -0.5, 13.5, 0.5, -0.5, 8.75, 0.5, -0.5, 11.5, -3.25, -6.5, 8.75, -3.25, -6.5, 11.5, -0.5, -6.5, 11.5, -0.5, -6.5, 8.75, -17.75, -0.5, 24.75, -19.25, -0.5, 24.75, -19.25, -0.5, 29.25, -12.5, -0.5, 29.25, -12.5, -0.5, 24.75, -14.5, -0.5, 24.5, -17.25, -0.5, 24.25)
@@ -330,7 +331,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.2169
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.3657, -0.997262, 27.1081)
 
 [node name="TheFallOfTheBloodKings" parent="." instance=ExtResource("10_choun")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.37698, 2.38419e-07, -4.4942)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.90558, 0.8979, -4.71046)
 contents = "In the dark days of the age of kings, King Garvald ruled the land. Before him was King Titue. And before him, King Polvae. Before him, many more names I do not care to list. This dynasty we call now the \"blood kings\". 
 
 These kings were evil. They were tyrants, hated by all those who worked the fields and those who worked the hammer. The people lived on modest scraps, whilst those of Royal Blood feasted. 
@@ -473,26 +474,32 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.981808, 5.83415, -0.
 [node name="stalagmite2" parent="Environment" instance=ExtResource("21_yc10j")]
 transform = Transform3D(0.38843, 0, 0.314837, 0, 0.5, 0, -0.314837, 0, 0.38843, 1.12851, 5.93114, -0.980179)
 
-[node name="stalagmite" parent="." instance=ExtResource("21_yc10j")]
+[node name="stalagmite3" parent="Environment" instance=ExtResource("21_yc10j")]
 transform = Transform3D(0.762443, 0, 0.647056, 0, 1, 0, -0.647056, 0, 0.762443, -0.603963, 6.86433, 0.555041)
 
-[node name="stalagmite2" parent="." instance=ExtResource("21_yc10j")]
+[node name="stalagmite4" parent="Environment" instance=ExtResource("21_yc10j")]
 transform = Transform3D(0.757326, 0, 0.653037, 0, 1, 0, -0.653037, 0, 0.757326, -0.957901, 5.96955, -1.89096)
 
-[node name="stalagmite3" parent="." instance=ExtResource("21_yc10j")]
+[node name="stalagmite5" parent="Environment" instance=ExtResource("21_yc10j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.370743, 6.43343, -1.93076)
 
-[node name="stalagmite4" parent="." instance=ExtResource("21_yc10j")]
+[node name="stalagmite6" parent="Environment" instance=ExtResource("21_yc10j")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 1.43169, 5.76733, 1.10857)
 
-[node name="stalagmite5" parent="." instance=ExtResource("21_yc10j")]
+[node name="stalagmite7" parent="Environment" instance=ExtResource("21_yc10j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90572, 5.05433, 1.72743)
 
-[node name="stalagmite6" parent="." instance=ExtResource("21_yc10j")]
+[node name="stalagmite8" parent="Environment" instance=ExtResource("21_yc10j")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -2.68949, 5.58351, -2.73669)
 
-[node name="stalagmite7" parent="." instance=ExtResource("21_yc10j")]
+[node name="stalagmite9" parent="Environment" instance=ExtResource("21_yc10j")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 3.1806, 5.23163, -2.65699)
+
+[node name="barrel" parent="Environment" instance=ExtResource("22_jscy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.44909, 0.00429043, -4.02642)
+
+[node name="barrel2" parent="Environment" instance=ExtResource("22_jscy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.89198, 0.00429071, -4.73805)
 
 [connection signal="can_inspect" from="Player" to="HUD" method="_on_player_can_inspect"]
 [connection signal="cannot_inspect" from="Player" to="HUD" method="_on_player_cannot_inspect"]
