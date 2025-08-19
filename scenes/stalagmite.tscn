@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgcvg2neh05gk"]
+
+[ext_resource type="PackedScene" uid="uid://u1qlspg8rfhk" path="res://assets/models/stalagmite/stalagmite.glb" id="1_041mu"]
+
+[node name="stalagmite" instance=ExtResource("1_041mu")]
