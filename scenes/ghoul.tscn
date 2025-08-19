@@ -51,12 +51,16 @@ stream = ExtResource("5_fxkcu")
 volume_db = -25.0
 unit_size = 5.0
 autoplay = true
+max_distance = 5.0
+bus = &"Cave Environment"
 
 [node name="DeathSound" type="AudioStreamPlayer3D" parent="HealthComponent"]
 stream = ExtResource("7_bwnnb")
+bus = &"Cave Environment"
 
 [node name="AttackSound" type="AudioStreamPlayer3D" parent="HealthComponent"]
 stream = ExtResource("8_waqgy")
+bus = &"Cave Environment"
 
 [node name="FeedingArea" type="Area3D" parent="." node_paths=PackedStringArray("health_component") groups=["feeding_area"]]
 monitoring = false

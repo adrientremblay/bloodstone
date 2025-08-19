@@ -191,6 +191,7 @@ main_camera = NodePath("../../../Camera3D")
 
 [node name="Footstep" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_fjrip")
+bus = &"Cave Environment"
 
 [node name="WalkAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
