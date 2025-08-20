@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfrpj6a0s6xbb"]
+
+[ext_resource type="PackedScene" uid="uid://hpo48bsvyytb" path="res://assets/models/spider/spider.glb" id="1_c7em6"]
+[ext_resource type="Script" uid="uid://wsl4hfucl5yp" path="res://scenes/spider.gd" id="2_algeo"]
+
+[node name="spider" instance=ExtResource("1_c7em6")]
+script = ExtResource("2_algeo")
+
+[node name="Spider Armature" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0203354, 0, 0)
+
+[node name="Skeleton3D" parent="Spider Armature" index="0"]
+bones/0/position = Vector3(0.443764, 0.0285732, 0)
+bones/0/rotation = Quaternion(-0.0208007, 0.0208007, 0.706801, 0.706801)
+bones/1/rotation = Quaternion(0.960134, 1.86264e-09, 0.0565613, -0.273758)
+bones/2/rotation = Quaternion(-0.746597, -8.82534e-08, -0.0439818, 0.663821)
+bones/3/rotation = Quaternion(-0.6441, -8.75443e-08, -0.0379437, 0.764)
+bones/4/rotation = Quaternion(-0.479129, -1.06116e-07, -0.0282253, 0.877291)
+
+[node name="Spider" parent="Spider Armature/Skeleton3D" index="0"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
