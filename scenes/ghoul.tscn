@@ -25,11 +25,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11228, 0)
 shape = SubResource("CapsuleShape3D_pn4bt")
 
 [node name="ModelComponent" parent="." instance=ExtResource("1_pn4bt")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
 
 [node name="AiComponent" parent="." node_paths=PackedStringArray("model_component", "attack_sound") instance=ExtResource("3_ei4jr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.444848, 0)
-speed = 5.0
+speed = 1.5
 model_component = NodePath("../ModelComponent")
 damage = 10
 attack_sound = NodePath("../HealthComponent/AttackSound")
@@ -38,6 +38,7 @@ attack_speed = 1.5
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("ai_component", "model_component", "ambient_sound", "collission_shape", "death_sound", "feeding_area") instance=ExtResource("4_ei4jr")]
 transform = Transform3D(1, 0, 0, 0, 0.570413, 0.821358, 0, -0.821358, 0.570413, 0, 1.14658, 0)
 blood = 30
+health = 5
 ai_component = NodePath("../AiComponent")
 model_component = NodePath("../ModelComponent")
 ambient_sound = NodePath("AmbientSound")
