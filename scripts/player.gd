@@ -103,10 +103,13 @@ func _physics_process(delta):
 		var query = PhysicsRayQueryParameters3D.create(camera.global_position, camera.global_position -camera.global_transform.basis.z * 1000)
 		var result = get_world_3d().direct_space_state.intersect_ray(query)
 		if result:
-			if result.normal == Vector3(0, 1, 0): #tp on floor
+			if result.normal.y == 1.0: #tp on floor
 				teleport_indicator.arrow()
-			elif result.normal.z == 0: #tp on wall
+				teleport_indicator.look_at(result.position + Vector3(0,0,1), Vector3.UP)
+			else: #tp on wall
 				teleport_indicator.wall_arrow()
+				# rotate the indicator to be the wall normal
+				teleport_indicator.look_at(result.position + result.normal, Vector3.UP)
 			var tp_position = result.position
 			teleport_indicator.global_position = tp_position
 
