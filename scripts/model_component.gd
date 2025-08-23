@@ -21,7 +21,6 @@ func switch_to_animation(animation_name: String):
 		var state_machine = animation_tree["parameters/playback"]
 		state_machine.start("Hurt", true)  # `true` = reset even if already playing
 		
-
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Attack":
 		animation_tree["parameters/conditions/attack"] = false

@@ -61,7 +61,6 @@ func _unhandled_input(event: InputEvent):
 			self.rotate_y(-event.relative.x * 0.01)
 			camera.rotate_x(-event.relative.y * 0.01)
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(camera_min_angle), deg_to_rad(camera_max_angle))
-			print(rad_to_deg(camera.rotation.x))
 
 func _physics_process(delta):
 	if frozen:
