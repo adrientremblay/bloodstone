@@ -102,7 +102,7 @@ func _physics_process(delta):
 		var raycast_vector = (-camera.global_transform.basis.z)
 		var query = PhysicsRayQueryParameters3D.create(camera.global_position, camera.global_position -camera.global_transform.basis.z * 1000)
 		var result = get_world_3d().direct_space_state.intersect_ray(query)
-		if result:
+		if result && result.normal == Vector3(0, 1, 0):
 			var tp_position = result.position
 			#tp_position.y = 0 #put it on the floor
 			teleport_indicator.global_position = tp_position
