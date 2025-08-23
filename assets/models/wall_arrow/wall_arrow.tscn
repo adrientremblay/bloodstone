@@ -1,5 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdgtf1b4hlmpr"]
+[gd_scene load_steps=3 format=3 uid="uid://cdgtf1b4hlmpr"]
 
 [ext_resource type="PackedScene" uid="uid://du21odw32qhf2" path="res://assets/models/wall_arrow/wall_arrow.glb" id="1_j3xcg"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j3xcg"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.286275)
+
 [node name="wall_arrow" instance=ExtResource("1_j3xcg")]
+
+[node name="WallArrow" parent="." index="0"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0, 1.00327, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_j3xcg")

@@ -637,7 +637,7 @@ omni_range = 64.1353
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6141, 4.99583, -19.6026)
 
 [node name="candle" parent="." instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.3338, 5.14454, -20.4246)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.3338, 4.97598, -20.4246)
 
 [node name="candle3" parent="." instance=ExtResource("4_jyhfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0974, 4.96725, -13.8193)

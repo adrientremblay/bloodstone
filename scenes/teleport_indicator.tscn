@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cd6j5h3r6nopu"]
+[gd_scene load_steps=4 format=3 uid="uid://cd6j5h3r6nopu"]
 
+[ext_resource type="Script" uid="uid://gyncdgq1h2mi" path="res://scenes/teleport_indicator.gd" id="1_8oeck"]
 [ext_resource type="PackedScene" uid="uid://c4tjk5jos7urc" path="res://assets/models/teleport_indicator/arrow.tscn" id="1_o5od0"]
 [ext_resource type="PackedScene" uid="uid://cdgtf1b4hlmpr" path="res://assets/models/wall_arrow/wall_arrow.tscn" id="2_8oeck"]
 
 [node name="TeleportIndicator" type="Node3D"]
+script = ExtResource("1_8oeck")
 
 [node name="arrow" parent="." instance=ExtResource("1_o5od0")]
 
 [node name="wall_arrow" parent="." instance=ExtResource("2_8oeck")]
-visible = false
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)

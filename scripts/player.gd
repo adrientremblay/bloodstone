@@ -14,7 +14,7 @@ class_name Player extends CharacterBody3D
 @onready var weapon_swap = $WeaponSwap
 @onready var footstep = $Footstep
 @onready var jump = $Jump
-@onready var teleport_indicator = $TeleportIndicator
+@onready var teleport_indicator: TelportIndicator = $TeleportIndicator
 @onready var inspectable_Area: Area3D = $Camera3D/InspectableArea
 
 # Constants
@@ -102,9 +102,12 @@ func _physics_process(delta):
 		var raycast_vector = (-camera.global_transform.basis.z)
 		var query = PhysicsRayQueryParameters3D.create(camera.global_position, camera.global_position -camera.global_transform.basis.z * 1000)
 		var result = get_world_3d().direct_space_state.intersect_ray(query)
-		if result && result.normal == Vector3(0, 1, 0):
+		if result:
+			if result.normal == Vector3(0, 1, 0): #tp on floor
+				teleport_indicator.arrow()
+			elif result.normal.z == 0: #tp on wall
+				teleport_indicator.wall_arrow()
 			var tp_position = result.position
-			#tp_position.y = 0 #put it on the floor
 			teleport_indicator.global_position = tp_position
 
 func _input(event: InputEvent) -> void:
