@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cswd4pffiy5w8"
-path="res://.godot/imported/teleport_indicator.glb-061d70f7e6e4e3813327d16d496daa5f.scn"
+path="res://.godot/imported/arrow.glb-d25e491aba09d4f9c84b0465d673c5f9.scn"
 
 [deps]
 
-source_file="res://assets/models/teleport_indicator/teleport_indicator.glb"
-dest_files=["res://.godot/imported/teleport_indicator.glb-061d70f7e6e4e3813327d16d496daa5f.scn"]
+source_file="res://assets/models/teleport_indicator/arrow.glb"
+dest_files=["res://.godot/imported/arrow.glb-d25e491aba09d4f9c84b0465d673c5f9.scn"]
 
 [params]
 

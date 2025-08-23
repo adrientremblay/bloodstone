@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4tjk5jos7urc"]
+
+[ext_resource type="PackedScene" uid="uid://cswd4pffiy5w8" path="res://assets/models/teleport_indicator/arrow.glb" id="1_s2ub7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s2ub7"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.286275)
+
+[node name="arrow" instance=ExtResource("1_s2ub7")]
+
+[node name="ButtPlug" parent="." index="0"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.522118, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_s2ub7")
