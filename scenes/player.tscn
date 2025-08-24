@@ -171,7 +171,7 @@ visible = false
 melee = true
 
 [node name="left_hand" parent="Camera3D" instance=ExtResource("8_jej6c")]
-transform = Transform3D(0.127203, 0.0708956, 0.0359611, -0.0708956, 0.131868, -0.00919716, -0.0359611, -0.00919716, 0.145335, -0.445532, -0.628775, -0.561181)
+transform = Transform3D(0.127203, 0.0708956, 0.0359611, -0.054278, 0.127034, -0.0584477, -0.0580799, 0.0365522, 0.133382, -0.445532, -0.628775, -0.561181)
 
 [node name="WeaponViewport" type="SubViewportContainer" parent="."]
 anchors_preset = 15
