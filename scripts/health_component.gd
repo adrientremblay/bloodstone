@@ -55,7 +55,7 @@ func handle_attack(player: Player) -> int: # returns the blood consumed
 
 func give_up_blood(player: Player):
 	var blood_available = min(blood, player.blood_drain)
-	if blood_available == 0:
+	if blood_available == 0 || player.blood >= 100:
 		return 0
 			
 	eat_rat_sound.play()
