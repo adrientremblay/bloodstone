@@ -5,6 +5,7 @@ class_name Player extends CharacterBody3D
 @export var movement_speed = 6.0
 @export var jump_velocity = 4.5
 @export var look_target: Node3D # if this is populated then look at it when the player spawns in
+@export var nav_region: NavigationRegion3D
 
 # Children
 @onready var camera = $Camera3D
@@ -35,10 +36,11 @@ var blood_drain = 10 # how much blood the player is able to drain per each feed
 var healing_factor = 5 #how much blood is converted to health per execution of the HealingTimer
 var health = 75
 var melee_damage = 1
-var blood = 0
+var blood = 100
 var book: Book = null
 var frozen = false
 var pistol_unlocked = false
+var is_in_air = false
 
 func _ready() -> void:
 	pistol.visible = false
@@ -112,6 +114,10 @@ func _physics_process(delta):
 				teleport_indicator.look_at(result.position + result.normal, Vector3.UP)
 			var tp_position = result.position
 			teleport_indicator.global_position = tp_position
+	
+	if is_in_air and is_on_floor():
+		$ImpactSound.play()
+	is_in_air = not is_on_floor()
 
 func _input(event: InputEvent) -> void:
 	if frozen:
@@ -132,9 +138,16 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_released("cast_spell"):
 		# do the teleportation
 		if (teleport_indicator.position != Vector3(0,0,2) and blood >= 10):
-			self.global_position.x = teleport_indicator.global_position.x
-			self.global_position.y = teleport_indicator.global_position.y + 0.6
-			self.global_position.z = teleport_indicator.global_position.z
+			var teleport_position
+			if teleport_indicator.arrow_visible():
+				teleport_position = teleport_indicator.global_position
+			else:
+				var navmap = nav_region.get_navigation_map()
+				teleport_position = NavigationServer3D.map_get_closest_point(navmap, teleport_indicator.global_position)
+			
+			self.global_position.x = teleport_position.x
+			self.global_position.y = teleport_position.y + 0.6
+			self.global_position.z = teleport_position.z
 			blood -= 10
 			consumed_blood.emit(blood)
 			$TeleportSound.play()

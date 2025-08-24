@@ -214,6 +214,10 @@ stream = ExtResource("12_3v2ag")
 [node name="TeleportIndicator" parent="." instance=ExtResource("11_d2wvv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.36489)
 
+[node name="ImpactSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_fjrip")
+bus = &"Cave Environment"
+
 [connection signal="area_entered" from="Camera3D/MeleeDetectionArea" to="." method="_on_melee_detection_area_area_entered"]
 [connection signal="body_entered" from="Camera3D/MeleeDetectionArea" to="." method="_on_melee_detection_area_body_entered"]
 [connection signal="body_entered" from="Camera3D/InspectableArea" to="." method="_on_inspectable_area_body_entered"]

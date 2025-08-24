@@ -10,3 +10,7 @@ func arrow():
 func wall_arrow():
 	$arrow.visible = false
 	$wall_arrow.visible = true
+
+func arrow_visible():
+	return $arrow.visible
+	
