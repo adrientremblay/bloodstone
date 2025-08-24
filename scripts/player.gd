@@ -2,7 +2,7 @@ class_name Player extends CharacterBody3D
 
 # Exports
 @export var bullet_hole_scene: PackedScene
-@export var movement_speed = 6.0
+@export var movement_speed = 7.0
 @export var jump_velocity = 4.5
 @export var look_target: Node3D # if this is populated then look at it when the player spawns in
 @export var nav_region: NavigationRegion3D

@@ -15,8 +15,8 @@
 [ext_resource type="AudioStream" uid="uid://dpjwd55b7cqeu" path="res://assets/audio/page_flip.mp3" id="11_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://cggrv860g4o7o" path="res://scenes/rat.tscn" id="15_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://cuk8hbu0l73pd" path="res://scenes/skull.tscn" id="16_jbj1t"]
-[ext_resource type="AudioStream" uid="uid://c6t172r2waf82" path="res://assets/audio/music/8 bit Tavern.mp3" id="16_muem4"]
 [ext_resource type="PackedScene" uid="uid://v7bkwymaaf5d" path="res://scenes/pistol_pickup.tscn" id="17_muem4"]
+[ext_resource type="AudioStream" uid="uid://c8uihkcln71ol" path="res://assets/audio/music/Royalty Free Epic Metal - Wrath by Alexander Nakarada.mp3" id="17_vxglm"]
 [ext_resource type="PackedScene" uid="uid://dgb11q6k60d0" path="res://assets/models/stalagmite/ghoul.tscn" id="18_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://bogdjqho4swjl" path="res://scenes/ammo_box.tscn" id="19_0ld40"]
 [ext_resource type="AudioStream" uid="uid://bjmb0hbiq56w0" path="res://assets/audio/cave_white_noise.mp3" id="20_gqmmt"]
@@ -420,6 +420,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.90888, -0.072249, 10.1372)
 [node name="candle2" parent="Candles" instance=ExtResource("4_jyhfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.69206, -0.0361245, 10.2934)
 
+[node name="candle35" parent="Candles" instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6141, 4.99583, -19.6026)
+
+[node name="candle36" parent="Candles" instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.3338, 4.97598, -20.4246)
+
+[node name="candle37" parent="Candles" instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0974, 4.96725, -13.8193)
+
+[node name="candle38" parent="Candles" instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.397073, 1.19209e-07, -16.6331)
+
+[node name="candle39" parent="Candles" instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8444, 0, -16.6638)
+
+[node name="candle40" parent="Candles" instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3916, 0, -20.2113)
+
+[node name="candle41" parent="Candles" instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5393, -0.119903, -34.411)
+
+[node name="candle42" parent="Candles" instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.0869, -0.0589501, -32.7454)
+
+[node name="candle43" parent="Candles" instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.6307, 0, -33.1841)
+
+[node name="candle44" parent="Candles" instance=ExtResource("4_jyhfs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9125, 0, -33.2373)
+
 [node name="Pickups" type="Node3D" parent="."]
 
 [node name="Props" type="Node3D" parent="."]
@@ -471,8 +501,9 @@ transform = Transform3D(-0.707107, -0.353553, -0.612372, 0, 0.866025, -0.5, 0.70
 timeline_name = "father"
 
 [node name="GameMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("16_muem4")
-volume_db = -20.0
+stream = ExtResource("17_vxglm")
+volume_db = -6.0
+autoplay = true
 
 [node name="SafetyWall" type="StaticBody3D" parent="."]
 
@@ -622,61 +653,61 @@ transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -2.47389, -0.21552, 
 [node name="spider" parent="Environment" instance=ExtResource("25_og1vs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01862, 0.0173186, -0.394733)
 
-[node name="stalagmite" parent="." instance=ExtResource("26_2wyq8")]
+[node name="stalagmite10" parent="Environment" instance=ExtResource("26_2wyq8")]
 transform = Transform3D(0.610239, 0, -0.342941, 0, 0.7, 0, 0.342941, 0, 0.610239, 11.9854, 5, -10.4897)
 
-[node name="stalagmite2" parent="." instance=ExtResource("26_2wyq8")]
+[node name="stalagmite11" parent="Environment" instance=ExtResource("26_2wyq8")]
 transform = Transform3D(0.389353, 0, 0.0916734, 0, 0.4, 0, -0.0916734, 0, 0.389353, 11.7018, 5.35304, -9.16454)
 
-[node name="stalagmite3" parent="." instance=ExtResource("26_2wyq8")]
+[node name="stalagmite12" parent="Environment" instance=ExtResource("26_2wyq8")]
 transform = Transform3D(-0.0788791, 0, 0.289444, 0, 0.3, 0, -0.289444, 0, -0.0788791, 9.96369, 5.2609, -10.5227)
 
-[node name="stalagmite4" parent="." instance=ExtResource("26_2wyq8")]
+[node name="stalagmite13" parent="Environment" instance=ExtResource("26_2wyq8")]
 transform = Transform3D(0.664453, 0, -0.445535, 0, 0.8, 0, 0.445535, 0, 0.664453, 13.1372, 5.26047, -7.70186)
 
-[node name="stalagmite5" parent="." instance=ExtResource("26_2wyq8")]
+[node name="stalagmite14" parent="Environment" instance=ExtResource("26_2wyq8")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 21.9296, 5.04579, 1.71559)
 
-[node name="stalagmite6" parent="." instance=ExtResource("26_2wyq8")]
+[node name="stalagmite15" parent="Environment" instance=ExtResource("26_2wyq8")]
 transform = Transform3D(0.410916, 0, -0.183433, 0, 0.45, 0, 0.183433, 0, 0.410916, 18.7665, 5.14264, -2.62077)
 
-[node name="stalagmite7" parent="." instance=ExtResource("26_2wyq8")]
+[node name="stalagmite16" parent="Environment" instance=ExtResource("26_2wyq8")]
 transform = Transform3D(0.571205, 0, -0.40463, 0, 0.7, 0, 0.40463, 0, 0.571205, 18.5501, 4.9682, 4.33657)
 
-[node name="stalagmite8" parent="." instance=ExtResource("26_2wyq8")]
+[node name="stalagmite17" parent="Environment" instance=ExtResource("26_2wyq8")]
 transform = Transform3D(-0.0727159, 0, -0.997353, 0, 1, 0, 0.997353, 0, -0.0727159, 22.0285, 5.38243, 4.86697)
 
-[node name="stalagmite9" parent="." instance=ExtResource("26_2wyq8")]
+[node name="stalagmite18" parent="Environment" instance=ExtResource("26_2wyq8")]
 transform = Transform3D(-0.0371336, 0, 0.247227, 0, 0.25, 0, -0.247227, 0, -0.0371336, 19.9842, 5.1349, 4.53661)
 
-[node name="stalagmite10" parent="." instance=ExtResource("26_2wyq8")]
+[node name="stalagmite19" parent="Environment" instance=ExtResource("26_2wyq8")]
 transform = Transform3D(0.476719, 0, 0.150794, 0, 0.5, 0, -0.150794, 0, 0.476719, 19.769, 5.06782, 0.887625)
 
-[node name="stalagmite11" parent="." instance=ExtResource("26_2wyq8")]
+[node name="stalagmite20" parent="Environment" instance=ExtResource("26_2wyq8")]
 transform = Transform3D(-0.369974, 0, -0.929042, 0, 1, 0, 0.929042, 0, -0.369974, 23.3749, 5.24698, 10.6731)
 
-[node name="stalagmite12" parent="." instance=ExtResource("26_2wyq8")]
+[node name="stalagmite21" parent="Environment" instance=ExtResource("26_2wyq8")]
 transform = Transform3D(0.295324, 0, 0.403465, 0, 0.5, 0, -0.403465, 0, 0.295324, 19.0863, 5.00699, 12.0812)
 
-[node name="stalagmite13" parent="." instance=ExtResource("26_2wyq8")]
+[node name="stalagmite22" parent="Environment" instance=ExtResource("26_2wyq8")]
 transform = Transform3D(0.32367, 0, -0.94617, 0, 1, 0, 0.94617, 0, 0.32367, 6.24782, 5.3498, 12.0946)
 
-[node name="stalagmite14" parent="." instance=ExtResource("26_2wyq8")]
+[node name="stalagmite23" parent="Environment" instance=ExtResource("26_2wyq8")]
 transform = Transform3D(-0.221923, 0, 0.975064, 0, 1, 0, -0.975064, 0, -0.221923, 5.9462, 4.72958, 7.79047)
 
-[node name="stalagmite15" parent="." instance=ExtResource("26_2wyq8")]
+[node name="stalagmite24" parent="Environment" instance=ExtResource("26_2wyq8")]
 transform = Transform3D(0.302807, 0, 0.517984, 0, 0.6, 0, -0.517984, 0, 0.302807, 5.75645, 5.4007, 9.69591)
 
-[node name="stalagmite16" parent="." instance=ExtResource("26_2wyq8")]
+[node name="stalagmite25" parent="Environment" instance=ExtResource("26_2wyq8")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 8.10861, 5.93782, 10.2961)
 
-[node name="stalagmite17" parent="." instance=ExtResource("26_2wyq8")]
+[node name="stalagmite26" parent="Environment" instance=ExtResource("26_2wyq8")]
 transform = Transform3D(0.594563, 0, 0.535253, 0, 0.8, 0, -0.535253, 0, 0.594563, -17.002, 4.99411, 9.86481)
 
-[node name="stalagmite18" parent="." instance=ExtResource("26_2wyq8")]
+[node name="stalagmite27" parent="Environment" instance=ExtResource("26_2wyq8")]
 transform = Transform3D(0.427556, 0, -0.259222, 0, 0.5, 0, 0.259222, 0, 0.427556, -13.3405, 5.05539, 10.6129)
 
-[node name="stalagmite19" parent="." instance=ExtResource("26_2wyq8")]
+[node name="stalagmite28" parent="Environment" instance=ExtResource("26_2wyq8")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -9.80589, 5.28449, 9.2519)
 
 [node name="spider" parent="." instance=ExtResource("25_og1vs")]
@@ -690,36 +721,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0705, 9.80499, -21.9198)
 visible = false
 light_energy = 9.903
 omni_range = 64.1353
-
-[node name="candle2" parent="." instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6141, 4.99583, -19.6026)
-
-[node name="candle" parent="." instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.3338, 4.97598, -20.4246)
-
-[node name="candle3" parent="." instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0974, 4.96725, -13.8193)
-
-[node name="candle4" parent="." instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.397073, 1.19209e-07, -16.6331)
-
-[node name="candle5" parent="." instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8444, 0, -16.6638)
-
-[node name="candle6" parent="." instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3916, 0, -20.2113)
-
-[node name="candle8" parent="." instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5393, -0.119903, -34.411)
-
-[node name="candle7" parent="." instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.0869, -0.0589501, -32.7454)
-
-[node name="candle9" parent="." instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.6307, 0, -33.1841)
-
-[node name="candle10" parent="." instance=ExtResource("4_jyhfs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9125, 0, -33.2373)
 
 [node name="AmmoBox" parent="." instance=ExtResource("19_0ld40")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5713, 0.00273827, -33.3877)
