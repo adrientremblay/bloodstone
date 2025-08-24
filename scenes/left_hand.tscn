@@ -1,30 +1,51 @@
-[gd_scene load_steps=3 format=3 uid="uid://c67pxqtift32f"]
+[gd_scene load_steps=6 format=3 uid="uid://c67pxqtift32f"]
 
 [ext_resource type="PackedScene" uid="uid://b2qvsdmguwi8e" path="res://assets/models/left_hand/left_hand.glb" id="1_32i5s"]
 [ext_resource type="Script" uid="uid://da86iws61kwk6" path="res://scenes/left_hand.gd" id="2_11q3s"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_11q3s"]
+emission_shape_scale = Vector3(0.5, 0.5, 0.5)
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(5, -2, -10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_11q3s"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ny7ka"]
+material = SubResource("StandardMaterial3D_11q3s")
+size = Vector2(0.2, 0.2)
 
 [node name="left_hand" instance=ExtResource("1_32i5s")]
 script = ExtResource("2_11q3s")
 
 [node name="Skeleton3D" parent="HandRig" index="0"]
-bones/0/position = Vector3(0.00115299, -0.585953, 0.177538)
-bones/0/rotation = Quaternion(0.0901593, 0.417168, 0.0979822, 0.899023)
-bones/1/rotation = Quaternion(0.22595, -0.082342, 0.0544366, 0.969125)
-bones/2/rotation = Quaternion(-0.104954, 0.000239677, 0.0039152, 0.994469)
-bones/3/rotation = Quaternion(-0.0848212, 0.00807005, -0.0932834, 0.991987)
-bones/4/rotation = Quaternion(-0.0861727, 0.000140568, -0.00162402, 0.996279)
-bones/5/rotation = Quaternion(-0.0993409, 0.00767541, -0.112527, 0.988641)
+bones/0/position = Vector3(0.00115323, -5.76011, 0.177538)
+bones/0/rotation = Quaternion(-0.0342943, 0.426677, 0.0396998, 0.902881)
+bones/1/rotation = Quaternion(0.22595, -0.082342, 0.0544367, 0.969125)
+bones/2/rotation = Quaternion(-0.104954, 0.000239705, 0.0039152, 0.994469)
+bones/3/rotation = Quaternion(-0.0848211, 0.00807002, -0.0932834, 0.991987)
+bones/4/rotation = Quaternion(-0.0861726, 0.000140529, -0.001624, 0.996279)
+bones/5/rotation = Quaternion(-0.0993409, 0.00767545, -0.112527, 0.988641)
 bones/6/rotation = Quaternion(-0.082079, 0.00218315, -0.026409, 0.996273)
-bones/7/rotation = Quaternion(-0.081941, 0.003045, -0.0368334, 0.995952)
-bones/8/rotation = Quaternion(-0.0623825, 0.00535208, -0.17593, 0.98241)
-bones/9/rotation = Quaternion(-0.0465282, -0.000607195, 0.0130746, 0.998831)
-bones/10/rotation = Quaternion(-0.0466554, -0.0012165, 0.0261942, 0.998567)
-bones/11/rotation = Quaternion(-0.0223658, -0.00264858, -0.271829, 0.962082)
-bones/12/rotation = Quaternion(-0.00713677, 0.000102758, -0.0140904, 0.999875)
-bones/13/rotation = Quaternion(-0.00792678, -0.000448635, 0.0615718, 0.998071)
-bones/14/rotation = Quaternion(-0.000942193, -0.612007, 0.506267, 0.607569)
-bones/15/rotation = Quaternion(-0.0919125, -0.000521758, -0.127423, 0.987581)
-bones/16/rotation = Quaternion(-0.304797, -0.00689859, 0.229455, 0.924339)
+bones/7/rotation = Quaternion(-0.0819409, 0.00304499, -0.0368334, 0.995952)
+bones/8/rotation = Quaternion(-0.0623825, 0.00535213, -0.17593, 0.98241)
+bones/9/rotation = Quaternion(-0.0465281, -0.000607207, 0.0130746, 0.998831)
+bones/10/rotation = Quaternion(-0.0466554, -0.00121651, 0.0261942, 0.998567)
+bones/11/rotation = Quaternion(-0.0223658, -0.00264856, -0.271829, 0.962082)
+bones/12/rotation = Quaternion(-0.00713681, 0.000102736, -0.0140904, 0.999875)
+bones/13/rotation = Quaternion(-0.00792683, -0.000448633, 0.0615718, 0.998071)
+bones/14/rotation = Quaternion(-0.000942197, -0.612007, 0.506267, 0.607569)
+bones/15/rotation = Quaternion(-0.0919125, -0.000521768, -0.127423, 0.987581)
+bones/16/rotation = Quaternion(-0.304797, -0.00689857, 0.229455, 0.924339)
 
 [node name="Hand" parent="HandRig/Skeleton3D" index="0"]
 layers = 2
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.308845, 1.31861, -2.9094)
+layers = 2
+amount = 20
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_11q3s")
+draw_pass_1 = SubResource("QuadMesh_ny7ka")
