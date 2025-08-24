@@ -16,9 +16,10 @@ class_name Weapon extends Node3D
 signal update_ammo_label(ammo_clip, ammo_pool)
 
 var is_firing = false
+var is_reloading = false
 
 func can_fire():
-	return !is_firing and ammo_clip > 0
+	return !is_reloading and !is_firing and ammo_clip > 0
 
 func fire():
 	if not can_fire():
@@ -41,6 +42,7 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 		is_firing = false
 	elif anim_name == "Reload_Full":
 		animation_tree["parameters/conditions/reload"] = false
+		apply_reload()
 
 func reload():
 	if melee or ammo_clip == clip_size or ammo_pool == 0:
@@ -48,7 +50,10 @@ func reload():
 	
 	reload_sound.play()
 	switch_to_animation("reload")
-	
+	is_reloading = true
+
+func apply_reload():
+	is_reloading = false
 	if ammo_pool > 0:
 		var ammo_to_take = min(clip_size, ammo_pool)
 		ammo_clip = ammo_to_take

@@ -49,7 +49,7 @@ script = ExtResource("2_uim82")
 [node name="Skeleton3D" parent="HandRig" index="0"]
 bones/0/position = Vector3(0.13457, -0.8009, -4.83216)
 bones/0/rotation = Quaternion(-0.51722, 0.474261, 0.44517, -0.556222)
-bones/1/rotation = Quaternion(0.234799, -0.0412602, 0.0592693, 0.969358)
+bones/1/rotation = Quaternion(0.228045, -0.0797324, 0.0441952, 0.969374)
 bones/2/rotation = Quaternion(-0.343855, -0.000720483, 0.00385579, 0.939015)
 bones/3/rotation = Quaternion(-0.323723, 0.0305329, -0.0885136, 0.941507)
 bones/4/rotation = Quaternion(-0.326079, 0.000531608, -0.00154098, 0.945341)
@@ -65,8 +65,8 @@ bones/13/rotation = Quaternion(-0.43614, -0.0268694, 0.0554015, 0.89777)
 bones/14/rotation = Quaternion(-0.356419, -0.334331, 0.757606, 0.432691)
 bones/15/rotation = Quaternion(-0.597524, -0.0839883, -0.419406, 0.678241)
 bones/16/rotation = Quaternion(-0.304797, -0.00689877, 0.229455, 0.924339)
-bones/17/position = Vector3(0.0279396, -1.45628, -1.70345)
-bones/17/rotation = Quaternion(0.056406, -0.00257378, 0.0400254, 0.997602)
+bones/17/position = Vector3(0.00273318, -1.46902, -1.72191)
+bones/17/rotation = Quaternion(0.0793307, -0.000539014, 0.00505681, 0.996835)
 bones/17/scale = Vector3(0.8, 0.8, 0.8)
 bones/18/position = Vector3(2.27177e-16, 2.95287, -0.135172)
 bones/20/position = Vector3(2.93228e-17, -0.146801, 0.450678)
@@ -90,19 +90,19 @@ bones/38/rotation = Quaternion(0.0467626, 0.071419, -0.148611, 0.985204)
 bones/39/rotation = Quaternion(0.198745, -0.0948209, -0.149767, 0.963888)
 
 [node name="Slide_2" parent="HandRig/Skeleton3D" index="0"]
-transform = Transform3D(0.797426, -0.0634245, -0.00942742, 0.0636548, 0.797184, 0.0211121, 0.00772046, -0.0217943, 0.799666, -0.0808483, -0.254287, -0.377434)
+transform = Transform3D(0.799959, -0.00802397, -0.00134931, 0.00799687, 0.799816, -0.0152094, 0.00150155, 0.0151952, 0.799854, -0.0112958, -0.324847, -0.341469)
 
 [node name="Slide_2" parent="HandRig/Skeleton3D/Slide_2" index="0"]
 layers = 2
 
 [node name="Magazine_2" parent="HandRig/Skeleton3D" index="1"]
-transform = Transform3D(0.797426, -0.0634245, -0.00942741, 0.0636548, 0.797184, 0.021112, 0.00772046, -0.0217942, 0.799666, -0.30952, 2.61837, -0.443445)
+transform = Transform3D(0.799959, -0.00802397, -0.00134931, 0.00799687, 0.799815, -0.0152095, 0.00150155, 0.0151952, 0.799854, -0.040228, 2.55672, -0.274201)
 
 [node name="Magazine_2" parent="HandRig/Skeleton3D/Magazine_2" index="0"]
 layers = 2
 
 [node name="Receiver" parent="HandRig/Skeleton3D" index="2"]
-transform = Transform3D(0.797426, -0.0634245, -0.0094274, 0.0636548, 0.797184, 0.0211119, 0.00772046, -0.0217941, 0.799666, -0.0809959, -0.253956, -0.364917)
+transform = Transform3D(0.799959, -0.00802397, -0.00134931, 0.00799687, 0.799815, -0.0152096, 0.00150155, 0.0151953, 0.799854, -0.0113169, -0.325085, -0.328949)
 
 [node name="Receiver" parent="HandRig/Skeleton3D/Receiver" index="0"]
 layers = 2
