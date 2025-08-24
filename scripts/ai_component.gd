@@ -72,6 +72,8 @@ func switch_mode(new_mode: AiMode):
 
 func _on_player_attack_area_body_entered(body: Node3D) -> void:
 	if enabled and body.is_in_group("player") and attack_enabled:
+		if player == null:
+			player = body
 		attack()
 		attack_again_timer.start()
 
