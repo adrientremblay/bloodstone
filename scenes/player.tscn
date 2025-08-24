@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dlss5l7s81x7o"]
+[gd_scene load_steps=28 format=3 uid="uid://dlss5l7s81x7o"]
 
 [ext_resource type="Script" uid="uid://d1l785xbyf128" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://nsidatx54cps" path="res://scenes/bullet_hole.tscn" id="2_fjrip"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cr8tliln3pakk" path="res://scenes/hand_2.tscn" id="7_d2wvv"]
 [ext_resource type="AudioStream" uid="uid://bng8410ghnhgg" path="res://assets/audio/footstep1.mp3" id="7_fjrip"]
 [ext_resource type="ArrayMesh" uid="uid://ca1t7dmmtdbht" path="res://assets/models/muzzle_flash/muzzle_flash_2.obj" id="7_y4r1p"]
+[ext_resource type="PackedScene" uid="uid://c67pxqtift32f" path="res://scenes/left_hand.tscn" id="8_jej6c"]
 [ext_resource type="AudioStream" uid="uid://dw1dnl2ekvsrm" path="res://assets/audio/jump.mp3" id="8_smehm"]
 [ext_resource type="PackedScene" uid="uid://cd6j5h3r6nopu" path="res://scenes/teleport_indicator.tscn" id="11_d2wvv"]
 [ext_resource type="AudioStream" uid="uid://c26cxe4ndctod" path="res://assets/audio/teleport.wav" id="12_3v2ag"]
@@ -168,6 +169,9 @@ draw_pass_1 = ExtResource("7_y4r1p")
 transform = Transform3D(0.112939, 0.0260741, -0.0952096, -0.0337426, 0.146155, 0, 0.0927693, 0.0214175, 0.11591, 0.900253, -0.857792, -0.865083)
 visible = false
 melee = true
+
+[node name="left_hand" parent="Camera3D" instance=ExtResource("8_jej6c")]
+transform = Transform3D(0.127203, 0.0708956, 0.0359611, -0.0708956, 0.131868, -0.00919716, -0.0359611, -0.00919716, 0.145335, -0.445532, -0.628775, -0.561181)
 
 [node name="WeaponViewport" type="SubViewportContainer" parent="."]
 anchors_preset = 15

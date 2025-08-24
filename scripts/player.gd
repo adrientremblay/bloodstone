@@ -11,6 +11,7 @@ class_name Player extends CharacterBody3D
 @onready var camera = $Camera3D
 @onready var walk_animation_player = $WalkAnimationPlayer
 @onready var hand = $Camera3D/hand2
+@onready var left_hand = $Camera3D/left_hand
 @onready var pistol = $Camera3D/pistolmodel
 @onready var weapon_swap = $WeaponSwap
 @onready var footstep = $Footstep
@@ -114,7 +115,11 @@ func _physics_process(delta):
 				teleport_indicator.look_at(result.position + result.normal, Vector3.UP)
 			var tp_position = result.position
 			teleport_indicator.global_position = tp_position
+			# Activate the left hand when appropriate
+			if !left_hand.active:
+				left_hand.activate()
 	
+	# Impact Sound
 	if is_in_air and is_on_floor():
 		$ImpactSound.play()
 	is_in_air = not is_on_floor()
@@ -154,6 +159,9 @@ func _input(event: InputEvent) -> void:
 		
 		# move the teleport indicator behind the player
 		teleport_indicator.position = Vector3(0,0,2)
+		
+		# release the left hand
+		left_hand.release()
 
 func switch_weapon(weapon: Weapon):
 	if weapon == pistol and not pistol_unlocked:
