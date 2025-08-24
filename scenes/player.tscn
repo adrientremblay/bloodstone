@@ -149,10 +149,10 @@ shape = SubResource("CapsuleShape3D_y4r1p")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1.72153)
 shape = SubResource("CapsuleShape3D_3v2ag")
 
-[node name="pistolmodel" parent="Camera3D" instance=ExtResource("5_smehm")]
+[node name="pistol" parent="Camera3D" instance=ExtResource("5_smehm")]
 transform = Transform3D(-0.15, 0, -1.31134e-08, 0, 0.15, 0, 1.31134e-08, 0, -0.15, 0.729659, -0.46125, -1.18065)
 
-[node name="MuzzleFlash" type="GPUParticles3D" parent="Camera3D/pistolmodel"]
+[node name="MuzzleFlash" type="GPUParticles3D" parent="Camera3D/pistol"]
 transform = Transform3D(-1, 0, 1.78814e-07, 0, 1, 0, -1.78814e-07, 0, -1, -0.0371467, 0.320577, -0.534197)
 layers = 2
 material_override = SubResource("StandardMaterial3D_y4r1p")
@@ -164,7 +164,7 @@ local_coords = true
 process_material = SubResource("ParticleProcessMaterial_jej6c")
 draw_pass_1 = ExtResource("7_y4r1p")
 
-[node name="hand2" parent="Camera3D" instance=ExtResource("7_d2wvv")]
+[node name="claws" parent="Camera3D" instance=ExtResource("7_d2wvv")]
 transform = Transform3D(0.112939, 0.0260741, -0.0952096, -0.0337426, 0.146155, 0, 0.0927693, 0.0214175, 0.11591, 0.900253, -0.857792, -0.865083)
 visible = false
 melee = true
@@ -225,6 +225,6 @@ bus = &"Cave Environment"
 [connection signal="body_entered" from="Camera3D/MeleeDetectionArea" to="." method="_on_melee_detection_area_body_entered"]
 [connection signal="body_entered" from="Camera3D/InspectableArea" to="." method="_on_inspectable_area_body_entered"]
 [connection signal="body_exited" from="Camera3D/InspectableArea" to="." method="_on_inspectable_area_body_exited"]
-[connection signal="update_ammo_label" from="Camera3D/pistolmodel" to="." method="_on_weapon_update_ammo_label"]
+[connection signal="update_ammo_label" from="Camera3D/pistol" to="." method="_on_weapon_update_ammo_label"]
 [connection signal="timeout" from="MeleeMonitoringTimer" to="." method="_on_melee_monitoring_timer_timeout"]
 [connection signal="timeout" from="HealingTimer" to="." method="_on_healing_timer_timeout"]

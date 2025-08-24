@@ -10,9 +10,9 @@ class_name Player extends CharacterBody3D
 # Children
 @onready var camera = $Camera3D
 @onready var walk_animation_player = $WalkAnimationPlayer
-@onready var hand = $Camera3D/hand2
+@onready var hand = $Camera3D/claws
 @onready var left_hand = $Camera3D/left_hand
-@onready var pistol = $Camera3D/pistolmodel
+@onready var pistol = $Camera3D/pistol
 @onready var weapon_swap = $WeaponSwap
 @onready var footstep = $Footstep
 @onready var jump = $Jump
@@ -27,7 +27,7 @@ var camera_min_angle = -80
 # Signals
 signal consumed_blood(amount)
 signal update_health(health)
-signal update_ammo(ammo_clip, ammo_pool, melee: bool)
+signal update_ammo(weapon_name, ammo_clip, ammo_pool, melee: bool)
 signal can_inspect(description: String)
 signal cannot_inspect
  
@@ -171,7 +171,7 @@ func switch_weapon(weapon: Weapon):
 	current_weapon = weapon
 	current_weapon.visible = true
 	weapon_swap.play()
-	update_ammo.emit(current_weapon.ammo_clip, current_weapon.ammo_pool, current_weapon.melee)
+	update_ammo.emit(current_weapon.name, current_weapon.ammo_clip, current_weapon.ammo_pool, current_weapon.melee)
 
 func attack() -> void:		
 	if current_weapon.melee:
@@ -221,7 +221,7 @@ func play_footstep():
 	footstep.play()
 
 func _on_weapon_update_ammo_label(ammo_clip: Variant, ammo_pool: Variant, melee: bool) -> void:
-	update_ammo.emit(ammo_clip, ammo_pool, melee)
+	update_ammo.emit(current_weapon.name, ammo_clip, ammo_pool, melee)
 
 func _on_melee_monitoring_timer_timeout() -> void:
 	$Camera3D/MeleeDetectionArea.monitoring = false

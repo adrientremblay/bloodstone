@@ -19,6 +19,7 @@ var current_page = 0 # 0-indexed and the left page
 func _ready() -> void:
 	inspect_label.visible = false
 	book_background.visible = false
+	_on_player_update_ammo("Claws", 0, 0, true)
 
 func _on_player_consumed_blood(amount: Variant) -> void:
 	blood_bar.value = amount
@@ -26,12 +27,12 @@ func _on_player_consumed_blood(amount: Variant) -> void:
 func _on_player_update_health(health: Variant) -> void:
 	$HealthBar.value = health
 
-func _on_player_update_ammo(ammo_clip: Variant, ammo_pool: Variant, melee: bool) -> void:
+func _on_player_update_ammo(weapon_name: String, ammo_clip: Variant, ammo_pool: Variant, melee: bool) -> void:
 	if melee:
-		ammo_label.text = ''
+		ammo_label.text = weapon_name + "\n" +'Ammo: ∞'
 		return
 	
-	ammo_label.text = str(ammo_clip) + "/" + str(ammo_pool)
+	ammo_label.text = weapon_name + "\n" + "Ammo: " + str(ammo_clip) + "/" + str(ammo_pool)
 
 func _on_player_can_inspect(description: String) -> void:
 	inspect_label.visible = true

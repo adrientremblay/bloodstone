@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cbfftiduwqi2g" path="res://assets/models/pistol/pistol.glb" id="1_j0tje"]
 [ext_resource type="Script" uid="uid://dj75ngtf28r87" path="res://scenes/weapon.gd" id="2_uim82"]
 [ext_resource type="AudioStream" uid="uid://v6ce1icwc5c6" path="res://assets/audio/shoot_pistol.mp3" id="3_7lq31"]
-[ext_resource type="AudioStream" uid="uid://bcxvvs2vbtti7" path="res://assets/audio/pistol_reload.mp3" id="4_b6lj8"]
+[ext_resource type="AudioStream" uid="uid://8fsodtc8773u" path="res://assets/audio/pistol_reload_fast.mp3" id="4_b6lj8"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7lq31"]
 animation = &"Fire"
@@ -49,7 +49,7 @@ script = ExtResource("2_uim82")
 [node name="Skeleton3D" parent="HandRig" index="0"]
 bones/0/position = Vector3(0.13457, -0.8009, -4.83216)
 bones/0/rotation = Quaternion(-0.51722, 0.474261, 0.44517, -0.556222)
-bones/1/rotation = Quaternion(0.222727, -0.105737, 0.0375568, 0.968402)
+bones/1/rotation = Quaternion(0.225863, -0.0829928, 0.0539684, 0.969116)
 bones/2/rotation = Quaternion(-0.343855, -0.000720483, 0.00385579, 0.939015)
 bones/3/rotation = Quaternion(-0.323723, 0.0305329, -0.0885136, 0.941507)
 bones/4/rotation = Quaternion(-0.326079, 0.000531608, -0.00154098, 0.945341)
@@ -65,8 +65,8 @@ bones/13/rotation = Quaternion(-0.43614, -0.0268694, 0.0554015, 0.89777)
 bones/14/rotation = Quaternion(-0.356419, -0.334331, 0.757606, 0.432691)
 bones/15/rotation = Quaternion(-0.597524, -0.0839883, -0.419406, 0.678241)
 bones/16/rotation = Quaternion(-0.304797, -0.00689877, 0.229455, 0.924339)
-bones/17/position = Vector3(-0.0146789, -1.47538, -1.73139)
-bones/17/rotation = Quaternion(0.0912502, 0.000969669, -0.0195145, 0.995636)
+bones/17/position = Vector3(-0.000512006, -1.46327, -1.71434)
+bones/17/rotation = Quaternion(0.0704509, 2.69332e-05, -0.000542026, 0.997515)
 bones/17/scale = Vector3(0.8, 0.8, 0.8)
 bones/18/position = Vector3(2.27177e-16, 2.95287, -0.135172)
 bones/20/position = Vector3(2.93228e-17, -0.146801, 0.450678)
@@ -90,19 +90,19 @@ bones/38/rotation = Quaternion(0.0467626, 0.071419, -0.148611, 0.985204)
 bones/39/rotation = Quaternion(0.198745, -0.0948209, -0.149767, 0.963888)
 
 [node name="Slide_2" parent="HandRig/Skeleton3D" index="0"]
-transform = Transform3D(0.799389, 0.0311055, 0.00306064, -0.0309453, 0.79866, -0.0344197, -0.00439382, 0.0342751, 0.799253, 0.0360205, -0.365523, -0.324059)
+transform = Transform3D(0.8, 0.000862174, 0.000103056, -0.000862051, 0.799999, -0.000954305, -0.000104084, 0.000954184, 0.8, 0.000924208, -0.294627, -0.354483)
 
 [node name="Slide_2" parent="HandRig/Skeleton3D/Slide_2" index="0"]
 layers = 2
 
 [node name="Magazine_2" parent="HandRig/Skeleton3D" index="1"]
-transform = Transform3D(0.799389, 0.0311055, 0.00306064, -0.0309453, 0.79866, -0.0344197, -0.00439382, 0.0342751, 0.799253, 0.148144, 2.51158, -0.188054)
+transform = Transform3D(0.8, 0.000862174, 0.000103056, -0.000862051, 0.799999, -0.000954315, -0.000104084, 0.000954203, 0.799999, 0.00403231, 2.58783, -0.338524)
 
 [node name="Magazine_2" parent="HandRig/Skeleton3D/Magazine_2" index="0"]
 layers = 2
 
 [node name="Receiver" parent="HandRig/Skeleton3D" index="2"]
-transform = Transform3D(0.799389, 0.0311055, 0.00306064, -0.0309453, 0.79866, -0.0344199, -0.00439382, 0.0342752, 0.799253, 0.0360684, -0.366061, -0.311549)
+transform = Transform3D(0.8, 0.000862174, 0.000103056, -0.000862051, 0.799999, -0.000954457, -0.000104084, 0.000954337, 0.799999, 0.000925822, -0.294642, -0.341962)
 
 [node name="Receiver" parent="HandRig/Skeleton3D/Receiver" index="0"]
 layers = 2
@@ -125,6 +125,6 @@ parameters/conditions/reload = false
 
 [node name="ReloadSound" type="AudioStreamPlayer" parent="." index="4"]
 stream = ExtResource("4_b6lj8")
-volume_db = 2.0
+volume_db = 5.0
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
