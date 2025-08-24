@@ -101,7 +101,7 @@ func _physics_process(delta):
 		walk_animation_player.pause()
 	
 	# Position of the teleport indicator to be raycasted if RMS is down
-	if Input.is_action_pressed("cast_spell"):
+	if Input.is_action_pressed("cast_spell") and !current_weapon.is_reloading:
 		var raycast_vector = (-camera.global_transform.basis.z)
 		var query = PhysicsRayQueryParameters3D.create(camera.global_position, camera.global_position -camera.global_transform.basis.z * 1000)
 		var result = get_world_3d().direct_space_state.intersect_ray(query)
@@ -140,7 +140,7 @@ func _input(event: InputEvent) -> void:
 			other_weapon = hand
 		
 		switch_weapon(other_weapon)
-	elif event.is_action_released("cast_spell"):
+	elif event.is_action_released("cast_spell") and !current_weapon.is_reloading:
 		# do the teleportation
 		if (teleport_indicator.position != Vector3(0,0,2) and blood >= 10):
 			var teleport_position
