@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://c6f1c2mdfs8fk"]
+
+[ext_resource type="Script" uid="uid://nn1pio4lghvp" path="res://scripts/entity.gd" id="1_mvyd6"]
+[ext_resource type="PackedScene" uid="uid://x4c66f3x1pew" path="res://scenes/knight_model.tscn" id="2_14u3r"]
+[ext_resource type="PackedScene" uid="uid://d1f8o0rqvutue" path="res://scenes/components/ai_component.tscn" id="3_3cm67"]
+[ext_resource type="PackedScene" uid="uid://birs07dsnnfxt" path="res://scenes/components/health_component.tscn" id="4_w8y5l"]
+[ext_resource type="AudioStream" uid="uid://b7btbhgolnhow" path="res://assets/audio/ghoul1.mp3" id="5_nw3uw"]
+[ext_resource type="AudioStream" uid="uid://de5rc2qa778wp" path="res://assets/audio/ghoul_death.mp3" id="6_4ok4f"]
+[ext_resource type="AudioStream" uid="uid://bx335bye4ewl1" path="res://assets/audio/ghoul_attack.mp3" id="7_c7bgd"]
+[ext_resource type="Script" uid="uid://iiv5rbuh4psx" path="res://scenes/feeding_area.gd" id="8_oi1vv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_06ia3"]
+radius = 0.254099
+height = 2.11061
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8a0iq"]
+radius = 0.335508
+height = 1.64883
+
+[node name="Knight" type="CharacterBody3D" groups=["enemies"]]
+script = ExtResource("1_mvyd6")
+
+[node name="KnightModel" parent="." instance=ExtResource("2_14u3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.992289, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11228, 0)
+shape = SubResource("CapsuleShape3D_06ia3")
+
+[node name="AiComponent" parent="." node_paths=PackedStringArray("model_component", "attack_sound") instance=ExtResource("3_3cm67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.444848, 0)
+speed = 1.5
+model_component = NodePath("../KnightModel")
+damage = 10
+attack_sound = NodePath("../HealthComponent/AttackSound")
+attack_speed = 1.5
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("ai_component", "model_component", "ambient_sound", "collission_shape", "death_sound", "feeding_area") instance=ExtResource("4_w8y5l")]
+transform = Transform3D(1, 0, 0, 0, 0.570413, 0.821358, 0, -0.821358, 0.570413, 0, 1.14658, 0)
+blood = 30
+ai_component = NodePath("../AiComponent")
+model_component = NodePath("../KnightModel")
+ambient_sound = NodePath("AmbientSound")
+collission_shape = NodePath("../CollisionShape3D")
+death_sound = NodePath("DeathSound")
+feeding_area = NodePath("../FeedingArea")
+
+[node name="AmbientSound" type="AudioStreamPlayer3D" parent="HealthComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.235149, 0)
+stream = ExtResource("5_nw3uw")
+volume_db = -25.0
+unit_size = 5.0
+autoplay = true
+max_distance = 5.0
+bus = &"Cave Environment"
+
+[node name="DeathSound" type="AudioStreamPlayer3D" parent="HealthComponent"]
+stream = ExtResource("6_4ok4f")
+bus = &"Cave Environment"
+
+[node name="AttackSound" type="AudioStreamPlayer3D" parent="HealthComponent"]
+stream = ExtResource("7_c7bgd")
+bus = &"Cave Environment"
+
+[node name="FeedingArea" type="Area3D" parent="." groups=["feeding_area"]]
+monitoring = false
+monitorable = false
+script = ExtResource("8_oi1vv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FeedingArea"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_8a0iq")
