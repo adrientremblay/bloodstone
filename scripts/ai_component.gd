@@ -102,9 +102,10 @@ func attack():
 		# Shooting Ray
 		var space = get_world_3d().direct_space_state
 		# Rotate vector around z by UP TO the accuracy angle
-		var raycast_vector = (-self.global_transform.basis.z).rotated(self.global_transform.basis.x, rng.randf_range(0, 1.0) * accuracy_angle * PI / 180)
-		raycast_vector = raycast_vector.rotated(-self.global_transform.basis.z, rng.randf_range(0, 2*PI))
-		var query = PhysicsRayQueryParameters3D.create(self.global_position, player.global_position + (raycast_vector*attack_radius))
+		var vector_to_player = (player.global_position - self.global_position).normalized()
+		var raycast_vector = vector_to_player.rotated(self.global_transform.basis.x, rng.randf_range(0, 1.0) * accuracy_angle * PI / 180)
+		raycast_vector = raycast_vector.rotated(vector_to_player, rng.randf_range(0, 2*PI))
+		var query = PhysicsRayQueryParameters3D.create(self.global_position, self.global_position + (raycast_vector*attack_radius * 2))
 		var result = space.intersect_ray(query)
 
 		if result:

@@ -34,7 +34,7 @@ model_component = NodePath("../KnightModel")
 damage = 3
 attack_sound = NodePath("../HealthComponent/AttackSound")
 spotted_sound = NodePath("SpottedSound")
-attack_radius = 5
+attack_radius = 10
 melee = false
 accuracy_angle = 3
 

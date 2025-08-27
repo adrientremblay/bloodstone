@@ -102,15 +102,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.851, 10.9685, -34.1813)
 [node name="candle2" parent="NavigationRegion3D" instance=ExtResource("4_jyhfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.995, 7.9131, -28.0723)
 
-[node name="Ghoul" parent="NavigationRegion3D" instance=ExtResource("18_dp3eg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1018, 5, -19.6966)
-
-[node name="Ghoul2" parent="NavigationRegion3D" instance=ExtResource("18_dp3eg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.8266, 8, -27.2581)
-
-[node name="Ghoul3" parent="NavigationRegion3D" instance=ExtResource("18_dp3eg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7708, 11, -34.6359)
-
 [node name="AmmoBox" parent="NavigationRegion3D" instance=ExtResource("19_0ld40")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8561, 11.0027, -33.7468)
 
@@ -831,6 +822,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.1868, 14.0027, -58.3598)
 
 [node name="Knight" parent="." instance=ExtResource("28_2f3dj")]
 transform = Transform3D(0.0228967, 0, 0.999738, 0, 1, 0, -0.999738, 0, 0.0228967, 21.9085, 0.057097, 10.8638)
+
+[node name="Knight2" parent="." instance=ExtResource("28_2f3dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6044, 11.0192, -34.0389)
+
+[node name="Knight3" parent="." instance=ExtResource("28_2f3dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.6663, 8.01917, -27.212)
+
+[node name="Knight4" parent="." instance=ExtResource("28_2f3dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8187, 5.01917, -20.5471)
 
 [connection signal="can_inspect" from="Player" to="HUD" method="_on_player_can_inspect"]
 [connection signal="cannot_inspect" from="Player" to="HUD" method="_on_player_cannot_inspect"]
