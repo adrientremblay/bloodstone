@@ -1,4 +1,4 @@
-class_name AiComponent extends Node
+class_name AiComponent extends Node3D
 
 # Constants
 var rng = RandomNumberGenerator.new()
@@ -19,6 +19,8 @@ var player: Player = null
 @export var attack_speed: float = 0.5
 @export var spotted_sound: AudioStreamPlayer3D
 @export var attack_radius = 1 # the scale of the area to detect players for attacks
+@export var melee = true
+@export var accuracy_angle = 0 # degrees
 
 # Children and parents
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
@@ -86,7 +88,21 @@ func _on_player_attack_area_body_entered(body: Node3D) -> void:
 func attack():
 	model_component.switch_to_animation("attack")
 	attack_sound.play()
-	player.take_damage(damage)
+	if melee: # If the enemy is a melee one, then the player simply takes damage
+		player.take_damage(damage)
+	else:
+		# Otherwise, we want to shoot a ray towards the player
+		# Shooting Ray
+		var space = get_world_3d().direct_space_state
+		# Rotate vector around z by UP TO the accuracy angle
+		var raycast_vector = (-self.global_transform.basis.z).rotated(self.global_transform.basis.x, rng.randf_range(0, 1.0) * accuracy_angle * PI / 180)
+		raycast_vector = raycast_vector.rotated(-self.global_transform.basis.z, rng.randf_range(0, 2*PI))
+		var query = PhysicsRayQueryParameters3D.create(self.global_position, player.global_position + (raycast_vector*attack_radius))
+		var result = space.intersect_ray(query)
+
+		if result:
+			if result.collider.is_in_group("player"):
+				player.take_damage(damage)
 
 func _on_attack_again_timer_timeout() -> void:
 	if player != null and enabled:

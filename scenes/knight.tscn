@@ -28,7 +28,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11228, 0)
 shape = SubResource("CapsuleShape3D_06ia3")
 
 [node name="AiComponent" parent="." node_paths=PackedStringArray("model_component", "attack_sound", "spotted_sound") instance=ExtResource("3_3cm67")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.444848, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2323, 0)
 speed = 1.5
 model_component = NodePath("../KnightModel")
 damage = 10
@@ -36,6 +36,8 @@ attack_sound = NodePath("../HealthComponent/AttackSound")
 attack_speed = 1.5
 spotted_sound = NodePath("SpottedSound")
 attack_radius = 5
+melee = false
+accuracy_angle = 3
 
 [node name="SpottedSound" type="AudioStreamPlayer3D" parent="AiComponent"]
 transform = Transform3D(1, 0, 0, 0, 0.570413, 0.821358, 0, -0.821358, 0.570413, 0, 0.701732, 0)
