@@ -17,6 +17,7 @@ var player: Player = null
 @export var damage: int
 @export var attack_sound: AudioStreamPlayer3D
 @export var attack_speed: float = 0.5
+@export var spotted_sound: AudioStreamPlayer3D
 
 # Children and parents
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
@@ -65,6 +66,7 @@ func _on_player_detection_area_body_entered(body: Node3D) -> void:
 	if enabled and body.is_in_group("player") and mode != AiMode.CHASING_PLAYER and attack_enabled:
 		switch_mode(AiMode.CHASING_PLAYER)
 		player = body
+		spotted_sound.play()
 
 func switch_mode(new_mode: AiMode):
 	mode = new_mode

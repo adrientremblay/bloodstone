@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dgb11q6k60d0"]
+[gd_scene load_steps=12 format=3 uid="uid://dgb11q6k60d0"]
 
 [ext_resource type="Script" uid="uid://nn1pio4lghvp" path="res://scripts/entity.gd" id="1_0rs5k"]
 [ext_resource type="PackedScene" uid="uid://bpb16lsdhjpf4" path="res://scenes/ghoul_model.tscn" id="1_pn4bt"]
 [ext_resource type="PackedScene" uid="uid://d1f8o0rqvutue" path="res://scenes/components/ai_component.tscn" id="3_ei4jr"]
 [ext_resource type="PackedScene" uid="uid://birs07dsnnfxt" path="res://scenes/components/health_component.tscn" id="4_ei4jr"]
+[ext_resource type="AudioStream" uid="uid://t7xatc7u882t" path="res://assets/audio/ghoul_spotted.mp3" id="4_enwft"]
 [ext_resource type="AudioStream" uid="uid://b7btbhgolnhow" path="res://assets/audio/ghoul1.mp3" id="5_fxkcu"]
 [ext_resource type="AudioStream" uid="uid://de5rc2qa778wp" path="res://assets/audio/ghoul_death.mp3" id="7_bwnnb"]
 [ext_resource type="Script" uid="uid://iiv5rbuh4psx" path="res://scenes/feeding_area.gd" id="8_f26u8"]
@@ -27,13 +28,17 @@ shape = SubResource("CapsuleShape3D_pn4bt")
 [node name="ModelComponent" parent="." instance=ExtResource("1_pn4bt")]
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
 
-[node name="AiComponent" parent="." node_paths=PackedStringArray("model_component", "attack_sound") instance=ExtResource("3_ei4jr")]
+[node name="AiComponent" parent="." node_paths=PackedStringArray("model_component", "attack_sound", "spotted_sound") instance=ExtResource("3_ei4jr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.444848, 0)
 speed = 1.5
 model_component = NodePath("../ModelComponent")
 damage = 10
 attack_sound = NodePath("../HealthComponent/AttackSound")
 attack_speed = 1.5
+spotted_sound = NodePath("SpottedSound")
+
+[node name="SpottedSound" type="AudioStreamPlayer3D" parent="AiComponent"]
+stream = ExtResource("4_enwft")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("ai_component", "model_component", "ambient_sound", "collission_shape", "death_sound", "feeding_area") instance=ExtResource("4_ei4jr")]
 transform = Transform3D(1, 0, 0, 0, 0.570413, 0.821358, 0, -0.821358, 0.570413, 0, 1.14658, 0)
