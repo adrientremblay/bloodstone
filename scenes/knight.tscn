@@ -29,11 +29,10 @@ shape = SubResource("CapsuleShape3D_06ia3")
 
 [node name="AiComponent" parent="." node_paths=PackedStringArray("model_component", "attack_sound", "spotted_sound") instance=ExtResource("3_3cm67")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2323, 0)
-speed = 1.5
+speed = 3.0
 model_component = NodePath("../KnightModel")
-damage = 10
+damage = 3
 attack_sound = NodePath("../HealthComponent/AttackSound")
-attack_speed = 1.5
 spotted_sound = NodePath("SpottedSound")
 attack_radius = 5
 melee = false

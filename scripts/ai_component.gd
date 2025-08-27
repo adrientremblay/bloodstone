@@ -50,6 +50,13 @@ func _physics_process(delta: float) -> void:
 	if navigation_agent.is_target_reached():
 		return
 	
+	# Stop and shoot if not a melee character and player is in attack area
+	if not melee:
+		var bodies = $PlayerAttackArea.get_overlapping_bodies()
+		for body in bodies:
+			if body.is_in_group("player"):
+				return
+	
 	var direction = (navigation_agent.get_next_path_position() - self.global_position).normalized()
 	body.velocity = direction * speed
 	body.move_and_slide()
