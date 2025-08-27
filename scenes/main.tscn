@@ -525,6 +525,9 @@ shape = SubResource("BoxShape3D_muem4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56741, -5.78492, 8.26647)
 shape = SubResource("BoxShape3D_muem4")
 
+[node name="AmmoBox" parent="DeathArea" instance=ExtResource("19_0ld40")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.8962, 0.00273801, 11.4951)
+
 [node name="skull2" parent="." instance=ExtResource("16_jbj1t")]
 transform = Transform3D(-0.771625, 0.217551, 0.597718, 0, 0.939692, -0.34202, -0.636078, -0.263911, -0.72509, 3.32338, -0.00695251, -10.7043)
 timeline_name = "father3"
@@ -775,9 +778,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76399, 13.972, -67.3594)
 [node name="candle14" parent="." instance=ExtResource("4_jyhfs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.78386, 13.972, -67.3594)
 
-[node name="Ghoul" parent="." instance=ExtResource("18_dp3eg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8978, 14, -69.2597)
-
 [node name="Ghoul2" parent="." instance=ExtResource("18_dp3eg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2776, 14, -69.5354)
 
@@ -831,6 +831,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.6663, 8.01917, -27.212)
 
 [node name="Knight4" parent="." instance=ExtResource("28_2f3dj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8187, 5.01917, -20.5471)
+
+[node name="AmmoBox13" parent="." instance=ExtResource("19_0ld40")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.54703, 0.00273825, 10.3072)
+
+[node name="AmmoBox14" parent="." instance=ExtResource("19_0ld40")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.84049, 0.00273838, 9.52463)
+
+[node name="Knight5" parent="." instance=ExtResource("28_2f3dj")]
+transform = Transform3D(-0.92002, 0, 0.391871, 0, 1, 0, -0.391871, 0, -0.92002, 3.89027, 14.0192, -67.635)
+
+[node name="Knight6" parent="." instance=ExtResource("28_2f3dj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.3952, 14.0192, -58.4606)
 
 [connection signal="can_inspect" from="Player" to="HUD" method="_on_player_can_inspect"]
 [connection signal="cannot_inspect" from="Player" to="HUD" method="_on_player_cannot_inspect"]
