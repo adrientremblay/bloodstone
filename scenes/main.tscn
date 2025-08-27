@@ -33,7 +33,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fv21b"]
 shader = ExtResource("2_yq6so")
-shader_parameter/intensity = 1.0
+shader_parameter/intensity = 0.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
 
@@ -869,6 +869,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.3952, 14.0192, -58.4606)
 [connection signal="can_inspect" from="Player" to="UICanvasLayer/HUD" method="_on_player_can_inspect"]
 [connection signal="cannot_inspect" from="Player" to="UICanvasLayer/HUD" method="_on_player_cannot_inspect"]
 [connection signal="consumed_blood" from="Player" to="UICanvasLayer/HUD" method="_on_player_consumed_blood"]
+[connection signal="damage_done" from="Player" to="PostProcessingCanvasLayer" method="_on_player_damage_done"]
 [connection signal="update_ammo" from="Player" to="UICanvasLayer/HUD" method="_on_player_update_ammo"]
 [connection signal="update_health" from="Player" to="UICanvasLayer/HUD" method="_on_player_update_health"]
 [connection signal="body_entered" from="DeathArea" to="." method="_on_death_area_body_entered"]

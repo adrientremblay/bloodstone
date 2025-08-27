@@ -30,6 +30,7 @@ signal update_health(health)
 signal update_ammo(weapon_name, ammo_clip, ammo_pool, melee: bool)
 signal can_inspect(description: String)
 signal cannot_inspect
+signal damage_done
  
 # Properties
 @onready var current_weapon: Weapon = hand
@@ -209,6 +210,7 @@ func reload():
 func take_damage(damage: int):
 	health -= damage
 	update_health.emit(health)
+	damage_done.emit()
 	
 	# Todo: implement death
 

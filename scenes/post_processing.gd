@@ -1,9 +1,12 @@
 extends CanvasLayer
 
-var redshift_intensity = 1.0
+var redshift_intensity = 0.0
 
 func _process(delta: float) -> void:
 	if redshift_intensity > 0:
 		redshift_intensity -= delta
 		redshift_intensity = max(0, redshift_intensity)
 		$ColorRect.material.set("shader_param/intensity", redshift_intensity)
+
+func _on_player_damage_done() -> void:
+	redshift_intensity = 1.0
