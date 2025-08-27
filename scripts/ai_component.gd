@@ -18,16 +18,20 @@ var player: Player = null
 @export var attack_sound: AudioStreamPlayer3D
 @export var attack_speed: float = 0.5
 @export var spotted_sound: AudioStreamPlayer3D
+@export var attack_radius = 1 # the scale of the area to detect players for attacks
 
 # Children and parents
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var body: CharacterBody3D = get_parent()
 @onready var attack_again_timer: Timer = $AttackAgainTimer
+@onready var player_attack_area_shape: CollisionShape3D = $PlayerAttackArea/CollisionShape3D
 
 func _ready() -> void:
 	if enabled:
 		find_new_target()
 		attack_again_timer.wait_time = attack_speed
+	
+	player_attack_area_shape.scale = Vector3(attack_radius, attack_radius, attack_radius)
 
 func _physics_process(delta: float) -> void:
 	if not enabled:
