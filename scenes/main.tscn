@@ -32,6 +32,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fv21b"]
 shader = ExtResource("2_yq6so")
+shader_parameter/intensity = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
 
