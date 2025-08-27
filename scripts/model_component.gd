@@ -20,6 +20,9 @@ func switch_to_animation(animation_name: String):
 	if (animation_name == "hurt"): # for the Hurt animation we want to restart it
 		var state_machine = animation_tree["parameters/playback"]
 		state_machine.start("Hurt", true)  # `true` = reset even if already playing
+	if (animation_name == "attack"):
+		var state_machine = animation_tree["parameters/playback"]
+		state_machine.start("Attack", true)  # `true` = reset even if already playing
 		
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Attack":

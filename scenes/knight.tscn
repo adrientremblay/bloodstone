@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d1f8o0rqvutue" path="res://scenes/components/ai_component.tscn" id="3_3cm67"]
 [ext_resource type="PackedScene" uid="uid://birs07dsnnfxt" path="res://scenes/components/health_component.tscn" id="4_w8y5l"]
 [ext_resource type="AudioStream" uid="uid://cquf4rtcmlien" path="res://assets/audio/knight_death.mp3" id="6_mvyd6"]
-[ext_resource type="AudioStream" uid="uid://c6vl2nm1yic6g" path="res://assets/audio/POV - Firing a WWI Era French Ruby Pistol in .32.mp3" id="7_14u3r"]
+[ext_resource type="AudioStream" uid="uid://v6ce1icwc5c6" path="res://assets/audio/shoot_pistol.mp3" id="7_14u3r"]
 [ext_resource type="AudioStream" uid="uid://boyttfddcqoaa" path="res://assets/audio/knight_spotted.mp3" id="7_mvyd6"]
 [ext_resource type="Script" uid="uid://iiv5rbuh4psx" path="res://scenes/feeding_area.gd" id="8_oi1vv"]
 
@@ -66,10 +66,11 @@ bus = &"Cave Environment"
 stream = ExtResource("7_14u3r")
 bus = &"Cave Environment"
 
-[node name="FeedingArea" type="Area3D" parent="." groups=["feeding_area"]]
+[node name="FeedingArea" type="Area3D" parent="." node_paths=PackedStringArray("health_component") groups=["feeding_area"]]
 monitoring = false
 monitorable = false
 script = ExtResource("8_oi1vv")
+health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FeedingArea"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
